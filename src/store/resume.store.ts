@@ -13,15 +13,9 @@ export const resumeStore = {
         resumeList(state: State) { return state.resumeList },
     },
     mutations: {
-        setResume(state: State, { resume }: any) {
-            state.resume = resume
-        }
 
     },
     actions: {
-        async loadResume(context: any) {
-            const resume = await resumeService.query()
-            context.commit({ type: 'setResume', resume })
-        }
+   
     }
 }
