@@ -1,5 +1,5 @@
 <template>
-    
+
     <section class="resume-list-container">
         <div class="header">
             <h2>Resumes</h2>

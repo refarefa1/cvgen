@@ -4,10 +4,18 @@
 
 
 <script lang="ts">
+import { useUserStore } from './store/user.store';
+
 export default {
 
+  data() {
+    return {
+      userStore: useUserStore()
+    }
+  },
+
   created() {
-    this.$store.dispatch({ type: 'loadUser' })
+    this.userStore.loadUser()
   }
 
 }
