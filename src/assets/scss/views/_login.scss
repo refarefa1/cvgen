@@ -1,0 +1,32 @@
+.login-page {
+	.header {
+		display: flex;
+		width: 100%;
+		padding: 1.25rem 1.25rem 0 1.25rem;
+
+		.logo {
+			svg {
+				width: 140px;
+				opacity: 0.8;
+			}
+		}
+	}
+
+	.login-container {
+		display: flex;
+		flex-direction: column;
+
+        margin: auto;
+        max-width: min(90vw, 500px);
+        padding: 2rem;
+        gap: 3rem;
+
+        border-radius: 20px;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        background-color: $bg-color-modal;
+        
+        text-align: center;
+		h1 {
+		}
+	}
+}

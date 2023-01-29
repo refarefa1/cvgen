@@ -1,11 +1,12 @@
 * {
-    box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 body {
-    line-height: 1;
-    margin: 0;
-    font-family: 'proxima-nova'
+	line-height: 1;
+	margin: 0;
+	font-family: 'proxima-nova';
+	background-color: rgb(243 244 (calc(246 / $tw-bg-opacity)));
 }
 
 h1,
@@ -15,25 +16,25 @@ h4,
 h5,
 h6,
 p {
-    margin: 0;
+	margin: 0;
 }
 
 a {
-    text-decoration: none;
+	text-decoration: none;
 }
 
 ul {
-    list-style-type: none;
-    padding: 0;
+	list-style-type: none;
+	padding: 0;
 }
 
 button {
-    border: none;
-    cursor: pointer;
-    font-family: 'proxima-nova'
+	border: none;
+	cursor: pointer;
+	font-family: 'proxima-nova';
 }
 
 ::selection {
-    background-color: $clr1;
-    color: $clr6;
+	background-color: $clr1;
+	color: $clr6;
 }

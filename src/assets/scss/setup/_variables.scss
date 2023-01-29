@@ -6,8 +6,9 @@ $clr4: #95adbe;
 $clr5: #dff0ea;
 $clr6: #fff;
 
-// Background
+// Backgrounds
 $tw-bg-opacity: 1;
+$bg-color-modal: rgb(255 255 calc(255 / $tw-bg-opacity));
 
 // Breakpoints
 $mobile-breakpoint: 460px;
