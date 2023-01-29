@@ -1,0 +1,50 @@
+.home-page {
+
+    .home-header {
+        padding-inline: $desktop-padding;
+        display: flex;
+        align-items: center;
+        height: 10vh;
+
+        .header-wrapper {
+            max-width: $wide-breakpoint;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+
+            .login {
+                .login-btn {
+                    width: 200px;
+                    height: 40px;
+                    border-radius: 2em;
+                    font-weight: 700;
+                    font-size: rem(16px);
+                }
+            }
+
+        }
+    }
+
+    .home-hero {
+        max-width: $inner-wide-breakpoint;
+        padding-block: 48px;
+        margin: auto;
+        display: flex;
+        gap: rem(72px);
+        align-items: center;
+        justify-content: space-between;
+
+
+        .hero-img {
+            width: 20%;
+        }
+    }
+
+    .resume-list-container {
+        max-width: $inner-wide-breakpoint;
+        margin: auto;
+
+    }
+}
