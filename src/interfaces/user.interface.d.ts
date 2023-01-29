@@ -1,6 +1,6 @@
-import { Resume } from './resume-interface';
+import Resume from './resume-interface';
 
-export interface User {
+export default interface User {
 	_id: string;
 	name: string;
 	email: string;
