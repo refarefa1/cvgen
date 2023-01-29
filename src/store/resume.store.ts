@@ -1,21 +1,17 @@
-import { State } from "vue"
-import { ActionContext } from "vuex"
-import { resumeService } from "../services/resume.service"
+import { defineStore } from "pinia"
 
+interface State {
 
-export const resumeStore = {
-    state: {
-        resume: null,
-        resumeList: null
-    },
-    getters: {
-        resume(state: State) { return state.resume },
-        resumeList(state: State) { return state.resumeList },
-    },
-    mutations: {
-
-    },
-    actions: {
-   
-    }
 }
+
+export const useResumeStore = defineStore('resumeStore', {
+
+    state: () => <State>({
+    }),
+
+    getters: {
+    },
+
+    actions: {
+    }
+})

@@ -1,23 +1,25 @@
-import { State } from "vue"
+import { defineStore } from "pinia"
+import { User } from "../interfaces/user.interface"
 import { userService } from "../services/user.service"
 
+interface State {
+    user: User | null
+}
 
-export const userStore = {
-    state: {
+export const useUserStore = defineStore('userStore', {
+
+    state: () => <State>({
         user: null,
-    },
+    }),
+
     getters: {
-        user(state: State) { return state.user },
+        loggedinUser: (state) => state.user,
     },
-    mutations: {
-        setUser(state: State, { user }: any) {
-            state.user = user
-        }
-    },
+
     actions: {
-        async loadUser(context: any) {
-            const user = await userService.query()
-            context.commit({ type: 'setUser', user })
+        async loadUser() {
+            const user: User = await userService.query()
+            this.$state.user = user
         }
     }
-}
+})
