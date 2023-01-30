@@ -5,7 +5,8 @@
 				<h1>FlowCV</h1>
 			</div>
 			<div class="login">
-				<login-modal :user="user" />
+				<!-- <login-modal :user="user" /> -->
+				<custom-modal :user="user" buttonText="Login"/>
 			</div>
 		</div>
 	</header>
@@ -14,7 +15,7 @@
 <script lang="ts">
 import { PropType } from 'vue';
 import User from '../../interfaces/user.interface';
-import loginModal from '../auth/login-modal.vue';
+import customModal from '../custom-modal.vue';
 
 export default {
 	props: {
@@ -24,7 +25,7 @@ export default {
 		},
 	},
 	components: {
-		loginModal,
+		customModal,
 	},
 };
 </script>
