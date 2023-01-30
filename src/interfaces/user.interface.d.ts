@@ -1,8 +1,8 @@
 import Resume from './resume-interface';
 
 export default interface User {
-	_id: string;
-	name: string;
-	email: string;
-	resumeList: Resume[];
+	_id: string | null;
+	name?: string;
+	email?: string;
+	resumeList?: Resume[];
 }
