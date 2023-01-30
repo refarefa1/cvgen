@@ -9,7 +9,7 @@
 		</div>
 		<div class="resume-list">
 			<div class="resume-preview-add">
-				<router-link to="resume/123">
+				<router-link to="resume/content">
 					<div class="resume-info">
 						<span class="resume-icon"><v-icon name="md-contactpage-outlined" /></span>
 						<p class="resume-title">New resume</p>
@@ -17,7 +17,7 @@
 				</router-link>
 			</div>
 			<div v-for="resume in user.resumes" :key="resume._id" class="resume-preview">
-				<router-link :to="'/resume/' + resume._id">
+				<router-link :to="'/resume/content/' + resume._id">
 					<div class="resume-info">
 						<p class="resume-title">{{ resume.name }}</p>
 					</div>

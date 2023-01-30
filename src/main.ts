@@ -1,11 +1,13 @@
+import './assets/css/main.css'
 import './assets/scss/global.scss'
 import { createApp } from 'vue'
-import router from './router'
 import { createPinia } from 'pinia'
+import router from './router'
 import App from './App.vue'
+
 import { OhVueIcon, addIcons } from 'oh-vue-icons'
-import { MdEmail, RiLockLine, MdContactpageOutlined, BiDownload, BiFileText, FaRegularEdit } from 'oh-vue-icons/icons'
-addIcons(MdEmail, RiLockLine, MdContactpageOutlined, BiDownload, BiFileText, FaRegularEdit)
+import { MdEmail, RiLockLine, MdContactpageOutlined, BiDownload, BiFileText, FaRegularEdit, BiCameraFill } from 'oh-vue-icons/icons'
+addIcons(MdEmail, RiLockLine, MdContactpageOutlined, BiDownload, BiFileText, FaRegularEdit, BiCameraFill)
 
 
 
