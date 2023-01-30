@@ -3,11 +3,12 @@
 
     .resume-header {
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between;
         background-color: white;
         box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
         border-radius: 1em;
         padding-block: 24px;
+        padding-inline: 48px;
 
         >* {
             cursor: pointer;
@@ -15,7 +16,7 @@
             flex-direction: column;
             align-items: center;
 
-            p{
+            p {
                 font-weight: 100;
                 color: $primary-color;
             }
@@ -33,6 +34,98 @@
     }
 
     .resume-form {
+        background-color: white;
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        border-radius: 1em;
+        margin-block: 24px;
         padding-block: 24px;
+        padding-inline: 48px;
+
+        .resume-title{
+            font-size: rem(24px);
+            font-weight: 800;
+            margin-bottom: 24px;
+        }
+
+        .personal-details {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            grid-template-areas:
+                'name name name file'
+                'job job job file'
+                'email email phone phone'
+                'address address address address'
+            ;
+
+            .resume-input {
+                label {
+                    font-weight: 600;
+                }
+
+                input {
+                    background-color: darken(white, 6%);
+                    height: 50px;
+                    border: none;
+
+                    &:focus {
+                        box-shadow: none;
+                    }
+                }
+
+                &.name-input {
+                    grid-area: name;
+                }
+
+                &.job-input {
+                    grid-area: job;
+                }
+
+                &.phone-input {
+                    grid-area: phone;
+                }
+
+                &.address-input {
+                    grid-area: address;
+                }
+
+                &.mail-input {
+                    grid-area: email;
+                }
+
+                &.file-input {
+                    grid-area: file;
+                    position: relative;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    top: 36px;
+                    background-color: darken(white, 6%);
+                    height: 124px;
+                    aspect-ratio: 1 / 1;
+                    border-radius: 5em;
+
+                    span {
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+
+                        svg {
+                            scale: 3.5;
+                            fill: white;
+                        }
+                    }
+
+                    input {
+                        height: 124px;
+                        border-radius: 5em;
+                        opacity: 0;
+                    }
+                }
+            }
+
+
+        }
     }
 }

@@ -1,12 +1,12 @@
 import { defineStore } from "pinia"
-import type User from "../interfaces/user.interface"
+import { User } from "../interfaces/user.interface"
 import { userService } from "../services/user.service"
 
 interface State {
     user: User | null
 }
 
-export default defineStore('userStore', {
+export const useUserStore = defineStore('userStore', {
 
     state: () => <State>({
         user: null,

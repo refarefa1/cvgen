@@ -1,4 +1,3 @@
-@import '@coreui/coreui/dist/css/coreui.min.css';
 
 // Setup
 @import 'setup/variables';
@@ -18,3 +17,7 @@
 // Components
 @import 'components/modal';
 @import 'components/resume-form';
+
+// Templates
+@import 'templates/template-no1';
+

@@ -3,7 +3,7 @@
 </template>
 
 <script lang="ts">
-import useUserStore from './store/user.store';
+import { useUserStore } from './store/user.store';
 
 export default {
 	data() {
