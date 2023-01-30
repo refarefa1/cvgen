@@ -1,6 +1,6 @@
 <template>
 	<section class="resume-list-container">
-		<div class="header">
+		<div class="resume-list-header">
 			<h2>Resumes</h2>
 			<p>
 				Your first resume - 100% free, forever, all features, unlimited
@@ -8,12 +8,19 @@
 			</p>
 		</div>
 		<div class="resume-list">
-			<div
-				v-for="resume in user.resumeList"
-				:key="resume._id"
-				class="resume-preview">
+			<div class="resume-preview-add">
+				<router-link to="resume/123">
+					<div class="resume-info">
+						<span class="resume-icon"><v-icon name="md-contactpage-outlined" /></span>
+						<p class="resume-title">New resume</p>
+					</div>
+				</router-link>
+			</div>
+			<div v-for="resume in user.resumes" :key="resume._id" class="resume-preview">
 				<router-link :to="'/resume/' + resume._id">
-					<button>{{ resume.name }}</button>
+					<div class="resume-info">
+						<p class="resume-title">{{ resume.name }}</p>
+					</div>
 				</router-link>
 			</div>
 		</div>
@@ -22,7 +29,7 @@
 
 <script lang="ts">
 import { PropType } from 'vue';
-import User from '../../interfaces/user.interface';
+import { User } from '../../interfaces/user.interface';
 
 export default {
 	props: {

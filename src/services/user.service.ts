@@ -5,7 +5,7 @@ const user: User = {
     _id: 'u101',
     name: 'Refa',
     email: 'refaelavramov@gmail.com',
-    resumeList: [
+    resumes: [
         {
             _id: 'r101',
             name: 'My first resume'

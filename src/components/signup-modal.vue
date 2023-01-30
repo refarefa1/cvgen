@@ -4,14 +4,14 @@
 			Modal Content Here
 		</vue-final-modal>
 		<button @click="showModal = true">
-			{{ user?._id ? 'Logout' : 'Login' }}
+			{{ user?._id? 'Logout': 'Login' }}
 		</button>
 	</div>
 </template>
 
 <script lang="ts">
 import { PropType } from 'vue';
-import type User from '../interfaces/user.interface';
+import { User } from '../interfaces/user.interface';
 
 export default {
 	props: {

@@ -1,20 +1,17 @@
 // Colors
-$clr1: #ce2e6c;
-$clr2: #4f3a65;
-$clr3: #574f7d;
-$clr4: #95adbe;
-$clr5: #dff0ea;
-$clr6: #fff;
-
-// Backgrounds
 $tw-bg-opacity: 1;
 $bg-color-modal: rgb(255 255 calc(255 / $tw-bg-opacity));
+$bg-color: #f3f4f6;
+
+$primary-color: #142850;
+$secondary-color: #27496D;
+$txt-color: #f5eeee;
 
 // Breakpoints
 $mobile-breakpoint: 460px;
 $narrow-breakpoint: 720px;
 $normal-breakpoint: 960px;
-$wide-breakpoint: 1400px;
+$wide-breakpoint: 1800px;
 
 // Inner breakpoints
 $inner-mobile-breakpoint: 460px;

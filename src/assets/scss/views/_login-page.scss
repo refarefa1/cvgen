@@ -1,46 +1,53 @@
-.login-page,
-.custom-modal {
-	.login-header {
-		display: flex;
-		width: 100%;
-		padding: 2rem 2rem 0 2rem;
+.login {
+	.custom-modal {
 
-		.logo {
-			svg {
-				width: 145px;
-				opacity: 0.8;
+		.login-container {
+			display: flex;
+			flex-direction: column;
+
+			margin: auto;
+			width: $modal-width;
+			padding: 5rem 4rem;
+			gap: 3rem;
+
+			border-radius: $modal-border-radius;
+			box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+			background-color: $bg-color-modal;
+
+			text-align: center;
+
+			input {
+				border: none;
+				border-radius: none;
+				border-bottom: 2px solid rgb(229, 231, 235);
+				box-shadow: none;
+			}
+
+			.forget-password {
+				position: relative;
+				color: black;
+				display: flex;
+				bottom: 3rem;
+				justify-content: left;
 			}
 		}
-	}
 
-	.login-container {
-		display: flex;
-		flex-direction: column;
+		.login-btn {
+			width: 160px;
+			height: 45px;
+			border-radius: 2em;
+			font-weight: 700;
+			font-size: rem(16px);
+			background-image: linear-gradient(to right, $primary-color, $secondary-color);
+			color: $txt-color;
 
-		margin: auto;
-		width: $modal-width;
-		padding: 5rem 4rem;
-		gap: 3rem;
+			@media (hover:hover) {
 
-		border-radius: $modal-border-radius;
-		box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-		background-color: $bg-color-modal;
+				&:hover {
+					background-image: linear-gradient(to right, lighten($primary-color, 8%), lighten($secondary-color, 8%));
 
-		text-align: center;
-
-		input {
-			border: none;
-			border-radius: none;
-			border-bottom: 2px solid rgb(229, 231, 235);
-			box-shadow: none;
-		}
-
-		.forget-password {
-			position: relative;
-			color: black;
-			display: flex;
-			bottom: 3rem;
-			justify-content: left;
+				}
+			}
 		}
 	}
 }

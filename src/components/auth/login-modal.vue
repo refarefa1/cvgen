@@ -1,18 +1,16 @@
 <template>
 	<div class="custom-modal">
 		<transition name="fade" appear>
-			<div
-				class="modal-overlay"
-				v-if="showModal"
-				@click="showModal = false"></div
-		></transition>
+			<div class="modal-overlay" v-if="showModal" @click="showModal = false"></div>
+		</transition>
 
 		<Transition name="pop" appear>
 			<div class="modal-content" v-if="showModal" role="dialog">
 				<login-form />
 			</div>
 		</Transition>
-		<button v-if="!showModal" @click="showModal = true" class="login-btn">
+
+		<button @click="showModal = true" class="login-btn">
 			Login
 		</button>
 	</div>

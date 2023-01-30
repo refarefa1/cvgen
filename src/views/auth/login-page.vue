@@ -11,7 +11,7 @@
 </template>
 
 <script lang="ts">
-import logoSvg2 from '../../assets/logo-svg2.vue';
+import logoSvg2 from '../../assets/svgs/logo-svg2.vue';
 import loginForm from '../../components/auth/login-form.vue';
 
 export default {

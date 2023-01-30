@@ -11,7 +11,6 @@ import useUserStore from '../store/user.store';
 import homeHeader from '../components/home-page/home-header.vue';
 import homeHero from '../components/home-page/home-hero.vue';
 import resumeList from '../components/home-page/resume-list.vue';
-import type User from '../interfaces/user.interface';
 
 export default {
 	data() {

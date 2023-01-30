@@ -7,17 +7,14 @@
 			</h3>
 		</div>
 		<div class="hero-img">
-			<logo-svg />
+			<img src="src/assets/images/hero.jpg" alt="">
 		</div>
 	</section>
 </template>
 
 <script lang="ts">
-import logoSvg from '../../assets/logo-svg.vue';
 
 export default {
-	components: {
-		logoSvg,
-	},
+
 };
 </script>
