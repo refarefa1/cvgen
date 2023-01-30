@@ -5,7 +5,6 @@
                 <span v-if="input.type === 'file'"><v-icon name="bi-camera-fill"></v-icon></span>
                 <CFormInput :label="input.label" :type="input.type" :placeholder="input.placeholder"
                     aria-label="default input" />
-
             </div>
         </div>
     </form>

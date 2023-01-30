@@ -1,19 +1,42 @@
 <template>
-    <section class="resume-app-container">
+    <section v-if="resume" class="resume-app-container">
 
         <div class="resume-builder">
             <router-view />
         </div>
 
-        <div class="a4-resume" width="210mm" height="297mm" format="A4"></div>
+        <div class="a4-resume" width="210mm" height="297mm" format="A4">
+            {{ resume.name }}
+        </div>
     </section>
 </template>
 
 <script lang="ts">
 import resumeForm from '../../components/resume/resume-form.vue'
 import resumeHeader from '../../components/resume/resume-header.vue'
+import { useUserStore } from '../../store/user.store'
+import { useResumeStore } from '../../store/resume.store'
 
 export default {
+
+    created() {
+        this.resumeStore.setResume(this.$route.params.id)
+    },
+
+    data() {
+        return {
+            userStore: useUserStore(),
+            resumeStore: useResumeStore()
+        }
+    },
+    computed: {
+        user() {
+            return this.userStore.loggedinUser || { _id: null }
+        },
+        resume() {
+            return this.resumeStore.resumeToEdit
+        }
+    },
 
     components: {
         resumeForm,

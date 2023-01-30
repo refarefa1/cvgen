@@ -10,7 +10,9 @@
   },
   "dependencies": {
     "@coreui/vue": "^4.6.1",
+    "html-to-pdfmake": "^2.4.15",
     "oh-vue-icons": "^1.0.0-rc3",
+    "pdfmake": "^0.2.7",
     "pinia": "^2.0.29",
     "sass": "^1.57.1",
     "vue": "^3.2.45",
@@ -18,6 +20,8 @@
     "vuex": "^4.1.0"
   },
   "devDependencies": {
+    "@types/html-to-pdfmake": "^2.4.0",
+    "@types/pdfmake": "^0.2.2",
     "@vitejs/plugin-vue": "^4.0.0",
     "typescript": "^4.9.3",
     "vite": "^4.0.0",

@@ -7,7 +7,7 @@
 </template>
 
 <script lang="ts">
-import useUserStore from '../store/user.store';
+import { useUserStore } from '../store/user.store';
 import homeHeader from '../components/home-page/home-header.vue';
 import homeHero from '../components/home-page/home-hero.vue';
 import resumeList from '../components/home-page/resume-list.vue';
@@ -21,11 +21,7 @@ export default {
 
 	computed: {
 		user() {
-			return (
-				this.userStore.loggedinUser || {
-					_id: null,
-				}
-			);
+			return this.userStore.loggedinUser || { _id: null }
 		},
 	},
 	components: {

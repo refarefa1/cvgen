@@ -13,7 +13,7 @@
             <span><v-icon name="fa-regular-edit"></v-icon></span>
             <p>Customize</p>
         </div>
-        <div class="download">
+        <div @click="downloadResume" class="download">
             <span><v-icon name="bi-download"></v-icon></span>
             <p>Download</p>
         </div>
@@ -22,5 +22,10 @@
 <script lang="ts">
 export default {
     name: 'resume-header',
+    methods: {
+        downloadResume() {
+            this.$emit('download')
+        }
+    }
 }
 </script>
