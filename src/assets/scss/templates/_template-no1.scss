@@ -1,0 +1,45 @@
+.template-no1 {
+    padding: 48px;
+
+    .title {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        flex-wrap: wrap;
+        margin-bottom: 8px;
+
+        h1 {
+            font-size: rem(28px);
+            font-weight: 800;
+        }
+
+        h2 {
+            position: relative;
+            top: 2px;
+            font-size: rem(18px);
+            font-style: italic;
+        }
+    }
+
+    .contact {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+
+            span {
+                svg {
+                    scale: .8;
+                }
+            }
+
+            p {
+                font-size: rem(13px);
+            }
+        }
+    }
+}

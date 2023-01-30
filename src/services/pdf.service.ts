@@ -1,12 +1,12 @@
-import htmlToPdfmake from "html-to-pdfmake"
-import pdfMake from "pdfmake/build/pdfmake"
-import pdfFonts from "pdfmake/build/vfs_fonts"
-pdfMake.vfs = pdfFonts.pdfMake.vfs;
+import { jsPDF } from "jspdf"
 
-function download(file: HTMLElement) {
-    const html = htmlToPdfmake(file.innerHTML)
-    const fileToDownload = { content: html }
-    pdfMake.createPdf(fileToDownload).download()
+function download(file: HTMLElement){
+    var doc = new jsPDF('p', 'pt', 'a4');
+    doc.html(file, {
+        callback: function (doc) {
+          doc.save();
+        }});
+    
 }
 
 export const pdfService = {

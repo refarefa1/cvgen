@@ -1,6 +1,6 @@
 <template>
     <resume-header @download="download" />
-    <resume-form />
+    <resume-form @updateResume="updateResume" />
 </template>
 
 <script lang="ts">
@@ -17,10 +17,13 @@ export default {
         }
     },
     methods: {
+        updateResume(payload: { type: string, val: string }) {
+            this.resumeStore.updateResume(payload)
+        },
         download() {
             const elResume: HTMLElement | null = document.querySelector('.a4-resume')
             if (elResume) this.resumeStore.download(elResume)
-        }
+        },
     },
 
     components: {

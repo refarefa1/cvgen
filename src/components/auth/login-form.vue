@@ -13,7 +13,7 @@
 				<span><v-icon name="ri-lock-line" />Password</span>
 			</CFormLabel>
 		</CFormFloating>
-		<router-link to="/forget-password" class="forget-password">Forget password?</router-link>
+		<router-link to="/forget-password">Forget password?</router-link>
 
 		<button @click="showPassword = !showPassword">
 			{{ showPassword? 'Hide': 'Show' }}

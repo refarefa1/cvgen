@@ -30,6 +30,10 @@ export const useResumeStore = defineStore('resumeStore', {
             if (!resume) resume = resumeService.getEmptyResume()
             this.$state.resume = resume
         },
+        updateResume(payload){
+            const {type,val} = payload
+            this.$state.resume[type] = val
+        },
         download(resume){
             pdfService.download(resume)
         }

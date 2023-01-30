@@ -41,6 +41,12 @@
         padding-block: 24px;
         padding-inline: 48px;
 
+        .resume-title{
+            font-size: rem(24px);
+            font-weight: 800;
+            margin-bottom: 24px;
+        }
+
         .personal-details {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -54,7 +60,7 @@
 
             .resume-input {
                 label {
-                    font-weight: 800;
+                    font-weight: 600;
                 }
 
                 input {
