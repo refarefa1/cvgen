@@ -1,6 +1,6 @@
 import Resume from './resume-interface';
 
-export interface User {
+export default interface User {
 	_id: string | null;
 	name?: string;
 	email?: string;

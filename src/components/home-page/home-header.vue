@@ -13,7 +13,7 @@
 
 <script lang="ts">
 import { PropType } from 'vue';
-import { User } from '../../interfaces/user.interface';
+import User from '../../interfaces/user.interface';
 import loginModal from '../auth/login-modal.vue';
 
 export default {
