@@ -6,15 +6,15 @@
         </div>
         <div class="contact">
             <div v-if="resume?.email" class="contact-item">
-                <span><v-icon name="io-mail"></v-icon></span>
+                <img src="src/assets/images/mail.png" alt="">
                 <p class="mail">{{ resume.email }}</p>
             </div>
             <div v-if="resume?.phone" class="contact-item">
-                <span><v-icon name="bi-telephone-fill"></v-icon></span>
+                <img src="src/assets/images/whatsapp.png" alt="">
                 <p class="phone">{{ resume.phone }}</p>
             </div>
             <div v-if="resume?.address" class="contact-item">
-                <span><v-icon name="io-location-sharp"></v-icon></span>
+                <img src="src/assets/images/address.png" alt="">
                 <p class="address">{{ resume?.address }}</p>
             </div>
         </div>

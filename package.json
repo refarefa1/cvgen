@@ -11,6 +11,7 @@
   "dependencies": {
     "@coreui/vue": "^4.6.1",
     "html-to-pdfmake": "^2.4.15",
+    "html2canvas": "^1.4.1",
     "jspdf": "^2.5.1",
     "oh-vue-icons": "^1.0.0-rc3",
     "pdfmake": "^0.2.7",
