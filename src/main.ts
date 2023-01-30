@@ -4,8 +4,8 @@ import router from './router'
 import { createPinia } from 'pinia'
 import App from './App.vue'
 import { OhVueIcon, addIcons } from 'oh-vue-icons'
-import { MdEmail, RiLockLine, MdContactpageOutlined } from 'oh-vue-icons/icons'
-addIcons(MdEmail, RiLockLine, MdContactpageOutlined)
+import { MdEmail, RiLockLine, MdContactpageOutlined, BiDownload, BiFileText, FaRegularEdit } from 'oh-vue-icons/icons'
+addIcons(MdEmail, RiLockLine, MdContactpageOutlined, BiDownload, BiFileText, FaRegularEdit)
 
 
 

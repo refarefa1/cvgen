@@ -1,0 +1,38 @@
+.resume-builder {
+    flex-grow: 1;
+
+    .resume-header {
+        display: flex;
+        justify-content: space-around;
+        background-color: white;
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        border-radius: 1em;
+        padding-block: 24px;
+
+        >* {
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            p{
+                font-weight: 100;
+                color: $primary-color;
+            }
+
+            span {
+                svg {
+                    fill: $primary-color;
+                    width: 32px;
+                    height: 32px;
+                }
+            }
+        }
+
+
+    }
+
+    .resume-form {
+        padding-block: 24px;
+    }
+}
