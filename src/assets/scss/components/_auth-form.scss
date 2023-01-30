@@ -101,7 +101,11 @@
 		width: 20rem;
 		height: 4rem;
 
-		background-image: linear-gradient(to right, #ec008c, #fc6767);
+		background-image: linear-gradient(to right, var(--tw-gradient-stops));
+		--tw-gradient-from: #ec008c;
+		--tw-gradient-to: rgb(236 0 140 / 0);
+		--tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+		--tw-gradient-to: #fc6767;
 		border-radius: 2em;
 		font-weight: 700;
 		font-size: rem(16px);
