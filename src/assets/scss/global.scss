@@ -1,14 +1,16 @@
+@import '@coreui/coreui/dist/css/coreui.min.css';
+
 // Setup
-@import "setup/variables";
-@import "setup/functions";
-@import "setup/mixins";
-@import "setup/typography";
+@import 'setup/variables';
+@import 'setup/functions';
+@import 'setup/mixins';
+@import 'setup/typography';
 
 // Basics
-@import "basics/helpers";
-@import "basics/base";
+@import 'basics/helpers';
+@import 'basics/base';
 
 // Views
-@import "views/home-page";
-@import "views/resume-app";
-@import "views/login";
+@import 'views/home-page';
+@import 'views/resume-app';
+@import 'views/login';

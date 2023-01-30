@@ -1,12 +1,12 @@
 .login-page {
-	.header {
+	.login-header {
 		display: flex;
 		width: 100%;
-		padding: 1.25rem 1.25rem 0 1.25rem;
+		padding: 2rem 2rem 0 2rem;
 
 		.logo {
 			svg {
-				width: 140px;
+				width: 145px;
 				opacity: 0.8;
 			}
 		}
@@ -26,7 +26,18 @@
         background-color: $bg-color-modal;
         
         text-align: center;
-		h1 {
+		
+		
+		input {
+			outline: none;
+			border: none;
+			border-radius: none;
+			border-bottom: 2px solid rgb(229, 231, 235);
+			
+			&::placeholder {
+				// color: rgb(229, 231, 235);
+				// color: none;
+			}
 		}
 	}
 }

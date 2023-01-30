@@ -9,6 +9,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@coreui/vue": "^4.6.1",
+    "oh-vue-icons": "^1.0.0-rc3",
     "pinia": "^2.0.29",
     "sass": "^1.57.1",
     "vue": "^3.2.45",
