@@ -1,0 +1,52 @@
+.custom-modal {
+	.modal-overlay {
+		position: fixed;
+		z-index: $modal-overlay-z-index;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0, 0, 0, 0.5);
+		transition: opacity 0.3s ease;
+	}
+
+	.modal-content {
+		position: absolute;
+		width: $modal-width;
+		z-index: $modal-z-index;
+		left: 0;
+		right: 0;
+		top: 7.5vh;
+		margin: auto;
+		background-color: #fff;
+		border-radius: $modal-border-radius;
+		
+		
+	}
+
+	.login-btn {
+			
+	}
+	
+	.fade-enter-active,
+	.fade-leave-active {
+		transition: opacity 0.4s linear;
+	}
+
+	.fade-enter,
+	.fade-leave-to {
+		opacity: 0;
+	}
+
+	.pop-enter-active,
+	.pop-leave-active {
+		transition: transform 0.3s cubic-bezier(0.5, 0, 0.5, 1),
+			opacity 0.3s linear;
+	}
+
+	.pop-enter,
+	.pop-leave-to {
+		opacity: 0;
+		transform: scale(0.3);
+	}
+}

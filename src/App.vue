@@ -1,24 +1,19 @@
 <template>
-  <router-view />
+	<router-view />
 </template>
 
-
 <script lang="ts">
-import { useUserStore } from './store/user.store';
+import useUserStore from './store/user.store';
 
 export default {
+	data() {
+		return {
+			userStore: useUserStore(),
+		};
+	},
 
-  data() {
-    return {
-      userStore: useUserStore()
-    }
-  },
-
-  created() {
-    this.userStore.loadUser()
-  }
-
-}
-
+	created() {
+		this.userStore.loadUser();
+	},
+};
 </script>
-

@@ -13,7 +13,7 @@
 </template>
 
 <script lang="ts">
-import logoSvg from '../logo-svg.vue';
+import logoSvg from '../../assets/logo-svg.vue';
 
 export default {
 	components: {

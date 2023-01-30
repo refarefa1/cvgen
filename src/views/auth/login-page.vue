@@ -6,55 +6,18 @@
 			</router-link>
 		</div>
 
-		<form class="login-container">
-			<h1>Login</h1>
-
-			<CFormFloating class="mb-3">
-				<CFormInput type="email" placeholder="Email" />
-				<CFormLabel for="floatingInput"
-					><span
-						><v-icon name="md-email" /> Email address</span
-					></CFormLabel
-				>
-			</CFormFloating>
-
-			<CFormFloating class="mb-3">
-				<CFormInput
-					:type="showPassword ? 'text' : 'password'"
-					placeholder="Password" />
-				<CFormLabel for="floatingInput">
-					<span
-						><v-icon name="ri-lock-line" /> Password</span
-					></CFormLabel
-				>
-			</CFormFloating>
-
-			<button @click="showPassword = !showPassword">
-				{{ showPassword ? 'Show' : 'Hide' }}
-			</button>
-
-			<router-link to="/forget-password">Forget password?</router-link>
-
-			<button type="submit">Login</button>
-		</form>
+		<login-form />
 	</div>
 </template>
 
 <script lang="ts">
-import { CFormFloating, CFormInput, CFormLabel } from '@coreui/vue';
-import logoSvg2 from '../../components/logo-svg2.vue';
+import logoSvg2 from '../../assets/logo-svg2.vue';
+import loginForm from '../../components/auth/login-form.vue';
 
 export default {
 	components: {
 		logoSvg2,
-		CFormFloating,
-		CFormInput,
-		CFormLabel,
-	},
-	data() {
-		return {
-			showPassword: false,
-		};
+		loginForm,
 	},
 };
 </script>
