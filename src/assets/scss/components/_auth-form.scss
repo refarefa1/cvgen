@@ -13,7 +13,9 @@
 
 	text-align: center;
 
-	h1, label, a {
+	h1,
+	label,
+	a {
 		font-weight: 600;
 	}
 
@@ -22,7 +24,8 @@
 		font-weight: 100;
 	}
 
-	a, button {
+	a,
+	button {
 		color: $primary-color;
 
 		&:hover {
@@ -33,7 +36,7 @@
 	button {
 		color: $primary-color;
 	}
-	
+
 	input {
 		border: none;
 		border-width: none;
@@ -100,17 +103,12 @@
 		margin: auto;
 		width: 20rem;
 		height: 4rem;
-
-		background-image: linear-gradient(to right, var(--tw-gradient-stops));
-		--tw-gradient-from: #ec008c;
-		--tw-gradient-to: rgb(236 0 140 / 0);
-		--tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
-		--tw-gradient-to: #fc6767;
+		@include btn-colorful; // Made mixin for the color because i want to use it also 
 		border-radius: 2em;
 		font-weight: 700;
 		font-size: rem(16px);
 		color: $txt-color;
-		
+
 		&:hover {
 			opacity: 0.8;
 		}
@@ -123,20 +121,16 @@
 	border-radius: 2em;
 	font-weight: 700;
 	font-size: rem(16px);
-	background-image: linear-gradient(
-		to right,
-		$primary-color,
-		$secondary-color
-	);
+	background-image: linear-gradient(to right,
+			$primary-color,
+			$secondary-color);
 	color: $txt-color;
 
 	@media (hover: hover) {
 		&:hover {
-			background-image: linear-gradient(
-				to right,
-				lighten($primary-color, 8%),
-				lighten($secondary-color, 8%)
-			);
+			background-image: linear-gradient(to right,
+					lighten($primary-color, 8%),
+					lighten($secondary-color, 8%));
 		}
 	}
 }

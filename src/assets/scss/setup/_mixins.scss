@@ -17,3 +17,11 @@
         @content;
     }
 }
+
+@mixin btn-colorful {
+    background-image: linear-gradient(to right, var(--tw-gradient-stops));
+    --tw-gradient-from: #ec008c;
+    --tw-gradient-to: rgb(236 0 140 / 0);
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+    --tw-gradient-to: #fc6767;
+}

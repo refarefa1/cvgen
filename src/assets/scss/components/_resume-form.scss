@@ -28,6 +28,19 @@
                     height: 32px;
                 }
             }
+
+            &.active {
+                p {
+                    color: #ec008c;
+                }
+
+                span {
+                    svg {
+
+                        fill: #ec008c;
+                    }
+                }
+            }
         }
 
 
@@ -41,7 +54,7 @@
         padding-block: 24px;
         padding-inline: 48px;
 
-        .resume-title{
+        .resume-title {
             font-size: rem(24px);
             font-weight: 800;
             margin-bottom: 24px;
@@ -126,6 +139,46 @@
             }
 
 
+        }
+    }
+
+    .resume-footer {
+        display: flex;
+        flex-direction: row-reverse;
+        background-color: white;
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        border-radius: 1em;
+        padding-block: 24px;
+        padding-inline: 48px;
+
+        .save {
+            @include btn-colorful;
+            cursor: pointer;
+            width: 140px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            border-radius: 2em;
+
+            span {
+
+                svg {
+                    fill: $txt-color;
+                    scale: 1.2;
+                }
+            }
+
+            .seperator {
+                height: 50%;
+                width: 1px;
+                background-color: $txt-color;
+            }
+
+            .save-btn {
+                font-weight: 800;
+                color: $txt-color;
+            }
         }
     }
 }

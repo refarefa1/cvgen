@@ -1,6 +1,7 @@
 import homePage from './views/home-page.vue'
 import resumeApp from './views/resume/resume-app.vue'
 import resumeContent from './views/resume/resume-content.vue'
+import resumeCustomize from './views/resume/resume-customize.vue'
 import SignUpPage from './views/auth/signup-page.vue'
 import loginPage from './views/auth/login-page.vue'
 import forgetPassword from './views/auth/forget-password-page.vue'
@@ -18,7 +19,11 @@ const routes = [
 			{
 				path: 'content/:id?',
 				component: resumeContent
-			}
+			},
+			{
+				path: 'customize/:id?',
+				component: resumeCustomize
+			},
 		]
 	},
 	{

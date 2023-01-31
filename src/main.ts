@@ -6,8 +6,8 @@ import router from './router'
 import App from './App.vue'
 
 import { OhVueIcon, addIcons } from 'oh-vue-icons'
-import { MdEmail, RiLockLine, MdContactpageOutlined, BiDownload, BiFileText, FaRegularEdit, BiCameraFill,IoMail,BiTelephoneFill,IoLocationSharp } from 'oh-vue-icons/icons'
-addIcons(MdEmail, RiLockLine, MdContactpageOutlined, BiDownload, BiFileText, FaRegularEdit, BiCameraFill,IoMail,BiTelephoneFill,IoLocationSharp)
+import { MdEmail, RiLockLine, MdContactpageOutlined, BiDownload, BiFileText, FaRegularEdit, BiCameraFill, IoMail, BiTelephoneFill, IoLocationSharp, BiCheckLg } from 'oh-vue-icons/icons'
+addIcons(MdEmail, RiLockLine, MdContactpageOutlined, BiDownload, BiFileText, FaRegularEdit, BiCameraFill, IoMail, BiTelephoneFill, IoLocationSharp, BiCheckLg)
 
 
 
