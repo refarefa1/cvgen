@@ -46,6 +46,8 @@ export default {
         handleChange(ev: any) {
             if (!ev.target.files) return
             const val = URL.createObjectURL(ev.target.files[0])
+            console.log(val)
+            
             const type = 'imgUrl'
             const payload: { type: string, val: string } = { type, val }
             this.$emit('updateResume', payload)
