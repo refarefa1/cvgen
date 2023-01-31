@@ -5,7 +5,7 @@
             <router-view />
         </div>
 
-        <div ref="resume" class="a4-resume" format="A4">
+        <div class="a4-resume" format="A4">
             <component is="template-no1" :resume="resume"></component>
         </div>
     </section>

@@ -26,7 +26,7 @@ export default {
                 { name: 'jobTitle', class: 'job-input', label: "Job title", type: "text", placeholder: "Enter job title" },
                 { name: 'imgUrl', class: 'file-input', type: "file" },
                 { name: 'email', class: 'mail-input', label: "Email", type: "email", placeholder: "Enter email" },
-                { name: 'phone', class: 'phone-input', label: "Phone", type: "number", placeholder: "Enter Phone" },
+                { name: 'phone', class: 'phone-input', label: "Phone", type: "text", placeholder: "Enter Phone" },
                 { name: 'address', class: 'address-input', label: "Address", type: "text", placeholder: "City, Country" },
             ],
         }
@@ -44,7 +44,8 @@ export default {
             const type = 'imgUrl'
             const payload: { type: string, val: string } = { type, val }
             this.$emit('updateResume', payload)
-        }
+        },
+
     },
 
 

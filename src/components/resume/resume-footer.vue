@@ -5,6 +5,9 @@
             <div class="seperator" />
             <button class="save-btn">Save</button>
         </div>
+        <div class="cancel">
+            <button>Cancel</button>
+        </div>
     </footer>
 </template>
 <script lang="ts">

@@ -180,5 +180,17 @@
                 color: $txt-color;
             }
         }
+
+        .cancel {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 140px;
+
+            button {
+                color: $primary-color;
+                font-weight: 800;
+            }
+        }
     }
 }
