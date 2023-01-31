@@ -10,15 +10,15 @@ interface Payload {
 }
 
 interface State {
-    user: User | null
-    resume: Resume | null
+    user: User
+    resume: Resume
 }
 
 export const useUserStore = defineStore('userStore', {
 
     state: () => <State>({
-        user: null,
-        resume: null
+        user: userService.query(),
+        resume: userService.getEmptyResume()
     }),
 
     getters: {
@@ -28,22 +28,31 @@ export const useUserStore = defineStore('userStore', {
 
     actions: {
         async loadUser() {
-            const user: User = await userService.query()
+            const user: User = userService.query()
             this.$state.user = user
         },
-        async saveUser() {
-
-        },
         setResume(id: string | string[]) {
-            const resumes: Resume[] | undefined = this.$state.user?.resumes
-            this.$state.resume = (id && resumes) && resumes.find(r => r._id === id) || userService.getEmptyResume()
+            const resumes: Resume[] | undefined = this.$state.user.resumes
+            const resume = (id && resumes) && resumes.find(r => r._id === id) || userService.getEmptyResume()
+            this.$state.resume = { ...resume }
         },
         updateResume(payload: Payload) {
             const { type, val } = payload
-            this.$state.resume![type] = val
+            this.$state.resume[type] = val
         },
         download(file: HTMLElement) {
             pdfService.download(file)
+        },
+        save() {
+            const resumes = this.$state.user.resumes
+            const idx: number = resumes?.findIndex(r => r._id === this.$state.resume._id) || 0
+            if (resumes) resumes[idx] = { ...this.$state.resume }
+            const user: User = { ...this.$state.user, resumes }
+            userService.save(user)
+        },
+        cancel() {
+            const resume: Resume = this.$state.user.resumes?.find(r => r._id === this.$state.resume._id)
+            this.$state.resume = resume
         }
     }
 

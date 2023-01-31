@@ -4,9 +4,9 @@ import { storageService } from "./storage.service"
 
 const USER_KEY = 'loggedinUser'
 
-async function query() {
+function query() {
     const user = _getUser()
-    return Promise.resolve(user)
+    return user
 }
 
 async function save(user: User) {

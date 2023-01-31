@@ -58,13 +58,67 @@
         box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
         border-radius: 1em;
         margin-block: 24px;
-        padding-block: 24px;
-        padding-inline: 48px;
+        overflow: hidden;
+
+        &.open {
+            .accordion {
+                .accordion-item {
+                    .accordion-header {
+                        pointer-events: none;
+
+                        .accordion-button {
+                            pointer-events: none;
+
+                            &::after {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // ACCORDION 
+
+        .accordion {
+
+            * {
+                border: none;
+                box-shadow: none;
+            }
+
+            .accordion-item {
+                .accordion-header {
+                    pointer-events: auto;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    height: 96px;
+
+                    .accordion-button {
+                        pointer-events: auto;
+                        color: unset;
+                        background-color: unset;
+                        box-shadow: none;
+                        height: 100%;
+
+                        &::after {
+                            display: block;
+                            background-image: var(--cui-accordion-btn-icon);
+                        }
+                    }
+                }
+
+                .accordion-body {
+                    padding-block-start: 0;
+                    padding-block-end: 36px;
+                }
+            }
+        }
 
         .resume-title {
             font-size: rem(24px);
             font-weight: 800;
-            margin-bottom: 24px;
         }
 
         .personal-details {
@@ -162,7 +216,7 @@
             @include btn($brand-color, $secondary-brand-color);
             cursor: pointer;
             width: 140px;
-            height: 45px;
+            height: 50px;
             display: flex;
             align-items: center;
             justify-content: space-evenly;

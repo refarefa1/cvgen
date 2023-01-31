@@ -1,7 +1,7 @@
 <template>
     <resume-header @download="download" />
-    <resume-form v-if="resume" :resume="resume" @updateResume="updateResume" />
-    <resume-footer @save="save" />
+    <resume-form :resume="resume" @updateResume="updateResume" @open="toggle" />
+    <resume-footer v-if="isOpen" @save="save" @cancel="cancel" />
 </template>
 
 <script lang="ts">
@@ -15,7 +15,8 @@ export default {
 
     data() {
         return {
-            userStore: useUserStore()
+            userStore: useUserStore(),
+            isOpen: false,
         }
     },
     methods: {
@@ -26,9 +27,17 @@ export default {
             const elResume: HTMLElement | null = document.querySelector('.a4-resume');
             if (elResume) this.userStore.download(elResume)
         },
-        save() {
-            // this.
+        toggle() {
+            this.isOpen = !this.isOpen
         },
+        save() {
+            this.userStore.save()
+            this.toggle()
+        },
+        cancel() {
+            this.userStore.cancel()
+            this.toggle()
+        }
 
     },
     computed: {
