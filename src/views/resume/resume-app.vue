@@ -5,7 +5,7 @@
             <router-view />
         </div>
 
-        <div class="a4-resume" width="210mm" height="297mm" format="A4">
+        <div ref="resume" class="a4-resume" format="A4">
             <component is="template-no1" :resume="resume"></component>
         </div>
     </section>
@@ -23,11 +23,10 @@ export default {
     created() {
         this.resumeStore.setResume(this.$route.params.id)
     },
-
     data() {
         return {
             userStore: useUserStore(),
-            resumeStore: useResumeStore()
+            resumeStore: useResumeStore(),
         }
     },
     computed: {
@@ -36,9 +35,9 @@ export default {
         },
         resume() {
             return this.resumeStore.resumeToEdit
-        }
-    },
+        },
 
+    },
     components: {
         resumeForm,
         resumeHeader,

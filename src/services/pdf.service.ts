@@ -2,13 +2,16 @@ import { jsPDF } from "jspdf"
 
 
 function download(file: HTMLElement) {
-  var doc = new jsPDF('p', 'pt', 'a4');
-  doc.setFont('times', 'regular', 'normal')
+  console.log(file.clientWidth);
+
+  var doc = new jsPDF();
   doc.html(file, {
     callback: function (doc) {
-      doc.setFont('times', 'regular', 'normal')
       doc.save('My resume');
     },
+    autoPaging: 'text',
+    width: 210,
+    windowWidth: file.clientWidth
   });
 
 }

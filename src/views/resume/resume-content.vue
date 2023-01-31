@@ -21,7 +21,7 @@ export default {
             this.resumeStore.updateResume(payload)
         },
         download() {
-            const elResume: HTMLElement | null = document.querySelector('.a4-resume')
+            const elResume: HTMLElement | null = document.querySelector('.a4-resume');
             if (elResume) this.resumeStore.download(elResume)
         },
     },

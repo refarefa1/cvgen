@@ -4,8 +4,9 @@
         <div class="personal-details">
             <div v-for="input in inputs" :key="input.label" :class="'resume-input ' + input.class">
                 <span v-if="input.type === 'file'"><v-icon name="bi-camera-fill"></v-icon></span>
-                <CFormInput @input="handleInput($event)" :name="input.name" :label="input.label" :type="input.type"
-                    :placeholder="input.placeholder" aria-label="default input" />
+                <CFormInput @change="handleChange($event)" @input="handleInput($event)" :name="input.name"
+                    :label="input.label" :type="input.type" :placeholder="input.placeholder"
+                    aria-label="default input" />
             </div>
         </div>
     </form>
@@ -34,6 +35,13 @@ export default {
         handleInput(ev: InputEvent) {
             const val = (ev.target as HTMLInputElement).value
             const type = (ev.target as HTMLInputElement).name
+            const payload: { type: string, val: string } = { type, val }
+            this.$emit('updateResume', payload)
+        },
+        handleChange(ev: any) {
+            if (!ev.target.files) return
+            const val = URL.createObjectURL(ev.target.files[0])
+            const type = 'imgUrl'
             const payload: { type: string, val: string } = { type, val }
             this.$emit('updateResume', payload)
         }

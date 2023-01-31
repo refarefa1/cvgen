@@ -8,9 +8,10 @@
     padding-inline: $desktop-padding;
 
     .a4-resume {
-        flex-basis: 50%;
         background-color: white;
         aspect-ratio: 1 / 1.414;
-
+        flex-basis: 50%;
+        height: fit-content;
     }
+
 }
