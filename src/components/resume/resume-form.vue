@@ -4,8 +4,8 @@
         <div class="personal-details">
             <div v-for="input in inputs" :key="input.label" :class="'resume-input ' + input.class">
                 <span v-if="input.type === 'file'"><v-icon name="bi-camera-fill"></v-icon></span>
-                <CFormInput @change="handleChange($event)" @input="handleInput($event)" :name="input.name"
-                    :label="input.label" :type="input.type" :placeholder="input.placeholder"
+                <CFormInput @change="handleChange($event)" @input="handleInput($event)" :value="input.value"
+                    :name="input.name" :label="input.label" :type="input.type" :placeholder="input.placeholder"
                     aria-label="default input" />
             </div>
         </div>
@@ -15,19 +15,24 @@
 
 <script lang="ts">
 import { CFormFloating, CFormInput, CFormLabel } from '@coreui/vue';
+import { PropType } from 'vue';
+import { Resume } from '../../interfaces/resume-interface';
 
 export default {
+    props: {
+        resume: Object as PropType<Resume>,
+    },
     emits: ['updateResume'],
 
     data() {
         return {
             inputs: [
-                { name: 'fullName', class: 'name-input', label: "Full name", type: "text", placeholder: "Enter your first and last name" },
-                { name: 'jobTitle', class: 'job-input', label: "Job title", type: "text", placeholder: "Enter job title" },
+                { value: this.resume?.fullName, name: 'fullName', class: 'name-input', label: "Full name", type: "text", placeholder: "Enter your first and last name" },
+                { value: this.resume?.jobTitle, name: 'jobTitle', class: 'job-input', label: "Job title", type: "text", placeholder: "Enter job title" },
                 { name: 'imgUrl', class: 'file-input', type: "file" },
-                { name: 'email', class: 'mail-input', label: "Email", type: "email", placeholder: "Enter email" },
-                { name: 'phone', class: 'phone-input', label: "Phone", type: "text", placeholder: "Enter Phone" },
-                { name: 'address', class: 'address-input', label: "Address", type: "text", placeholder: "City, Country" },
+                { value: this.resume?.email, name: 'email', class: 'mail-input', label: "Email", type: "email", placeholder: "Enter email" },
+                { value: this.resume?.phone, name: 'phone', class: 'phone-input', label: "Phone", type: "text", placeholder: "Enter Phone" },
+                { value: this.resume?.address, name: 'address', class: 'address-input', label: "Address", type: "text", placeholder: "City, Country" },
             ],
         }
     },

@@ -1,10 +1,13 @@
-import { defineStore, Store } from "pinia"
+import { defineStore } from "pinia"
 import { Resume } from "../interfaces/resume-interface"
-import { User } from "../interfaces/user.interface"
 import { resumeService } from "../services/resume.service"
 import { useUserStore } from "./user.store"
 import { pdfService } from '../services/pdf.service';
 
+interface Payload {
+    type: string
+    val: string
+}
 
 interface State {
     userStore: any
@@ -30,12 +33,12 @@ export const useResumeStore = defineStore('resumeStore', {
             if (!resume) resume = resumeService.getEmptyResume()
             this.$state.resume = resume
         },
-        updateResume(payload){
-            const {type,val} = payload
+        updateResume(payload: Payload) {
+            const { type, val } = payload
             this.$state.resume[type] = val
         },
-        download(resume){
-            pdfService.download(resume)
+        download(file: HTMLElement) {
+            pdfService.download(file)
         }
     }
 })

@@ -1,6 +1,6 @@
 <template>
     <resume-header @download="download" />
-    <resume-form @updateResume="updateResume" />
+    <resume-form v-if="resume" :resume="resume" @updateResume="updateResume" />
     <resume-footer />
 </template>
 
@@ -26,6 +26,9 @@ export default {
             const elResume: HTMLElement | null = document.querySelector('.a4-resume');
             if (elResume) this.resumeStore.download(elResume)
         },
+    },
+    computed: {
+        resume() { return this.resumeStore.resumeToEdit }
     },
 
     components: {

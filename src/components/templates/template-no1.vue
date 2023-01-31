@@ -42,7 +42,8 @@ export default {
     },
     data() {
         return {
-            originalWidth: 696
+            originalWidth: 696,
+            vw: window.innerWidth
         }
     },
     methods: {
@@ -53,7 +54,13 @@ export default {
             (this.$refs.template as HTMLElement).style.transform = `scale(${scale})`;
             (this.$refs.template as HTMLElement).style.width = (width * (this.originalWidth / width)) + 'px'
         },
-
+    },
+    computed: {
+    },
+    watch: {
+        vw() {
+            console.log('BABA');
+        }
     }
 }
 </script>
