@@ -26,11 +26,13 @@
         </div>
     </section>
 </template>
+
 <script lang="ts">
 import { PropType } from 'vue';
 import { Resume } from '../../interfaces/resume-interface';
 
 export default {
+    name: 'template-no1',
     props: {
         resume: Object as PropType<Resume>,
     },
@@ -54,8 +56,6 @@ export default {
             (this.$refs.template as HTMLElement).style.transform = `scale(${scale})`;
             (this.$refs.template as HTMLElement).style.width = (width * (this.originalWidth / width)) + 'px'
         },
-    },
-    computed: {
     },
     watch: {
         vw() {

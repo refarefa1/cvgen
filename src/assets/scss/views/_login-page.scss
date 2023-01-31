@@ -38,16 +38,8 @@
 			border-radius: 2em;
 			font-weight: 700;
 			font-size: rem(16px);
-			background-image: linear-gradient(to right, $primary-color, $secondary-color);
+			@include btn($primary-color, $secondary-color);
 			color: $txt-color;
-
-			@media (hover:hover) {
-
-				&:hover {
-					background-image: linear-gradient(to right, lighten($primary-color, 8%), lighten($secondary-color, 8%));
-
-				}
-			}
 		}
 	}
 }

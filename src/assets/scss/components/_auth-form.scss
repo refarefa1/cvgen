@@ -1,16 +1,13 @@
 .auth-form {
 	display: flex;
 	flex-direction: column;
-
 	margin: auto;
 	width: $modal-width;
 	padding: 5rem 4rem;
 	gap: 2rem;
-
 	border-radius: $modal-border-radius;
 	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 	background-color: $bg-color-modal;
-
 	text-align: center;
 
 	h1,
@@ -24,11 +21,8 @@
 		font-weight: 100;
 	}
 
-	a,
-	button {
-		color: $primary-color;
-
-		&:hover {
+	a {
+		@include hover {
 			opacity: 0.7;
 		}
 	}
@@ -70,7 +64,7 @@
 		display: flex;
 		column-gap: 1rem;
 
-		&:hover {
+		@include hover {
 			opacity: 0.7;
 		}
 	}
@@ -93,44 +87,14 @@
 		}
 	}
 
-	.form-link {
-		&:hover {
-			opacity: 0.7;
-		}
-	}
-
 	.form-submit {
 		margin: auto;
 		width: 20rem;
 		height: 4rem;
-		@include btn-colorful; // Made mixin for the color because i want to use it also 
 		border-radius: 2em;
 		font-weight: 700;
 		font-size: rem(16px);
 		color: $txt-color;
-
-		&:hover {
-			opacity: 0.8;
-		}
-	}
-}
-
-.login-btn {
-	width: 160px;
-	height: 45px;
-	border-radius: 2em;
-	font-weight: 700;
-	font-size: rem(16px);
-	background-image: linear-gradient(to right,
-			$primary-color,
-			$secondary-color);
-	color: $txt-color;
-
-	@media (hover: hover) {
-		&:hover {
-			background-image: linear-gradient(to right,
-					lighten($primary-color, 8%),
-					lighten($secondary-color, 8%));
-		}
+		@include btn($brand-color, $secondary-brand-color);
 	}
 }

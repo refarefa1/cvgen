@@ -1,17 +1,12 @@
 <template>
 	<div class="custom-modal">
 		<transition name="fade" appear>
-			<div
-				class="modal-overlay"
-				v-if="showModal"
-				@click="showModal = false"></div>
+			<div class="modal-overlay" v-if="showModal" @click="showModal = false"></div>
 		</transition>
 
 		<Transition name="pop" appear>
 			<div class="modal-content" v-if="showModal" role="dialog">
-				<component
-					:is="stateChildComponent"
-					@change-component="changeComponent"></component>
+				<component :is="stateChildComponent" @change-component="changeComponent"></component>
 			</div>
 		</Transition>
 

@@ -24,10 +24,8 @@ a {
 	text-decoration: none;
 	color: inherit;
 
-	@media (hover:hover) {
-		&:hover {
-			color: inherit;
-		}
+	@include hover {
+		color: inherit;
 	}
 }
 

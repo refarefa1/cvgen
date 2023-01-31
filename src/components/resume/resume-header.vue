@@ -5,21 +5,28 @@
                 <h1>FlowCV</h1>
             </router-link>
         </div>
-        <div @click="goTo('/resume/content/')" class="content" :class="{'active':$route.path.includes('content')}">
-            <span><v-icon name="bi-file-text"></v-icon></span>
-            <p>Content</p>
+        <div class="content">
+            <router-link :to="'/resume/content/' + $route.params.id">
+                <span><v-icon name="bi-file-text"></v-icon></span>
+                <p>Content</p>
+            </router-link>
         </div>
-        <div @click="goTo('/resume/customize/')" class="customize"
-            :class="{ 'active': $route.path.includes('customize') }">
-            <span><v-icon name="fa-regular-edit"></v-icon></span>
-            <p>Customize</p>
+        <div class="customize">
+            <router-link :to="'/resume/customize/' + $route.params.id">
+                <span><v-icon name="fa-regular-edit"></v-icon></span>
+                <p>Customize</p>
+            </router-link>
+
         </div>
         <div @click="downloadResume" class="download">
-            <span><v-icon name="bi-download"></v-icon></span>
-            <p>Download</p>
+            <div class="download-wrapper">
+                <span><v-icon name="bi-download"></v-icon></span>
+                <p>Download</p>
+            </div>
         </div>
     </header>
 </template>
+
 <script lang="ts">
 export default {
     name: 'resume-header',
@@ -29,7 +36,6 @@ export default {
         },
         goTo(newPath: string) {
             const id: string | string[] | undefined = this.$route.params.id
-            const oldPath = (id) ? this.$route.path.split(`${id}`)[0] : this.$route.path
             this.$router.push(`${newPath + id}`)
         }
     }

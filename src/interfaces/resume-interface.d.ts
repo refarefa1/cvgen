@@ -7,4 +7,5 @@ export interface Resume {
 	phone?: string
 	address?: string
 	imgUrl?: string
+	[key: string]: string
 }

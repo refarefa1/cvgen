@@ -9,11 +9,11 @@ export default {
 	data() {
 		return {
 			userStore: useUserStore(),
-		};
+		}
 	},
 
 	created() {
-		this.userStore.loadUser();
+		this.userStore.loadUser()
 	},
-};
+}
 </script>

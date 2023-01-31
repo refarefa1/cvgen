@@ -1,34 +1,38 @@
 <template>
     <resume-header @download="download" />
     <resume-form v-if="resume" :resume="resume" @updateResume="updateResume" />
-    <resume-footer />
+    <resume-footer @save="save" />
 </template>
 
 <script lang="ts">
 import resumeForm from '../../components/resume/resume-form.vue'
 import resumeHeader from '../../components/resume/resume-header.vue'
 import resumeFooter from '../../components/resume/resume-footer.vue'
-import { useResumeStore } from '../../store/resume.store';
+import { useUserStore } from '../../store/user.store'
 
 export default {
     name: 'resume-content',
 
     data() {
         return {
-            resumeStore: useResumeStore()
+            userStore: useUserStore()
         }
     },
     methods: {
         updateResume(payload: { type: string, val: string }) {
-            this.resumeStore.updateResume(payload)
+            this.userStore.updateResume(payload)
         },
         download() {
             const elResume: HTMLElement | null = document.querySelector('.a4-resume');
-            if (elResume) this.resumeStore.download(elResume)
+            if (elResume) this.userStore.download(elResume)
         },
+        save() {
+            // this.
+        },
+
     },
     computed: {
-        resume() { return this.resumeStore.resumeToEdit }
+        resume() { return this.userStore.resumeToEdit }
     },
 
     components: {

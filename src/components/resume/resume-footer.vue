@@ -1,6 +1,6 @@
 <template>
     <footer class="resume-footer">
-        <div class="save">
+        <div @click="onSaveResume" class="save">
             <span><v-icon name="bi-check-lg"></v-icon></span>
             <div class="seperator" />
             <button class="save-btn">Save</button>
@@ -14,8 +14,8 @@
 export default {
     name: 'resume-footer',
     methods: {
-        downloadResume() {
-            this.$emit('download')
+        onSaveResume() {
+            this.$emit('save')
         }
     }
 }

@@ -16,30 +16,37 @@
             flex-direction: column;
             align-items: center;
 
-            p {
-                font-weight: 100;
-                color: $primary-color;
-            }
+            a,
+            .download-wrapper {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
 
-            span {
-                svg {
-                    fill: $primary-color;
-                    width: 32px;
-                    height: 32px;
-                }
-            }
-
-            &.active {
                 p {
-                    color: #ec008c;
+                    font-weight: 100;
+                    color: $primary-color;
                 }
 
                 span {
                     svg {
-
-                        fill: #ec008c;
+                        fill: $primary-color;
+                        width: 32px;
+                        height: 32px;
                     }
                 }
+
+                &.router-link-exact-active {
+                    p {
+                        color: #ec008c;
+                    }
+
+                    span {
+                        svg {
+                            fill: #ec008c;
+                        }
+                    }
+                }
+
             }
         }
 
@@ -152,7 +159,7 @@
         padding-inline: 48px;
 
         .save {
-            @include btn-colorful;
+            @include btn($brand-color, $secondary-brand-color);
             cursor: pointer;
             width: 140px;
             height: 45px;
@@ -193,4 +200,6 @@
             }
         }
     }
+
+
 }

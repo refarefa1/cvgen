@@ -16,17 +16,16 @@ import resumeForm from '../../components/resume/resume-form.vue'
 import resumeHeader from '../../components/resume/resume-header.vue'
 import templateNo1 from '../../components/templates/template-no1.vue'
 import { useUserStore } from '../../store/user.store'
-import { useResumeStore } from '../../store/resume.store'
 
 export default {
+    name: 'resume-app',
 
     created() {
-        this.resumeStore.setResume(this.$route.params.id)
+        this.userStore.setResume(this.$route.params.id)
     },
     data() {
         return {
             userStore: useUserStore(),
-            resumeStore: useResumeStore(),
         }
     },
     computed: {
@@ -34,7 +33,7 @@ export default {
             return this.userStore.loggedinUser || { _id: null }
         },
         resume() {
-            return this.resumeStore.resumeToEdit
+            return this.userStore.resumeToEdit
         },
 
     },

@@ -18,10 +18,21 @@
     }
 }
 
-@mixin btn-colorful {
-    background-image: linear-gradient(to right, var(--tw-gradient-stops));
-    --tw-gradient-from: #ec008c;
-    --tw-gradient-to: rgb(236 0 140 / 0);
-    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
-    --tw-gradient-to: #fc6767;
+@mixin btn($color1, $color2) {
+    background-image: linear-gradient(to right, $color1, $color2);
+
+    @include hover {
+        background-image: linear-gradient(to right, lighten($color1, 8%), lighten($color2, 8%));
+    }
+}
+
+// ec008c
+// fc6767
+
+@mixin hover {
+    @media (hover: hover) {
+        &:hover {
+            @content;
+        }
+    }
 }
