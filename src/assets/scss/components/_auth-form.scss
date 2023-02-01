@@ -6,8 +6,6 @@
 	padding: 5rem 4rem;
 	gap: 2rem;
 	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-	// border-radius: inherit;
-	// background-color: transparent;
 	text-align: center;
 
 	h1,
@@ -17,18 +15,18 @@
 	}
 
 	a,
-	button {
-		font-weight: 600;
+	.password-reveal {
 		color: $txt-color-secondary;
-		
+
 		@include hover {
 			color: lighten($txt-color-secondary, 30%);
 		}
 	}
 
 	p {
-		color: #00000080;
+		color: $txt-color-secondary;
 		font-weight: 100;
+		font-size: 0.95rem;
 	}
 
 	.form-floating {
@@ -84,10 +82,28 @@
 		}
 	}
 
+	.validate-messages {
+		div {
+			background-color: #ff5f6412;
+			color: #ff5f64;
+			border-radius: 12px;
+			padding: 0.5rem 0.5rem;
+			font-weight: 700;
+		}
+
+		.email {
+			text-align: left;
+			margin-top: 4px;
+		}
+	}
+
+	hr {
+		color: #c5c5c5;
+	}
+
 	.form-submit {
 		margin: auto;
-		width: 20rem;
-		height: 4rem;
+		padding: 1.5rem 2rem;
 		border-radius: 2em;
 		font-weight: 700;
 		font-size: rem(16px);
