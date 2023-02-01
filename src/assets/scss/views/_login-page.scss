@@ -1,45 +1,32 @@
 .login {
-	.custom-modal {
+	.login-container {
+		display: flex;
+		flex-direction: column;
 
-		.login-container {
-			display: flex;
-			flex-direction: column;
+		margin: auto;
+		width: $modal-width;
+		padding: 5rem 4rem;
+		gap: 3rem;
 
-			margin: auto;
-			width: $modal-width;
-			padding: 5rem 4rem;
-			gap: 3rem;
+		border-radius: $modal-border-radius;
+		box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+		background-color: $bg-color-modal;
 
-			border-radius: $modal-border-radius;
-			box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-			background-color: $bg-color-modal;
+		text-align: center;
 
-			text-align: center;
-
-			input {
-				border: none;
-				border-radius: none;
-				border-bottom: 2px solid rgb(229, 231, 235);
-				box-shadow: none;
-			}
-
-			.forget-password {
-				position: relative;
-				color: black;
-				display: flex;
-				bottom: 3rem;
-				justify-content: left;
-			}
+		input {
+			border: none;
+			border-radius: none;
+			border-bottom: 2px solid rgb(229, 231, 235);
+			box-shadow: none;
 		}
 
-		.login-btn {
-			width: 160px;
-			height: 45px;
-			border-radius: 2em;
-			font-weight: 700;
-			font-size: rem(16px);
-			@include btn($primary-color, $secondary-color);
-			color: $txt-color;
+		.forget-password {
+			position: relative;
+			color: black;
+			display: flex;
+			bottom: 3rem;
+			justify-content: left;
 		}
 	}
 }

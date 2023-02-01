@@ -5,12 +5,30 @@ import resumeCustomize from './views/resume/resume-customize.vue'
 import SignUpPage from './views/auth/signup-page.vue'
 import loginPage from './views/auth/login-page.vue'
 import forgetPassword from './views/auth/forget-password-page.vue'
+import loginForm from './components/auth/login-form.vue'
+import signupForm from './components/auth/signup-form.vue'
+import forgetPasswordForm from './components/auth/forget-password-form.vue'
 
 import { createRouter, createWebHashHistory } from 'vue-router'
+
 const routes = [
 	{
 		path: '/',
 		component: homePage,
+		children: [
+			{
+				path: '/login',
+				component: loginForm
+			},
+			{
+				path: '/signup',
+				component: signupForm
+			},
+			{
+				path: '/forget-password',
+				component: forgetPasswordForm
+			},
+		]
 	},
 	{
 		path: '/resume',

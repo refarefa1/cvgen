@@ -1,38 +1,39 @@
 /* Breakpoint mixins */
 
 @mixin for-mobile-layout {
-    @media (max-width: calc($mobile-breakpoint + 40px)) {
-        @content;
-    }
+	@media (max-width: calc($mobile-breakpoint + 40px)) {
+		@content;
+	}
 }
 
 @mixin for-narrow-layout {
-    @media (max-width: calc($narrow-breakpoint + 40px)) {
-        @content;
-    }
+	@media (max-width: calc($narrow-breakpoint + 40px)) {
+		@content;
+	}
 }
 
 @mixin for-normal-layout {
-    @media (max-width: calc($normal-breakpoint + 40px)) {
-        @content;
-    }
+	@media (max-width: calc($normal-breakpoint + 40px)) {
+		@content;
+	}
 }
 
 @mixin btn($color1, $color2) {
-    background-image: linear-gradient(to right, $color1, $color2);
+	background-image: linear-gradient(to right, $color1, $color2);
 
-    @include hover {
-        background-image: linear-gradient(to right, lighten($color1, 8%), lighten($color2, 8%));
-    }
+	@include hover {
+		background-image: linear-gradient(
+			to right,
+			lighten($color1, 8%),
+			lighten($color2, 8%)
+		);
+	}
 }
 
-// ec008c
-// fc6767
-
 @mixin hover {
-    @media (hover: hover) {
-        &:hover {
-            @content;
-        }
-    }
+	@media (hover: hover) {
+		&:hover {
+			@content;
+		}
+	}
 }

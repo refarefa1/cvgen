@@ -21,11 +21,8 @@
 		</button>
 
 		<p>
-			Remember your password?<button
-				@click.prevent="$emit('change-component', 'signUpForm')"
-				class="form-link">
-				Create Account
-			</button>
+			Remember your password?
+			<router-link to="/signup">Create Account</router-link>
 		</p>
 	</form>
 </template>

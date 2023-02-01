@@ -4,12 +4,15 @@
 			<div class="logo">
 				<h1>FlowCV</h1>
 			</div>
+
 			<div class="login">
-				<!-- <login-modal :user="user" /> -->
-				<custom-modal :user="user" buttonText="Login"/>
+				<router-link to="/login" class="login-btn">
+					Log In <v-icon name="ri-login-box-line" />
+				</router-link>
 			</div>
 		</div>
 	</header>
+	<custom-modal :user="user" />
 </template>
 
 <script lang="ts">

@@ -30,21 +30,19 @@
 				class="password-reveal form-link">
 				{{ showPassword ? 'Hide' : 'Show' }}
 			</button>
-		</div>
 
-		<button
-			@click.prevent="$emit('change-component', 'resetPassword')"
-			class="forget-password form-link">
-			Forget password?
-		</button>
+			<router-link
+				to="/forget-password"
+				class="forget-password form-link">
+				Forget password?
+			</router-link>
+		</div>
 
 		<button type="submit" class="form-submit form-link">Login</button>
 
-		<button
-			class="form-link"
-			@click="$emit('change-component', 'signUpForm')">
+		<router-link class="form-link" to="/signup">
 			Create Account
-		</button>
+		</router-link>
 	</form>
 </template>
 
