@@ -8,11 +8,11 @@
 					@click="$router.push('/')" />
 			</Transition>
 
-			<transition>
-				<div class="modal-content" role="dialog">
+			<Transition name="pop">
+				<div v-if="Component" class="modal-content" role="dialog">
 					<component :is="Component" />
 				</div>
-			</transition>
+			</Transition>
 		</div>
 	</router-view>
 </template>
