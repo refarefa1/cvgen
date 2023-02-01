@@ -3,10 +3,11 @@ import { Resume } from "../interfaces/resume-interface"
 import User from "../interfaces/user.interface"
 import { pdfService } from "../services/pdf.service"
 import { userService } from "../services/user.service"
+import { utilService } from "../services/util.service"
 
 interface Payload {
     type: string
-    val: string
+    val: any
 }
 
 interface State {
@@ -33,26 +34,44 @@ export const useUserStore = defineStore('userStore', {
         },
         setResume(id: string | string[]) {
             const resumes: Resume[] | undefined = this.$state.user.resumes
-            const resume = (id && resumes) && resumes.find(r => r._id === id) || userService.getEmptyResume()
-            this.$state.resume = { ...resume }
+            const resume = (id && resumes) && JSON.parse(JSON.stringify(resumes.find(r => r._id === id)))
+                || userService.getEmptyResume()
+            this.$state.resume = resume
+
         },
-        updateResume(payload: Payload) {
+        update(payload: Payload) {
             const { type, val } = payload
-            this.$state.resume[type] = val
+            switch (type) {
+                case 'personal':
+                    this.$state.resume = { ...this.$state.resume, personal: val }
+                    break
+                case 'education':
+
+                    break
+
+            }
         },
         download(file: HTMLElement) {
             pdfService.download(file)
         },
         save() {
-            const resumes = this.$state.user.resumes
-            const idx: number = resumes?.findIndex(r => r._id === this.$state.resume._id) || 0
-            if (resumes) resumes[idx] = { ...this.$state.resume }
-            const user: User = { ...this.$state.user, resumes }
-            userService.save(user)
+            if (!this.$state.user.resumes) this.$state.user.resumes = []
+            const deepCloneResume: Resume = JSON.parse(JSON.stringify(this.$state.resume))
+            if (!deepCloneResume._id) {
+                deepCloneResume._id = utilService.makeId()
+                this.$state.user.resumes.push(deepCloneResume)
+            } else {
+                const idx: number = this.$state.user.resumes.findIndex(r => r._id === deepCloneResume._id)
+                this.$state.user.resumes[idx] = deepCloneResume
+            }
+            this.$state.resume = deepCloneResume
+            userService.save({ ...this.$state.user })
         },
         cancel() {
-            const resume: Resume = this.$state.user.resumes?.find(r => r._id === this.$state.resume._id)
-            this.$state.resume = resume
+            const isResumeEmpty = (!this.$state.user.resumes || this.$state.user.resumes && !this.$state.resume._id)
+            this.$state.resume = (isResumeEmpty)
+                ? userService.getEmptyResume()
+                : JSON.parse(JSON.stringify(this.$state.user.resumes!.find(r => r._id === this.$state.resume._id)))
         }
     }
 

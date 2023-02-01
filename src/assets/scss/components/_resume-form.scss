@@ -1,5 +1,5 @@
 .resume-builder {
-    flex-grow: 1;
+    flex-basis: 50%;
 
     .resume-header {
         display: flex;
@@ -59,69 +59,34 @@
         border-radius: 1em;
         margin-block: 24px;
         overflow: hidden;
-
-        &.open {
-            .accordion {
-                .accordion-item {
-                    .accordion-header {
-                        pointer-events: none;
-
-                        .accordion-button {
-                            pointer-events: none;
-
-                            &::after {
-                                display: none;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        // ACCORDION 
-
-        .accordion {
-
-            * {
-                border: none;
-                box-shadow: none;
-            }
-
-            .accordion-item {
-                .accordion-header {
-                    pointer-events: auto;
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-between;
-                    height: 96px;
-
-                    .accordion-button {
-                        pointer-events: auto;
-                        color: unset;
-                        background-color: unset;
-                        box-shadow: none;
-                        height: 100%;
-
-                        &::after {
-                            display: block;
-                            background-image: var(--cui-accordion-btn-icon);
-                        }
-                    }
-                }
-
-                .accordion-body {
-                    padding-block-start: 0;
-                    padding-block-end: 36px;
-                }
-            }
-        }
+        padding-block-end: 24px;
+        height: 96px;
+        transition: .5s;
 
         .resume-title {
-            font-size: rem(24px);
-            font-weight: 800;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 96px;
+            pointer-events: auto;
+            padding-inline: 24px;
+            cursor: pointer;
+
+            h1 {
+                font-size: rem(24px);
+                font-weight: 800;
+            }
+
+            span {
+
+                svg {
+                    scale: 1.4;
+                }
+            }
         }
 
-        .personal-details {
+        .resume-personal {
+            padding-inline: 24px;
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 24px;
@@ -201,6 +166,119 @@
 
 
         }
+
+        .resume-education {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            padding-inline: 24px;
+
+            .resume-input {
+                label {
+                    font-weight: 600;
+                }
+
+                input {
+                    background-color: darken(white, 6%);
+                    height: 50px;
+                    border: none;
+
+                    &:focus {
+                        box-shadow: none;
+                    }
+
+                }
+
+                &.resume-textarea {
+                    grid-column: 1/-1;
+
+                    textarea {
+                        border: none;
+                        background-color: darken(white, 6%);
+                        resize: none;
+
+                        &:focus {
+                            box-shadow: none;
+                        }
+                    }
+                }
+
+            }
+        }
+
+        .add-info {
+
+            .resume-cmp-list {
+                display: flex;
+                flex-direction: column;
+
+                &:first-child {
+                    border-top: 5px solid darken(white, 6%);
+                }
+
+                .resume-cmp-preview {
+                    cursor: pointer;
+                    display: flex;
+                    align-items: center;
+                    height: 70px;
+                    border-bottom: 5px solid darken(white, 6%);
+                    gap: 12px;
+                    padding-inline: 24px;
+
+                    h3 {
+                        font-size: rem(16px);
+                        font-weight: 800;
+                    }
+
+                    h4 {
+                        font-size: rem(16px);
+                    }
+
+                    &:hover {
+                        background-color: darken(white, 3%);
+                    }
+                }
+
+
+            }
+
+            .add-btn {
+                display: flex;
+                align-items: center;
+                margin: auto;
+                height: 45px;
+                padding-inline: 16px;
+                border: 5px solid darken(white, 6%);
+                border-radius: 2em;
+
+                span {
+                    padding-inline-end: 8px;
+
+                    svg {
+                        width: 28px;
+                        height: 28px;
+                    }
+                }
+
+                p {
+                    font-weight: 800;
+                }
+            }
+        }
+
+        &.open {
+            height: auto;
+
+            .resume-title {
+                pointer-events: none;
+
+                span {
+                    svg {
+                        display: none;
+                    }
+                }
+            }
+        }
     }
 
     .resume-footer {
@@ -211,6 +289,8 @@
         border-radius: 1em;
         padding-block: 24px;
         padding-inline: 48px;
+        position: sticky;
+        bottom: 0px;
 
         .save {
             @include btn($brand-color, $secondary-brand-color);

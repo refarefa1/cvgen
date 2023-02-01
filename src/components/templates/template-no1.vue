@@ -3,26 +3,46 @@
         <div class="personal-info">
             <div class="contact">
                 <div class="title">
-                    <h1>{{ resume?.fullName }}</h1>
-                    <h2>{{ resume?.jobTitle }}</h2>
+                    <h1>{{ resume?.personal?.fullName }}</h1>
+                    <h2>{{ resume?.personal?.jobTitle }}</h2>
                 </div>
-                <div v-if="resume?.email" class="contact-item">
+                <div v-if="resume?.personal?.email" class="contact-item">
                     <img src="src/assets/images/mail.png" alt="">
-                    <p class="mail">{{ resume.email }}</p>
+                    <p class="mail">{{ resume.personal.email }}</p>
                 </div>
-                <div v-if="resume?.phone" class="contact-item">
+                <div v-if="resume?.personal?.phone" class="contact-item">
                     <img src="src/assets/images/whatsapp.png" alt="">
-                    <p class="phone">{{ resume.phone }}</p>
+                    <p class="phone">{{ resume.personal.phone }}</p>
                 </div>
-                <div v-if="resume?.address" class="contact-item">
+                <div v-if="resume?.personal?.address" class="contact-item">
                     <img src="src/assets/images/address.png" alt="">
-                    <p class="address">{{ resume?.address }}</p>
+                    <p class="address">{{ resume.personal?.address }}</p>
                 </div>
             </div>
 
             <div class="img">
-                <img v-if="resume?.imgUrl" :src="resume?.imgUrl" alt="">
+                <img v-if="resume?.personal?.imgUrl" :src="resume.personal.imgUrl" alt="">
             </div>
+        </div>
+        <div v-if="resume?.education?.length" class="education-info">
+            <div class="title">
+                <h1>Education</h1>
+            </div>
+            <ul class="education-list">
+                <li v-for="(ed, idx) in resume?.education" :key="idx" class="education-preview">
+                    <div class="education-degree">
+                        <h2>{{ ed.degree }}</h2>
+                        <h3>{{ ed.school }}</h3>
+                    </div>
+                    <div class="education-location">
+                        <h2>{{ ed.city }}<span v-if="ed.country">,</span></h2>
+                        <h3>{{ ed.country }}</h3>
+                    </div>
+                    <div class="education-desc">
+                        <p>{{ ed.description }}</p>
+                    </div>
+                </li>
+            </ul>
         </div>
     </section>
 </template>

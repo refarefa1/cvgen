@@ -63,6 +63,65 @@
 
     }
 
+    .education-info {
+        .title {
+            height: 30px;
+            border-bottom: 2px solid $primary-color;
 
+            h1 {
+                font-size: rem(20px);
+                font-weight: 800;
+            }
+        }
+
+        .education-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            padding-top: 8px;
+
+            .education-preview {
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+
+                .education-degree {
+                    display: flex;
+                    align-items: center;
+                    flex-wrap: wrap;
+                    gap: 6px;
+
+                    h2 {
+                        font-size: rem(16px);
+                        font-weight: 800;
+                    }
+
+                    h3 {
+                        font-size: rem(14px);
+                        line-height: 1;
+                    }
+                }
+
+                .education-location {
+                    display: flex;
+                    align-items: center;
+                    flex-wrap: wrap;
+                    gap: 4px;
+
+                    h2 {
+                        font-size: rem(14px);
+                    }
+
+                    h3 {
+                        font-size: rem(14px);
+                    }
+                }
+
+                .education-desc {
+                    font-size: rem(14px);
+                }
+            }
+        }
+    }
 
 }

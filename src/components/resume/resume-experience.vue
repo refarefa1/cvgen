@@ -2,9 +2,9 @@
 
     <form class="resume-form" :class="{ 'open': isOpen }">
         <CAccordion>
-            <CAccordionItem :item-key="1">
+            <CAccordionItem :item-key="3">
                 <CAccordionHeader @click="openAccordion">
-                    <h1 class="resume-title">Edit personal details</h1>
+                    <h1 class="resume-title">Personal experience</h1>
                 </CAccordionHeader>
                 <CAccordionBody>
                     <div class="personal-details">
