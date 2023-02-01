@@ -10,7 +10,7 @@
         <div v-if="isAdding" class="add-info">
             <ul class="resume-cmp-list">
                 <li @click="edit(ed)" class="resume-cmp-preview" v-for="ed in resume?.education" :key="ed._id">
-                    <h3>{{ ed.degree }},</h3>
+                    <h3>{{ ed.degree }}<span v-if="ed.degree">,</span></h3>
                     <h4>{{ ed.school }}</h4>
                 </li>
             </ul>
@@ -23,12 +23,13 @@
         <div v-if="!isAdding" class="resume-education">
             <div v-for="input in inputs" :key="input.label" :class="'resume-input ' + input.class">
                 <span v-if="input.type === 'file'"><v-icon name="bi-camera-fill"></v-icon></span>
-                <CFormInput v-model="education[input.name]" @input="handleInput" :name="input.name" :label="input.label"
-                    :type="input.type" :placeholder="input.placeholder" aria-label="default input" />
+                <CFormInput v-model="education[input.name as keyof Education]" @input="update" :name="input.name"
+                    :label="input.label" :type="input.type" :placeholder="input.placeholder"
+                    aria-label="default input" />
             </div>
             <div ref="textarea" class="resume-input resume-textarea">
-                <CFormTextarea v-model="education.description" @input="handleInput" name="description"
-                    label="Description" rows="4" placeholder="Add a description of your education entry...">
+                <CFormTextarea v-model="education.description" @input="update" name="description" label="Description"
+                    rows="4" placeholder="Add a description of your education entry...">
                 </CFormTextarea>
             </div>
         </div>
@@ -47,7 +48,7 @@ export default {
     props: {
         resume: Object as PropType<Resume>,
     },
-    emits: ['updateResume', 'open'],
+    emits: ['update', 'open'],
     created() {
         eventBus.on('closeAccordion', () => { this.isOpen = false })
     },
@@ -65,11 +66,11 @@ export default {
         }
     },
     methods: {
-        handleInput() {
+        update() {
             setTimeout(() => {
                 const payload = { type: 'education', val: { ...this.education } }
-                this.$emit('updateResume', payload), 0
-            })
+                this.$emit('update', payload)
+            }, 0)
         },
         add() {
             this.education = { _id: utilService.makeId(), degree: '', school: '', city: '', country: '', description: '' }
@@ -77,7 +78,7 @@ export default {
             this.isOpen = true
         },
         edit(ed: Education) {
-            this.education = ed
+            this.education = { ...ed }
             this.openAccordion()
         },
         openAccordion() {

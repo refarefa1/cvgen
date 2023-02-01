@@ -1,4 +1,4 @@
-interface Education {
+export interface Education {
 	_id: string
 	degree: string
 	school: string
@@ -7,7 +7,7 @@ interface Education {
 	description: string
 }
 
-interface Personal {
+export interface Personal {
 	fullName: string
 	jobTitle: string
 	email: string

@@ -37,7 +37,6 @@ export const useUserStore = defineStore('userStore', {
             const resume = (id && resumes) && JSON.parse(JSON.stringify(resumes.find(r => r._id === id)))
                 || userService.getEmptyResume()
             this.$state.resume = resume
-
         },
         update(payload: Payload) {
             const { type, val } = payload
@@ -45,10 +44,8 @@ export const useUserStore = defineStore('userStore', {
                 case 'personal':
                     this.$state.resume = { ...this.$state.resume, personal: val }
                     break
-                case 'education':
-
+                case 'education': this.format(payload)
                     break
-
             }
         },
         download(file: HTMLElement) {
@@ -72,6 +69,13 @@ export const useUserStore = defineStore('userStore', {
             this.$state.resume = (isResumeEmpty)
                 ? userService.getEmptyResume()
                 : JSON.parse(JSON.stringify(this.$state.user.resumes!.find(r => r._id === this.$state.resume._id)))
+        },
+        format(payload: Payload): any {
+            const { type, val } = payload
+            if (!this.$state.resume[type]) this.$state.resume[type] = []
+            const idx: number = (this.$state.resume[type] as any[]).findIndex(ed => ed._id === val._id)
+            if (idx === -1) this.$state.resume[type].push(val)
+            else this.$state.resume[type][idx] = { ...val }
         }
     }
 
