@@ -42,9 +42,12 @@ export const useUserStore = defineStore('userStore', {
             const { type, val } = payload
             switch (type) {
                 case 'personal':
-                    this.$state.resume = { ...this.$state.resume, personal: val }
+                    this.$state.resume = { ...this.$state.resume, personal: {...val} }
                     break
                 case 'education': this.format(payload)
+                    break
+                case 'profile':
+                    this.$state.resume = { ...this.$state.resume, profile: {...val} }
                     break
             }
         },

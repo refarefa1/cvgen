@@ -209,6 +209,29 @@
             }
         }
 
+        .resume-profile {
+            padding-inline: 24px;
+
+            .resume-input {
+                &.resume-textarea {
+
+                    label {
+                        font-weight: 800;
+                    }
+
+                    textarea {
+                        border: none;
+                        background-color: darken(white, 6%);
+                        resize: none;
+
+                        &:focus {
+                            box-shadow: none;
+                        }
+                    }
+                }
+            }
+        }
+
         .add-info {
 
             .resume-cmp-list {

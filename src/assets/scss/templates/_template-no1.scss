@@ -124,4 +124,25 @@
         }
     }
 
+    .profile-info {
+        .title {
+            height: 30px;
+            border-bottom: 2px solid $primary-color;
+
+            h1 {
+                font-size: rem(20px);
+                font-weight: 800;
+            }
+        }
+
+        .education-about-txt {
+            padding-top: 8px;
+
+            p {
+                font-size: rem(16px);
+                line-height: 1.2;
+            }
+        }
+    }
+
 }

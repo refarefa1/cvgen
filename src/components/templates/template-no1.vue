@@ -44,6 +44,14 @@
                 </li>
             </ul>
         </div>
+        <div v-if="resume?.profile?.about" class="profile-info">
+            <div class="title">
+                <h1>Profile</h1>
+            </div>
+            <div class="education-about-txt">
+                <p>{{ resume.profile.about }}</p>
+            </div>
+        </div>
     </section>
 </template>
 

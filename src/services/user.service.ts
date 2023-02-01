@@ -32,7 +32,7 @@ function _getUser() {
             {
                 _id: 'r101',
                 name: 'Test resume',
-                components: ['resume-personal', 'resume-education'],
+                components: ['resume-personal', 'resume-education','resume-profile'],
                 personal: {
                     fullName: 'Refael Abramov',
                     jobTitle: 'Fullstack Developer',
@@ -58,7 +58,10 @@ function _getUser() {
                         country: 'Israel',
                         description: 'blabalblaalblalbalblalblalblasdfgsdfgsdfgblalbla'
                     },
-                ]
+                ],
+                profile:{
+                    about:`A junior full stack developer with a strong background in graphic design and exceptional computer skills developed from years of experience`
+                }
             }
         ]
     }
