@@ -1,19 +1,20 @@
 <template>
-	<div class="custom-modal">
-		<Transition name="fade">
-			<div class="modal-overlay" v-if="showModal" @click="showModal = false"></div>
-		</Transition>
+	<router-view v-slot="{ Component }">
+		<div class="custom-modal">
+			<Transition name="fade">
+				<div
+					v-if="Component"
+					class="modal-overlay"
+					@click="$router.push('/')" />
+			</Transition>
 
-		<Transition name="pop">
-			<div class="modal-content" v-if="showModal" role="dialog">
-				<component :is="stateChildComponent" @change-component="changeComponent"></component>
-			</div>
-		</Transition>
-
-		<button @click="showModal = true" class="login-btn">
-			{{ buttonText }}
-		</button>
-	</div>
+			<Transition name="pop">
+				<div v-if="Component" class="modal-content" role="dialog">
+					<component :is="Component" />
+				</div>
+			</Transition>
+		</div>
+	</router-view>
 </template>
 
 <script lang="ts">
@@ -21,7 +22,7 @@ import { PropType, Transition } from 'vue';
 import type User from '../interfaces/user.interface';
 import logInForm from '../components/auth/login-form.vue';
 import signUpForm from '../components/auth/signup-form.vue';
-import resetPassword from './auth/reset-password.vue';
+import resetPassword from './auth/forget-password-form.vue';
 
 export default {
 	components: {
@@ -35,35 +36,6 @@ export default {
 			required: true,
 			type: Object as PropType<User>,
 		},
-		childComponent: {
-			type: String,
-			default: 'logInForm',
-		},
-		buttonText: {
-			required: true,
-			type: String,
-		},
-	},
-	methods: {
-		changeComponent(componentName: string) {
-			this.stateChildComponent = componentName;
-		},
-	},
-	data() {
-		return {
-			showModal: false,
-			stateChildComponent: this.childComponent,
-		};
-	},
-	watch: {
-		showModal(newVal) {
-			if (!newVal) {
-				this.stateChildComponent = 'logInForm';
-			}
-		},
-	},
-	mounted() {
-		this.stateChildComponent = 'logInForm';
 	},
 };
 </script>

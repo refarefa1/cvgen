@@ -16,7 +16,8 @@
 				<CFormInput
 					:type="showPassword ? 'text' : 'password'"
 					required
-					placeholder="Password" />
+					placeholder="Password"
+					inputmode="tel" />
 
 				<CFormLabel for="floatingInput">
 					<span class="floating-label">
@@ -55,10 +56,7 @@
 		</p>
 
 		<p>
-			Have already account?
-			<button @click="$emit('changeComponent', 'logInForm')">
-				Login
-			</button>
+			Have already account? <router-link to="/login">Login</router-link>
 		</p>
 	</form>
 </template>
