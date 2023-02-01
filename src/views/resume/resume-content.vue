@@ -4,6 +4,8 @@
     <component v-for="component in components" :key="component" :is="component" :resume="resume" @update="update"
         @open="open" @save="save" />
 
+    <add-resume-section v-if="!isOpen" @add="add" :resume="resume" />
+
     <resume-footer v-if="isOpen" @save="save" @cancel="cancel" />
 
 </template>
@@ -16,6 +18,7 @@ import resumeAbout from '../../components/resume/resume-about.vue'
 
 import resumeHeader from '../../components/resume/resume-header.vue'
 import resumeFooter from '../../components/resume/resume-footer.vue'
+import addResumeSection from '../../components/resume/add-resume-section.vue'
 import { useUserStore } from '../../store/user.store'
 import { eventBus } from '../../services/event.bus.service'
 
@@ -23,7 +26,7 @@ export default {
     name: 'resume-content',
 
     mounted() {
-        this.components = this.resume.components!
+        this.components = this.resume.components
     },
 
     data() {
@@ -56,6 +59,9 @@ export default {
             this.isOpen = !this.isOpen
             eventBus.emit('closeAccordion', null)
             this.components = this.resume.components
+        },
+        add(cmp: string) {
+            this.userStore.add(cmp)
         }
 
     },
@@ -70,7 +76,8 @@ export default {
         resumeExperience,
         resumeAbout,
         resumeHeader,
-        resumeFooter
+        resumeFooter,
+        addResumeSection
     }
 }
 </script>

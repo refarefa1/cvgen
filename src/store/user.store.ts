@@ -76,6 +76,9 @@ export const useUserStore = defineStore('userStore', {
             const idx: number = (this.$state.resume[type] as any[]).findIndex(ed => ed._id === val._id)
             if (idx === -1) this.$state.resume[type].push(val)
             else this.$state.resume[type][idx] = { ...val }
+        },
+        add(cmp:string){
+            this.$state.resume.components.push(cmp)
         }
     }
 

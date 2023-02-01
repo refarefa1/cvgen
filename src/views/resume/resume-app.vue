@@ -1,5 +1,5 @@
 <template>
-    <section v-if="resume" class="resume-app-container">
+    <section class="resume-app-container">
 
         <div class="resume-builder">
             <router-view />
