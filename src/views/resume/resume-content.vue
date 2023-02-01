@@ -52,6 +52,7 @@ export default {
             this.userStore.save()
             this.isOpen = !this.isOpen
             eventBus.emit('closeAccordion', null)
+            eventBus.showSuccessMsg()
             this.components = this.resume.components
         },
         cancel() {

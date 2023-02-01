@@ -20,7 +20,7 @@
             </button>
         </div>
 
-        <div v-if="!isAdding" class="resume-education">
+        <div v-if="!isAdding && isOpen" class="resume-education">
             <div v-for="input in inputs" :key="input.label" :class="'resume-input ' + input.class">
                 <span v-if="input.type === 'file'"><v-icon name="bi-camera-fill"></v-icon></span>
                 <CFormInput v-model="education[input.name as keyof Education]" @input="update" :name="input.name"

@@ -1,10 +1,10 @@
-function saveToStorage(key: string, val: any) {
-    localStorage.setItem(key, JSON.stringify(val))
+function saveToStorage(key: string, value: any): void {
+    localStorage.setItem(key, JSON.stringify(value));
 }
 
-function loadFromStorage(key: string) {
-    var val: any = localStorage.getItem(key)
-    return JSON.parse(val)
+function loadFromStorage(key: string): any {
+    const value = localStorage.getItem(key);
+    return value ? JSON.parse(value) : null;
 }
 
 export const storageService = {

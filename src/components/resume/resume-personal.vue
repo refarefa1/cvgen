@@ -7,7 +7,7 @@
             <span><v-icon name="md-keyboardarrowdown"></v-icon></span>
         </div>
 
-        <div class="resume-personal">
+        <div v-if="isOpen" class="resume-personal">
             <div v-for="input in inputs" :key="input.label" :class="'resume-input ' + input.class">
                 <CFormInput v-model="personal[input.name as keyof Personal]" @keydown.enter="save" @input="update"
                     :name="input.name" :label="input.label" :type="input.type" :placeholder="input.placeholder"
@@ -27,6 +27,10 @@ import { CFormInput } from '@coreui/vue';
 import { PropType } from 'vue';
 import { Personal, Resume } from '../../interfaces/resume-interface';
 import { eventBus } from '../../services/event.bus.service'
+
+interface FileInputEvent extends Event {
+    target: HTMLInputElement & EventTarget;
+}
 
 export default {
     props: {
@@ -56,7 +60,8 @@ export default {
                 this.$emit('update', payload)
             }, 0)
         },
-        handleChange(ev: any) {
+        handleChange(ev: FileInputEvent) {
+
             if (!ev.target.files) return
             this.personal.imgUrl = URL.createObjectURL(ev.target.files[0])
             this.update()

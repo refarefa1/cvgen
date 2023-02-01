@@ -5,15 +5,15 @@ import { pdfService } from "../services/pdf.service"
 import { userService } from "../services/user.service"
 import { utilService } from "../services/util.service"
 
-interface Payload {
+type Payload  = {
     type: string
     val: any
 }
 
-interface State {
+type State = {
     user: User
     resume: Resume
-}
+} 
 
 export const useUserStore = defineStore('userStore', {
 
@@ -28,7 +28,7 @@ export const useUserStore = defineStore('userStore', {
     },
 
     actions: {
-        async loadUser() {
+        loadUser() {
             const user: User = userService.query()
             this.$state.user = user
         },
@@ -73,7 +73,7 @@ export const useUserStore = defineStore('userStore', {
                 ? userService.getEmptyResume()
                 : JSON.parse(JSON.stringify(this.$state.user.resumes!.find(r => r._id === this.$state.resume._id)))
         },
-        format(payload: Payload): any {
+        format(payload: Payload): void {
             const { type, val } = payload
             if (!this.$state.resume[type]) this.$state.resume[type] = []
             const idx: number = (this.$state.resume[type] as any[]).findIndex(ed => ed._id === val._id)

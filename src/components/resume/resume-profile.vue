@@ -7,7 +7,7 @@
             <span><v-icon name="md-keyboardarrowdown"></v-icon></span>
         </div>
 
-        <div class="resume-profile">
+        <div v-if="isOpen" class="resume-profile">
             <div ref="textarea" class="resume-input resume-textarea">
                 <CFormTextarea v-model="profile.about" @input="update" name="profile" label="Text" rows="4"
                     placeholder="introduce yourself by pitching your skills & explaining how they can be of value to a company">
