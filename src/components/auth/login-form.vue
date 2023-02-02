@@ -1,9 +1,9 @@
 <template>
-	<form class="auth-form">
+	<form @submit="login" class="auth-form">
 		<h1>Login</h1>
 
 		<CFormFloating class="mb-3">
-			<CFormInput type="email" placeholder="Email" autofocus required />
+			<CFormInput v-model="credentials.email" type="email" placeholder="Email" required />
 			<CFormLabel for="floatingInput">
 				<span class="floating-label">
 					<v-icon name="md-email" />Email
@@ -13,9 +13,7 @@
 
 		<div class="password-container">
 			<CFormFloating class="mb-3">
-				<CFormInput
-					:type="showPassword ? 'text' : 'password'"
-					required
+				<CFormInput v-model="credentials.password" :type="showPassword ? 'text' : 'password'" required
 					placeholder="Password" />
 
 				<CFormLabel for="floatingInput">
@@ -25,15 +23,11 @@
 				</CFormLabel>
 			</CFormFloating>
 
-			<button
-				@click.prevent="showPassword = !showPassword"
-				class="password-reveal form-link">
-				{{ showPassword ? 'Hide' : 'Show' }}
+			<button @click.prevent="showPassword = !showPassword" class="password-reveal form-link">
+				{{ showPassword? 'Hide': 'Show' }}
 			</button>
 
-			<router-link
-				to="/forget-password"
-				class="forget-password form-link">
+			<router-link to="/forget-password" class="forget-password form-link">
 				Forget password?
 			</router-link>
 		</div>
@@ -60,7 +54,16 @@ export default {
 	data() {
 		return {
 			showPassword: false,
-		};
+			credentials: {
+				email: '',
+				password: ''
+			}
+		}
 	},
+	methods: {
+		login() {
+			// TODO: Call userStore.login(this.credentials)
+		}
+	}
 };
 </script>

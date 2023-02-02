@@ -3,6 +3,8 @@
 		<home-header :user="user" />
 		<home-hero />
 		<resume-list :user="user" />
+		<!-- Router view should be here because its a child of this component -->
+		<router-view /> 
 	</section>
 </template>
 

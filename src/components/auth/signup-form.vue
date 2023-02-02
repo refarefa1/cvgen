@@ -1,23 +1,17 @@
 <template>
-	<form class="auth-form">
+	<form @submit="signup" class="auth-form">
 		<h1>Create account</h1>
 
 		<CFormFloating class="mb-3">
-			<CFormInput type="email" placeholder="Email" autofocus required />
-			<CFormLabel for="floatingInput"
-				><span class="floating-label"
-					><v-icon name="md-email" />Email</span
-				></CFormLabel
-			>
+			<CFormInput v-model="credentials.email" type="email" placeholder="Email" autofocus required />
+			<CFormLabel for="floatingInput"><span class="floating-label"><v-icon name="md-email" />Email</span>
+			</CFormLabel>
 		</CFormFloating>
 
 		<div class="password-container">
 			<CFormFloating class="mb-3">
-				<CFormInput
-					:type="showPassword ? 'text' : 'password'"
-					required
-					placeholder="Password"
-					inputmode="tel" />
+				<CFormInput v-model="credentials.password" :type="showPassword ? 'text' : 'password'" required
+					placeholder="Password" inputmode="tel" />
 
 				<CFormLabel for="floatingInput">
 					<span class="floating-label">
@@ -26,23 +20,15 @@
 				</CFormLabel>
 			</CFormFloating>
 
-			<button
-				@click.prevent="showPassword = !showPassword"
-				class="password-reveal form-link">
-				{{ showPassword ? 'Hide' : 'Show' }}
+			<button @click.prevent="showPassword = !showPassword" class="password-reveal form-link">
+				{{ showPassword? 'Hide': 'Show' }}
 			</button>
 		</div>
 
 		<div class="sub-checkbox">
-			<input
-				type="checkbox"
-				name="subscribeCheckBox"
-				:checked="subscribeCheckBox" />
-			<label
-				@click="subscribeCheckBox = !subscribeCheckBox"
-				for="subscribeCheckBox"
-				>Get FlowCV updates. No spam ever.</label
-			>
+			<input type="checkbox" name="subscribeCheckBox" :checked="subscribeCheckBox" />
+			<label @click="subscribeCheckBox = !subscribeCheckBox" for="subscribeCheckBox">Get FlowCV updates. No spam
+				ever.</label>
 		</div>
 
 		<button type="submit" class="form-submit">Create account</button>
@@ -75,7 +61,16 @@ export default {
 		return {
 			showPassword: false,
 			subscribeCheckBox: false,
-		};
+			credentials: {
+				email: '',
+				password: ''
+			}
+		}
 	},
-};
+	methods: {
+		signup() {
+			// TODO: Call userStore.signup(this.credentials)
+		}
+	}
+}
 </script>

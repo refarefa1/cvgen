@@ -12,13 +12,12 @@
 			</div>
 		</div>
 	</header>
-	<custom-modal :user="user" />
 </template>
 
 <script lang="ts">
 import { PropType } from 'vue';
 import User from '../../interfaces/user.interface';
-import customModal from '../custom-modal.vue';
+import customModal from '../../views/auth/auth-modal.vue';
 
 export default {
 	props: {

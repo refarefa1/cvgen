@@ -2,59 +2,49 @@ import homePage from './views/home-page.vue'
 import resumeApp from './views/resume/resume-app.vue'
 import resumeContent from './views/resume/resume-content.vue'
 import resumeCustomize from './views/resume/resume-customize.vue'
-import SignUpPage from './views/auth/signup-page.vue'
-import loginPage from './views/auth/login-page.vue'
-import forgetPassword from './views/auth/forget-password-page.vue'
-import loginForm from './components/auth/login-form.vue'
-import signupForm from './components/auth/signup-form.vue'
-import forgetPasswordForm from './components/auth/forget-password-form.vue'
+import authModal from './views/auth/auth-modal.vue'
 
 import { createRouter, createWebHashHistory } from 'vue-router'
 
 const routes = [
 	{
 		path: '/',
+		name: 'home-page',
 		component: homePage,
 		children: [
 			{
-				path: '/login',
-				component: loginForm
+				path: 'login',
+				name: 'loginForm',
+				component: authModal
 			},
 			{
-				path: '/signup',
-				component: signupForm
+				path: 'signup',
+				name: 'signupForm',
+				component: authModal
 			},
 			{
-				path: '/forget-password',
-				component: forgetPasswordForm
+				path: 'forget-password',
+				name: 'resetForm',
+				component: authModal
 			},
 		]
 	},
 	{
 		path: '/resume',
+		name: 'resume-app',
 		component: resumeApp,
 		children: [
 			{
 				path: 'content/:id?',
+				name: 'resume-content',
 				component: resumeContent
 			},
 			{
 				path: 'customize/:id?',
+				name: 'resume-customize',
 				component: resumeCustomize
 			},
 		]
-	},
-	{
-		path: '/signup',
-		component: SignUpPage,
-	},
-	{
-		path: '/login',
-		component: loginPage,
-	},
-	{
-		path: '/forget-password',
-		component: forgetPassword,
 	},
 ];
 
