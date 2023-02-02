@@ -1,9 +1,13 @@
 .home-page {
+
 	.home-header {
 		padding-inline: $desktop-padding;
 		display: flex;
 		align-items: center;
 		height: 10vh;
+		position: sticky;
+		background-color: $bg-color;
+		top: 0px;
 
 		.header-wrapper {
 			max-width: $wide-breakpoint;
@@ -12,6 +16,13 @@
 			align-items: center;
 			justify-content: space-between;
 			width: 100%;
+
+			.logo {
+				.logo-title {
+					font-size: rem(36px);
+					font-weight: 800;
+				}
+			}
 
 			.login-btn {
 				display: flex;
@@ -29,73 +40,120 @@
 		}
 	}
 
-	.home-hero {
-		max-width: $inner-wide-breakpoint;
-		padding-block: 48px;
+	.home-content {
+		max-width: calc($inner-wide-breakpoint + 400px);
+		padding-inline: 48px;
 		margin: auto;
-		display: flex;
-		gap: rem(72px);
-		align-items: center;
-		justify-content: space-between;
+		display: grid;
+		gap: 48px;
+		grid-template-areas:
+			'text img'
+			'resumes img';
 
-		.content {
+		.home-text {
+			grid-area: text;
+			padding-block-start: 48px;
+
 			h1 {
 				line-height: 1;
 				font-weight: 800;
-				font-size: rem(60px);
+				font-size: rem(36px);
 				margin-bottom: 16px;
 				color: $primary-color;
-			}
 
-			h3 {
-				font-size: rem(22px);
-			}
-		}
-
-		.hero-img {
-			width: 30%;
-
-			img {
-				width: 100%;
-			}
-		}
-	}
-
-	.resume-list-container {
-		max-width: $inner-wide-breakpoint;
-		margin: auto;
-
-		.resume-list-header {
-			h2 {
-				font-weight: 700;
-				font-size: rem(36px);
-				margin-bottom: 12px;
+				span {
+					font-size: rem(60px);
+				}
 			}
 
 			p {
-				font-size: rem(18px);
-				margin-bottom: 24px;
+				font-size: rem(24px);
+			}
+
+		}
+
+		.home-hero {
+			grid-area: img;
+			padding-block: 48px;
+			margin: auto;
+			display: flex;
+			gap: rem(72px);
+			align-items: center;
+			justify-content: space-between;
+
+
+
+			.hero-img {
+
+				img {
+					width: 100%;
+				}
 			}
 		}
 
-		.resume-list {
-			display: flex;
-			gap: 12px;
-			flex-direction: column;
+		.resume-list-container {
+			grid-area: resumes;
+			flex-basis: 50%;
 
-			.resume-preview-add,
-			.resume-preview {
-				a {
-					display: flex;
-					align-items: center;
-					border-radius: 1em;
-					height: 80px;
-					padding-inline: 24px;
+			.resume-list-header {
 
-					.resume-info {
+				h2 {
+					font-weight: 700;
+					font-size: rem(36px);
+					margin-bottom: 12px;
+				}
+
+				p {
+					font-size: rem(18px);
+					margin-bottom: 24px;
+				}
+			}
+
+			.resume-list {
+				display: flex;
+				gap: 24px;
+				flex-direction: column;
+
+				.resume-preview-add,
+				.resume-preview {
+					a {
 						display: flex;
-						gap: 12px;
 						align-items: center;
+						border-radius: 1em;
+						height: 80px;
+						padding-inline: 24px;
+
+						.resume-info {
+							display: flex;
+							gap: 12px;
+							align-items: center;
+
+							.resume-title {
+								font-size: rem(24px);
+								font-weight: 600;
+								color: $txt-color;
+							}
+						}
+					}
+				}
+
+				.resume-preview {
+					a {
+						padding-inline: 48px;
+						background-image: linear-gradient(to right, $primary-color, $secondary-color);
+						transition: .4s ease-in-out;
+					}
+
+					@include hover {
+						a {
+							background-image: linear-gradient(to right, lighten($primary-color, 4%), lighten($secondary-color, 4%));
+						}
+					}
+				}
+
+				.resume-preview-add {
+					a {
+						border: 1px dashed lighten($secondary-color, 50%);
 
 						.resume-icon {
 							svg {
@@ -105,29 +163,98 @@
 							}
 						}
 
-						.resume-title {
-							font-size: rem(24px);
-							font-weight: 600;
-							color: $primary-color;
+						.resume-info {
+							.resume-title {
+								color: $primary-color;
+							}
 						}
+					}
+
+					@include hover {
+						opacity: .8;
 					}
 				}
 			}
+		}
 
-			.resume-preview {
-				a {
-					padding-inline: 48px;
+	}
 
-					background-color: white;
-					box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-				}
+	@include for-middle-layout {
+		.home-content {
+			padding-inline: $desktop-padding;
+			row-gap: 24px;
+			grid-template-areas:
+				'text img'
+				'resumes resumes';
+
+			.home-text {
+				align-self: center;
 			}
 
-			.resume-preview-add {
-				a {
-					border: 1px dashed lighten($secondary-color, 50%);
+			.home-hero {
+				padding-block-start: 24px;
+				padding-block-end: 0;
+
+				.hero-img {
+					img {
+						width: 90%;
+					}
+
 				}
 			}
 		}
 	}
+
+	@include for-narrow-layout {
+		.home-content {
+			padding-bottom: 48px;
+			grid-template-areas:
+				'img'
+				'text'
+				'resumes';
+
+			.home-text {
+				text-align: center;
+				padding-top: 0;
+			}
+
+			.home-hero {
+				.hero-img {
+					display: flex;
+					justify-content: center;
+				}
+			}
+
+		}
+	}
+
+	@include for-mobile-layout {
+		.home-content {
+			.home-text {
+				h1 {
+					font-size: rem(26px);
+
+					span {
+
+						font-size: rem(38px);
+					}
+				}
+
+				p{
+					font-size: rem(18px);
+
+				}
+			}
+
+			.resume-list-container{
+				.resume-list-header{
+					h2{
+						font-size: rem(26px);
+					}
+				}
+			}
+		}
+	}
+
+
 }

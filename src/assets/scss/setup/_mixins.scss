@@ -12,21 +12,32 @@
 	}
 }
 
+@mixin for-middle-layout {
+	@media (max-width: calc($middle-breakpoint + 40px)) {
+		@content;
+	}
+}
+
 @mixin for-normal-layout {
 	@media (max-width: calc($normal-breakpoint + 40px)) {
 		@content;
 	}
 }
 
+@mixin for-wide-layout {
+	@media (max-width: calc($wide-breakpoint + 40px)) {
+		@content;
+	}
+}
+
+
 @mixin btn($color1, $color2) {
 	background-image: linear-gradient(to right, $color1, $color2);
 
 	@include hover {
-		background-image: linear-gradient(
-			to right,
-			lighten($color1, 8%),
-			lighten($color2, 8%)
-		);
+		background-image: linear-gradient(to right,
+				lighten($color1, 8%),
+				lighten($color2, 8%));
 	}
 }
 

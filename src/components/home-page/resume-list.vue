@@ -1,11 +1,8 @@
 <template>
 	<section class="resume-list-container">
+		
 		<div class="resume-list-header">
-			<h2>Resumes</h2>
-			<p>
-				Your first resume - 100% free, forever, all features, unlimited
-				downloads, yes really.
-			</p>
+			<h2>My resumes</h2>
 		</div>
 		<div class="resume-list">
 			<div class="resume-preview-add">

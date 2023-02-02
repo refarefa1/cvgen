@@ -2,7 +2,7 @@
 	<header class="home-header">
 		<div class="header-wrapper">
 			<div class="logo">
-				<h1>FlowCV</h1>
+				<h1 class="logo-title">CVGen</h1>
 			</div>
 
 			<div class="login">

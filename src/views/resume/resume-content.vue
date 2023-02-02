@@ -26,11 +26,9 @@ import { useFileStore } from '../../store/file.store'
 
 export default {
     name: 'resume-content',
-
     mounted() {
         this.components = this.resume.components
     },
-
     data() {
         return {
             userStore: useUserStore(),
@@ -77,7 +75,6 @@ export default {
         resume() { return this.resumeStore.resumeToEdit },
         user() { return this.userStore.loggedinUser }
     },
-
     components: {
         resumePersonal,
         resumeEducation,

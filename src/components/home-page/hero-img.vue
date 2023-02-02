@@ -1,11 +1,5 @@
 <template>
 	<section class="home-hero">
-		<div class="content">
-			<h1>Let's boost your career</h1>
-			<h3>
-				Showcase your skills and talents. Make a great first impression.
-			</h3>
-		</div>
 		<div class="hero-img">
 			<img src="src/assets/images/hero.jpg" alt="">
 		</div>
