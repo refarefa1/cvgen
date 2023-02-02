@@ -14,7 +14,7 @@ export default {
 		}
 	},
 	created() {
-		this.userStore.loadUser()
+		this.userStore.query()
 	},
 	components: {
 		userMsg

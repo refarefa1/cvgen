@@ -20,6 +20,8 @@ export interface Resume {
 	_id?: string
 	name: string
 	components: string[]
+
+	
 	personal?: Personal
 	education?: Education[]
 	[index: string]: any

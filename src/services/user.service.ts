@@ -1,25 +1,26 @@
-import { Resume } from "../interfaces/resume-interface"
 import User from "../interfaces/user.interface"
 import { storageService } from "./storage.service"
 import { utilService } from "./util.service"
 
 const USER_KEY = 'loggedinUser'
 
-function query() {
+async function query() {
+    // TODO : GET REQUEST FOR /api/user/
     const user = _getUser()
     return user
 }
 
 async function save(user: User) {
+    // TODO : POST REQUEST FOR /api/user/
     storageService.saveToStorage(USER_KEY, user)
 }
 
-function getEmptyResume(): Resume {
-    const resume: Resume = {
-        name: 'Resume 2',
-        components: ['resume-personal']
+function getEmptyUser() {
+    const user: User = {
+        _id: utilService.makeId(),
+        name: 'Guest'
     }
-    return resume
+    return user
 }
 
 function _getUser() {
@@ -32,7 +33,7 @@ function _getUser() {
             {
                 _id: 'r101',
                 name: 'Test resume',
-                components: ['resume-personal', 'resume-education','resume-profile'],
+                components: ['resume-personal', 'resume-education', 'resume-profile'],
                 personal: {
                     fullName: 'Refael Abramov',
                     jobTitle: 'Fullstack Developer',
@@ -59,8 +60,8 @@ function _getUser() {
                         description: 'blabalblaalblalbalblalblalblasdfgsdfgsdfgblalbla'
                     },
                 ],
-                profile:{
-                    about:`A junior full stack developer with a strong background in graphic design and exceptional computer skills developed from years of experience`
+                profile: {
+                    about: `A junior full stack developer with a strong background in graphic design and exceptional computer skills developed from years of experience`
                 }
             }
         ]
@@ -72,5 +73,5 @@ function _getUser() {
 export const userService = {
     query,
     save,
-    getEmptyResume
+    getEmptyUser
 }

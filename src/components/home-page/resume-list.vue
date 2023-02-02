@@ -29,7 +29,7 @@
 
 <script lang="ts">
 import { PropType } from 'vue';
-import { User } from '../../interfaces/user.interface';
+import User from '../../interfaces/user.interface';
 
 export default {
 	props: {
