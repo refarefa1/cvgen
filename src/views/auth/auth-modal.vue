@@ -2,6 +2,7 @@
 	<div class="custom-modal">
 		<div class="modal-overlay" @click="$router.push('/')" />
 		<div class="modal-content" role="dialog">
+			<span @click="$router.push('/')" class="close-modal-btn"><v-icon name="fa-window-close"></v-icon></span>
 			<component :user="user" :is="component" />
 		</div>
 	</div>

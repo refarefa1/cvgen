@@ -20,6 +20,10 @@
 		margin: auto;
 		background-color: #fff;
 		border-radius: $modal-border-radius;
+
+		.close-modal-btn {
+			display: none;
+		}
 	}
 
 	.fade-enter-active,
@@ -42,5 +46,28 @@
 	.pop-leave-to {
 		opacity: 0;
 		transform: scale(0.3);
+	}
+
+	@include for-narrow-layout {
+		.modal-content {
+			position: fixed;
+			margin: 0;
+			width: 100%;
+			border-radius: 0;
+			height: 100%;
+			top: 0;
+
+			.close-modal-btn {
+				display: block;
+				position: absolute;
+				top: 30px;
+				right: 30px;
+				cursor: pointer;
+
+				svg {
+					scale: 2.5;
+				}
+			}
+		}
 	}
 }

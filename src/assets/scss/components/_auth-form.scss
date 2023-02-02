@@ -118,4 +118,39 @@
 		color: $txt-color;
 		@include btn($brand-color, $secondary-brand-color);
 	}
+
+
+	@include for-narrow-layout {
+		box-shadow: none;
+
+		.password-container {
+			position: relative;
+			width: 100%;
+
+			.form-floating {
+				flex-grow: 1;
+
+				.form-control {
+					width: 100%;
+				}
+			}
+
+			.password-reveal {
+				position: absolute;
+				right: 0px;
+				top: 28px;
+			}
+		}
+
+	}
+
+	@include for-mobile-layout{
+		width: 90%;
+		padding: 0;
+
+		.form-submit{
+			margin: 0;
+			width: 100%;
+		}
+	}
 }
