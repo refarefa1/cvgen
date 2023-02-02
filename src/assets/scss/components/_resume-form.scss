@@ -1,17 +1,16 @@
 .resume-builder {
-    min-width: 550px;
     flex-basis: 50%;
     z-index: 10;
+    background-color: white;
+    padding: 48px;
 
     .resume-header {
         display: flex;
         align-items: center;
-        justify-content: space-between;
         background-color: white;
-        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
         border-radius: 1em;
-        padding-inline: 48px;
         height: 80px;
+        gap: 48px;
 
         >* {
             cursor: pointer;
@@ -57,8 +56,6 @@
     }
 
     .resume-form {
-        background-color: white;
-        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
         border-radius: 1em;
         margin-block: 24px;
         overflow: hidden;
@@ -72,8 +69,9 @@
             align-items: center;
             height: 80px;
             pointer-events: auto;
-            padding-inline: 24px;
+            padding-inline: 48px;
             cursor: pointer;
+            background-color: $input-color;
 
             h1 {
                 font-size: rem(24px);
@@ -89,7 +87,7 @@
         }
 
         .resume-personal {
-            padding-inline: 24px;
+            padding-inline: 48px;
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 24px;
@@ -106,7 +104,7 @@
                 }
 
                 input {
-                    background-color: darken(white, 6%);
+                    background-color: $input-color;
                     height: 50px;
                     border: none;
 
@@ -141,11 +139,11 @@
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    top: 36px;
-                    background-color: darken(white, 6%);
-                    height: 124px;
+                    top: 75%;
+                    transform: translateY(-75%);
+                    background-color: $input-color;
                     aspect-ratio: 1 / 1;
-                    border-radius: 5em;
+                    border-radius: 10em;
 
                     span {
                         position: absolute;
@@ -160,8 +158,7 @@
                     }
 
                     input {
-                        height: 124px;
-                        border-radius: 5em;
+                        border-radius: 10em;
                         opacity: 0;
                     }
                 }
@@ -174,7 +171,7 @@
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 24px;
-            padding-inline: 24px;
+            padding-inline: 48px;
 
             .resume-input {
                 label {
@@ -182,7 +179,7 @@
                 }
 
                 input {
-                    background-color: darken(white, 6%);
+                    background-color: $input-color;
                     height: 50px;
                     border: none;
 
@@ -197,7 +194,7 @@
 
                     textarea {
                         border: none;
-                        background-color: darken(white, 6%);
+                        background-color: $input-color;
                         resize: none;
 
                         &:focus {
@@ -210,7 +207,7 @@
         }
 
         .resume-profile {
-            padding-inline: 24px;
+            padding-inline: 48px;
 
             .resume-input {
                 &.resume-textarea {
@@ -221,7 +218,7 @@
 
                     textarea {
                         border: none;
-                        background-color: darken(white, 6%);
+                        background-color: $input-color;
                         resize: none;
 
                         &:focus {
@@ -239,7 +236,7 @@
                 flex-direction: column;
 
                 &:first-child {
-                    border-top: 5px solid darken(white, 6%);
+                    border-top: 5px solid $input-color;
                 }
 
                 .resume-cmp-preview {
@@ -247,9 +244,10 @@
                     display: flex;
                     align-items: center;
                     height: 70px;
-                    border-bottom: 5px solid darken(white, 6%);
+
+                    border-bottom: 5px solid $input-color;
                     gap: 12px;
-                    padding-inline: 24px;
+                    padding-inline: 48px;
 
                     h3 {
                         font-size: rem(16px);
@@ -261,7 +259,7 @@
                     }
 
                     &:hover {
-                        background-color: darken(white, 3%);
+                        background-color: $input-color;
                     }
                 }
 
@@ -297,6 +295,8 @@
 
             .resume-title {
                 pointer-events: none;
+                background-color: transparent;
+
 
                 span {
                     svg {
@@ -312,7 +312,6 @@
         align-items: center;
         flex-direction: row-reverse;
         background-color: white;
-        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
         border-radius: 1em;
         height: 80px;
         padding-inline: 48px;

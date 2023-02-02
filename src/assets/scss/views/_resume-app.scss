@@ -1,18 +1,39 @@
 .resume-app-container {
-    padding-block-start: 48px;
     display: flex;
-    gap: 24px;
     justify-content: space-between;
-    max-width: $normal-breakpoint;
-    margin: auto;
-    padding-inline: $desktop-padding;
+    height: 100vh;
+    overflow: hidden;
 
-    .a4-resume {
-        background-color: white;
-        aspect-ratio: 1 / 1.414;
+    .a4-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         flex-basis: 50%;
-        height: fit-content;
-        position: relative;
+        height: 100%;
+        background-color: #656e83;
+        padding: -5vw;
+
+
+        .a4-resume {
+            background-color: white;
+            aspect-ratio: 1 / 1.414;
+            height: 42vw;
+            position: relative;
+        }
+
+        .actions {
+            padding-top: 12px;
+
+            .download-btn {
+                background-color: white;
+                border-radius: 6px;
+                color: $primary-color;
+                height: 50px;
+                width: 150px;
+                font-weight: 800;
+            }
+        }
     }
 
 }

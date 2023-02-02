@@ -2,7 +2,7 @@
     <header class="resume-header">
         <div class="logo">
             <router-link to="/">
-                <h1>FlowCV</h1>
+                <h1>CVGen</h1>
             </router-link>
         </div>
         <div class="content">
@@ -18,12 +18,7 @@
             </router-link>
 
         </div>
-        <div @click="downloadResume" class="download">
-            <div class="download-wrapper">
-                <span><v-icon name="bi-download"></v-icon></span>
-                <p>Download</p>
-            </div>
-        </div>
+        
     </header>
 </template>
 
@@ -31,9 +26,6 @@
 export default {
     name: 'resume-header',
     methods: {
-        downloadResume() {
-            this.$emit('download')
-        },
         goTo(newPath: string) {
             const id: string | string[] | undefined = this.$route.params.id
             this.$router.push(`${newPath + id}`)

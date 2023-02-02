@@ -5,8 +5,13 @@
             <router-view />
         </div>
 
-        <div class="a4-resume" format="A4">
-            <component is="template-no1" :resume="resume"></component>
+        <div class="a4-container">
+            <div class="a4-resume" format="A4">
+                <component is="template-no1" :resume="resume"></component>
+            </div>
+            <div class="actions">
+                <button @click="download" class="download-btn">Download PDF</button>
+            </div>
         </div>
     </section>
 </template>
@@ -17,6 +22,7 @@ import resumeHeader from '../../components/resume/resume-header.vue'
 import templateNo1 from '../../components/templates/template-no1.vue'
 import { useUserStore } from '../../store/user.store'
 import { useResumeStore } from '../../store/resume.store'
+import { useFileStore } from '../../store/file.store'
 
 export default {
     name: 'resume-app',
@@ -27,7 +33,8 @@ export default {
     data() {
         return {
             userStore: useUserStore(),
-            resumeStore: useResumeStore()
+            resumeStore: useResumeStore(),
+            fileStore: useFileStore()
         }
     },
     computed: {
@@ -38,6 +45,12 @@ export default {
             return this.resumeStore.resumeToEdit
         },
 
+    },
+    methods: {
+        download() {
+            const elResume: HTMLElement | null = document.querySelector('.a4-resume');
+            if (elResume) this.fileStore.download(elResume)
+        },
     },
     components: {
         resumeForm,
