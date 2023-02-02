@@ -2,21 +2,16 @@
 
     <section class="add-section">
 
-        <div class="add-sect-cta">
-            <button @click="isOpen = true" class="add-sect-btn">
-                <span><v-icon name="io-add-circle"></v-icon></span>
-                <p>Add Content</p>
+        <div v-if="componentsToAdd.length" class="add-sect-cta">
+            <button @click="isOpen = !isOpen" class="add-sect-btn">
+                <span v-if="!isOpen"><v-icon name="io-add-circle"></v-icon></span>
+                <p>{{ isOpen?'Cancel': 'Add Content' }}</p>
             </button>
         </div>
 
 
         <div v-if="isOpen" class="modal-container">
             <div class="add-sect-modal">
-                <div class="add-modal-header">
-                    <h1>Add Content</h1>
-                    <span @click="isOpen = false"><v-icon name="fa-window-close"></v-icon></span>
-                </div>
-
                 <ul class="modal-content-list">
                     <li @click="addComponent(component.type)" v-for="component in componentsToAdd" :key="component.type"
                         class="modal-content-preview">
@@ -30,7 +25,6 @@
                     </li>
                 </ul>
             </div>
-            <div @click="isOpen = false" class="black-screen" />
         </div>
     </section>
 

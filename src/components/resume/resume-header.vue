@@ -1,10 +1,5 @@
 <template>
     <header class="resume-header">
-        <div class="logo">
-            <router-link to="/">
-                <h1>CVGen</h1>
-            </router-link>
-        </div>
         <div class="content">
             <router-link :to="'/resume/content/' + $route.params.id">
                 <span><v-icon name="bi-file-text"></v-icon></span>
@@ -18,7 +13,7 @@
             </router-link>
 
         </div>
-        
+
     </header>
 </template>
 

@@ -78,7 +78,6 @@ export default {
     },
     methods: {
         setTransform() {
-            if (window.innerWidth > 1480) return
             const width = document.querySelector('.a4-resume')!.clientWidth
             const scale = width / this.originalWidth;
             (this.$refs.template as HTMLElement).style.transform = `scale(${scale})`;
