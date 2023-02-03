@@ -12,7 +12,7 @@ async function login(credentials: Credentials) {
 
 async function signup(credentials: Credentials) {
     try {
-        const res = _signup(credentials)
+        const res = await _signup(credentials)
         return res
     } catch (err: any) {
         console.log(err);

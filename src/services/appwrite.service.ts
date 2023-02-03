@@ -20,16 +20,16 @@ client
 
 const account = new Account(client)
 
-export async function _signup(credentials: Credentials) {
-    credentials.username = ''
-    try {
-        const user = await account.create(ID.unique(), credentials.email, credentials.password, credentials.username)
-        const session = await account.createEmailSession(credentials.email, credentials.password)
-        console.log("🚀 ~ file: appwrite.service.ts:28 ~ signup ~ session", session)
-    } catch (err) {
-        console.log(err)
-    }
-}
+// export async function _signup(credentials: Credentials) {
+//     credentials.username = ''
+//     try {
+//         const user = await account.create(ID.unique(), credentials.email, credentials.password, credentials.username)
+//         const session = await account.createEmailSession(credentials.email, credentials.password)
+//         return session
+//     } catch (err) {
+//         console.log(err)
+//     }
+// }
 
 export async function isLoggedIn() {
     try {
@@ -42,3 +42,18 @@ export async function isLoggedIn() {
     }    
 }
 
+export async function _signup(credentials: Credentials) {
+    credentials.username = ''
+    try {
+        const res = axios.post('http://localhost:3000/api/user/signup', {credentials})
+        console.log("🚀 ~ file: appwrite.service.ts:49 ~ _signup ~ res", res)
+        // const user = await account.create(ID.unique(), credentials.email, credentials.password, credentials.username)
+        // const session = await account.createEmailSession(credentials.email, credentials.password)
+        return res
+    } catch (err) {
+        console.log(err)
+    }
+}
+
+//@ts-ignore
+window._signup = _signup

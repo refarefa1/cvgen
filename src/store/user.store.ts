@@ -36,7 +36,15 @@ export const useUserStore = defineStore('userStore', {
             /* TODO: Call authService.signup(credentials)
             Gets hard coded user for now and saves to state */
             try {
-                return await authService.signup(credentials)
+                const session = await authService.signup(credentials)           
+                //@ts-ignore
+                // this.commit(s => {
+                //     return {
+                //         ...s,
+                //         user: session
+                //     }
+                // })
+                return session
             } catch (err: any) {
                 console.log('There was an error when signing up, please try again', err);
                 throw new Error(err);
