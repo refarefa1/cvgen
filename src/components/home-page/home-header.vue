@@ -15,8 +15,10 @@
 </template>
 
 <script lang="ts">
+import { log } from 'console';
 import { PropType } from 'vue';
 import User from '../../interfaces/user.interface';
+import { signup, isLoggedIn } from '../../services/appwrite.service';
 import customModal from '../../views/auth/auth-modal.vue';
 
 export default {

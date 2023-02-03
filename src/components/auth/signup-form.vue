@@ -49,6 +49,8 @@
 
 <script lang="ts">
 import { CFormFloating, CFormInput, CFormLabel } from '@coreui/vue';
+import { log } from 'console';
+import { useUserStore } from '../../store/user.store';
 
 export default {
 	name: 'signUpForm',
@@ -64,12 +66,20 @@ export default {
 			credentials: {
 				email: '',
 				password: ''
-			}
+			},
+			userStore: useUserStore()
 		}
 	},
 	methods: {
-		signup() {
-			// TODO: Call userStore.signup(this.credentials)
+		async signup() {
+			try {
+				const res = await this.userStore.signup(this.credentials)
+				console.log(res);
+			} catch (err) {
+				// Avishai: Set user msg here
+				console.log(err);
+				
+			}
 		}
 	}
 }

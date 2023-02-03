@@ -1,7 +1,9 @@
 import { defineStore } from "pinia"
 import User from "../interfaces/user.interface"
+import { authService } from "../services/auth.service"
 import { userService } from "../services/user.service"
 
+//Avishai: Move to interfaces
 type Credentials = {
     email: string
     password: string
@@ -33,6 +35,13 @@ export const useUserStore = defineStore('userStore', {
         async signup(credentials: Credentials) {
             /* TODO: Call authService.signup(credentials)
             Gets hard coded user for now and saves to state */
+            try {
+                return await authService.signup(credentials)
+            } catch (err: any) {
+                console.log('There was an error when signing up, please try again', err);
+                throw new Error(err);
+            }
+            
         },
         async reset(email: keyof Credentials) {
             //  TODO: Call authService.reset(credentials)

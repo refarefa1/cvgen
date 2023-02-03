@@ -1,3 +1,4 @@
+import { _signup } from "./appwrite.service"
 
 type Credentials = {
     email: string
@@ -10,8 +11,13 @@ async function login(credentials: Credentials) {
 }
 
 async function signup(credentials: Credentials) {
-    // TODO : POST REQUEST FOR /api/signup/
-    // For now it can be just hard coded user with _id and the credentials they sent
+    try {
+        const res = _signup(credentials)
+        return res
+    } catch (err: any) {
+        console.log(err);
+        throw new Error(err);
+    }
 }
 
 async function reset(email: keyof Credentials) {
