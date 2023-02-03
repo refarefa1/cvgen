@@ -46,3 +46,7 @@ button {
 	background-color: $brand-color;
 	color: white;
 }
+
+::-webkit-scrollbar {
+	display: none;
+}

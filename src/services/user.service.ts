@@ -44,7 +44,7 @@ function _getUser() {
             {
                 _id: 'r101',
                 name: 'Test resume',
-                components: ['resume-personal', 'resume-profile', 'resume-education', 'resume-experience'],
+                components: ['resume-personal', 'resume-profile', 'resume-education', 'resume-experience','resume-skills'],
                 personal: {
                     fullName: 'Refael Abramov',
                     jobTitle: 'Fullstack Developer',
@@ -63,7 +63,7 @@ function _getUser() {
                         school: 'Coding Academy',
                         city: 'Ramat Gan',
                         country: 'Israel',
-                        description: 'blabalblaalblalbalblasdalblalblablalbla'
+                        description: 'Fullstack Development , Web developer'
                     },
                     {
                         _id: utilService.makeId(),
@@ -71,7 +71,7 @@ function _getUser() {
                         school: 'HackerU',
                         city: 'Tel Aviv',
                         country: 'Israel',
-                        description: 'blabalblaalblalbalblalblalblasdfgsdfgsdfgblalbla'
+                        description: 'Graphic design with UX / UI'
                     },
                 ],
                 experience: [
@@ -95,6 +95,33 @@ function _getUser() {
                     },
 
                 ],
+                skills: [
+                    {
+                        _id: utilService.makeId(),
+                        name: 'React',
+                        level: 3
+                    },
+                    {
+                        _id: utilService.makeId(),
+                        name: 'Vue3',
+                        level: 5
+                    },
+                    {
+                        _id: utilService.makeId(),
+                        name: 'Angular',
+                        level: 2
+                    },
+                    {
+                        _id: utilService.makeId(),
+                        name: 'NodeJS',
+                        level: 4
+                    },
+                    {
+                        _id: utilService.makeId(),
+                        name: 'Express',
+                        level: 1
+                    },
+                ]
 
             }
         ]

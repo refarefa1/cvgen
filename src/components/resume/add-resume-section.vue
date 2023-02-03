@@ -48,6 +48,7 @@ export default {
                 { type: 'resume-profile', name: 'Profile', icon: 'ri-profile-line', description: 'Make a great first impression by presenting yourself in a few sentences.' },
                 { type: 'resume-education', name: 'Education', icon: 'co-education', description: 'Show off your primary education, college degrees & exchange semesters.' },
                 { type: 'resume-experience', name: 'Experience', icon: 'la-suitcase-solid', description: 'A place to highlight your professional experience - including internships.' },
+                { type: 'resume-skills', name: 'Skills', icon: 'gi-skills', description: 'List your technical, managerial or soft skills in this section.' },
             ]
         }
     },

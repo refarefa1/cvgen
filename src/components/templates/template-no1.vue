@@ -55,22 +55,36 @@
         <div v-if="resume?.experience?.length" class="experience-info">
             <div class="title">
                 <h1>Experience</h1>
-                <ul class="experience-list">
-                    <li v-for="ex in resume?.experience" :key="ex._id" class="experience-preview">
-                        <div class="experience-job">
-                            <h2>{{ ex.employer }}<span v-if="ex.jobTitle">,</span></h2>
-                            <h3>{{ ex.jobTitle }}</h3>
-                        </div>
-                        <div class="experience-location">
-                            <h2>{{ ex.city }}<span v-if="ex.country">,</span></h2>
-                            <h3>{{ ex.country }}</h3>
-                        </div>
-                        <div class="experience-date">
-                            <p>
-                                <span v-if="ex.startDate !== 0">{{ format(ex.startDate) }}</span>
-                                <span v-if="ex.startDate !== 0 && ex.endDate !== 0"> - </span>
-                                <span v-if="ex.endDate !== 0">{{ format(ex.endDate) }}</span>
-                            </p>
+            </div>
+            <ul class="experience-list">
+                <li v-for="ex in resume?.experience" :key="ex._id" class="experience-preview">
+                    <div class="experience-job">
+                        <h2>{{ ex.employer }}<span v-if="ex.jobTitle">,</span></h2>
+                        <h3>{{ ex.jobTitle }}</h3>
+                    </div>
+                    <div class="experience-location">
+                        <h2>{{ ex.city }}<span v-if="ex.country">,</span></h2>
+                        <h3>{{ ex.country }}</h3>
+                    </div>
+                    <div class="experience-date">
+                        <p>
+                            <span v-if="ex.startDate !== 0">{{ format(ex.startDate) }}</span>
+                            <span v-if="ex.startDate !== 0 && ex.endDate !== 0"> - </span>
+                            <span v-if="ex.endDate !== 0">{{ format(ex.endDate) }}</span>
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div v-if="resume?.skills?.length" class="skills-info">
+            <div class="title">
+                <h1>Skills</h1>
+                <ul class="skill-list">
+                    <li v-for="skill in resume?.skills" :key="skill._id" class="skill-preview">
+                        <h2>{{ skill.name }}</h2>
+                        <div class="indication">
+                            <div v-for="i in 5" :key="i" class="level-indication"
+                                :class="{ 'active': skill.level >= i }" />
                         </div>
                     </li>
                 </ul>

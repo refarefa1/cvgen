@@ -15,14 +15,16 @@ import resumePersonal from '../../components/resume/resume-personal.vue'
 import resumeEducation from '../../components/resume/resume-education.vue'
 import resumeExperience from '../../components/resume/resume-experience.vue'
 import resumeProfile from '../../components/resume/resume-profile.vue'
+import resumeSkills from '../../components/resume/resume-skills.vue'
 
 import resumeHeader from '../../components/resume/resume-header.vue'
 import resumeFooter from '../../components/resume/resume-footer.vue'
 import addResumeSection from '../../components/resume/add-resume-section.vue'
+
 import { useUserStore } from '../../store/user.store'
-import { eventBus } from '../../services/event.bus.service'
 import { useResumeStore } from '../../store/resume.store'
 import { useFileStore } from '../../store/file.store'
+import { eventBus } from '../../services/event.bus.service'
 
 export default {
     name: 'resume-content',
@@ -69,7 +71,6 @@ export default {
         add(cmp: string) {
             this.resumeStore.add(cmp)
         }
-
     },
     computed: {
         resume() { return this.resumeStore.resumeToEdit },
@@ -80,6 +81,7 @@ export default {
         resumeEducation,
         resumeExperience,
         resumeProfile,
+        resumeSkills,
         resumeHeader,
         resumeFooter,
         addResumeSection

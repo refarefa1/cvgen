@@ -1,3 +1,9 @@
+export interface Skill {
+	_id: string
+	name: string
+	level: number
+}
+
 export interface Experience {
 	_id: string
 	employer: string
@@ -34,5 +40,6 @@ export interface Resume {
 	personal?: Personal
 	education?: Education[]
 	experience?: Experience[]
+	skills?: Skill[]
 	[index: string]: any
 }
