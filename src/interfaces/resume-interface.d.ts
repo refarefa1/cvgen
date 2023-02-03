@@ -1,3 +1,14 @@
+export interface Experience {
+	_id: string
+	employer: string
+	jobTitle: string
+	city: string
+	country: string
+	startDate: number
+	endDate: number
+	[index: string]: any
+}
+
 export interface Education {
 	_id: string
 	degree: string
@@ -20,9 +31,8 @@ export interface Resume {
 	_id?: string
 	name: string
 	components: string[]
-
-	
 	personal?: Personal
 	education?: Education[]
+	experience?: Experience[]
 	[index: string]: any
 }

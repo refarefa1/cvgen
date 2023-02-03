@@ -53,7 +53,36 @@
             }
         }
 
+        .download {
+            display: flex;
+            align-items: center;
+            background-image: linear-gradient(to right, $link-color, darken($link-color, 6%));
+            height: 100%;
+            padding-inline: 10px;
+            cursor: pointer;
 
+            .download-btn {
+                display: flex;
+                gap: 8px;
+                align-items: center;
+
+                p {
+                    color: $txt-color;
+                    font-weight: 800;
+                    padding-inline-end: 6px;
+                }
+
+                span {
+                    svg {
+                        fill: $txt-color;
+                    }
+                }
+            }
+
+            @include hover {
+                box-shadow: 3px 3px white, 5px 5px $link-color;
+            }
+        }
 
     }
 
@@ -187,6 +216,7 @@
                     background-color: $input-color;
                     height: 50px;
                     border: none;
+                    border-radius: 0;
 
                     &:focus {
                         box-shadow: none;
@@ -210,6 +240,86 @@
                 }
 
             }
+        }
+
+        .resume-experience {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            padding-inline: 48px;
+
+            .resume-input {
+                label {
+                    font-weight: 600;
+                }
+
+                input {
+                    background-color: $input-color;
+                    height: 50px;
+                    border: none;
+                    border-radius: 0;
+
+                    &:focus {
+                        box-shadow: none;
+                    }
+
+                }
+
+                &.date-input {
+                    label {
+                        margin-bottom: 0.5rem;
+                    }
+
+                    .vuejs3-datepicker {
+                        width: 100%;
+
+                        div {
+                            #calendar-div {
+                                .vuejs3-datepicker__value {
+                                    padding: 0px;
+                                    height: 50px;
+                                    width: 100%;
+                                    border: none;
+                                    border-radius: 0px;
+                                    background-color: $input-color;
+                                    display: flex;
+                                    align-items: center;
+                                    padding-inline-start: 18px;
+                                }
+                            }
+                        }
+
+                        .vuejs3-datepicker__calendar {
+                            .vuejs3-datepicker__calendar-topbar {
+                                background-color: $link-color;
+                            }
+
+                            .vuejs3-datepicker__calendar-actionarea {
+                                div {
+                                    .cell {
+                                        &.selected {
+                                            background-color: $link-color;
+                                        }
+                                    }
+                                }
+
+                                span {
+                                    &.cell {
+                                        &.selected {
+                                            background-color: $link-color;
+                                        }
+
+                                        @include hover{
+                                            border: 1px solid $link-color;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
         }
 
         .resume-profile {

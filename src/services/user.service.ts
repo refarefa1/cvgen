@@ -44,7 +44,7 @@ function _getUser() {
             {
                 _id: 'r101',
                 name: 'Test resume',
-                components: ['resume-personal', 'resume-education', 'resume-profile'],
+                components: ['resume-personal', 'resume-profile', 'resume-education', 'resume-experience'],
                 personal: {
                     fullName: 'Refael Abramov',
                     jobTitle: 'Fullstack Developer',
@@ -52,6 +52,9 @@ function _getUser() {
                     phone: '0538207782',
                     address: 'Givolim 10, Tel Aviv, Israel',
                     imgUrl: 'https://media.licdn.com/dms/image/D4D03AQH1cEZGoS_Khw/profile-displayphoto-shrink_200_200/0/1665660743445?e=1680739200&v=beta&t=yI2mYyIHk0uUcl0fu7u9Z2D7NZmENSjS3IA42Hqmp_c',
+                },
+                profile: {
+                    about: `A junior full stack developer with a strong background in graphic design and exceptional computer skills developed from years of experience`
                 },
                 education: [
                     {
@@ -71,9 +74,28 @@ function _getUser() {
                         description: 'blabalblaalblalbalblalblalblasdfgsdfgsdfgblalbla'
                     },
                 ],
-                profile: {
-                    about: `A junior full stack developer with a strong background in graphic design and exceptional computer skills developed from years of experience`
-                }
+                experience: [
+                    {
+                        _id: utilService.makeId(),
+                        employer: 'Bulldozer LTD',
+                        jobTitle: 'Graphic Designer',
+                        city: 'Ashdot Yaakov',
+                        country: 'Israel',
+                        startDate: 1644689492000,
+                        endDate: 1662401492000
+                    },
+                    {
+                        _id: utilService.makeId(),
+                        employer: 'Kwix LTD',
+                        jobTitle: 'Graphic Designer',
+                        city: 'Yavne',
+                        country: 'Israel',
+                        startDate: 1601748692000,
+                        endDate: 1634494292000
+                    },
+
+                ],
+
             }
         ]
     }

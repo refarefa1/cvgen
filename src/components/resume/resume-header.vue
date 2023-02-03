@@ -12,9 +12,9 @@
                 </router-link>
             </div>
         </nav>
-        <div class="download">
+        <div @click="download" class="download">
             <button class="download-btn">
-                <span><v-icon name="bi-download"></v-icon></span>
+                <span><v-icon name="md-filedownload"></v-icon></span>
                 <p>Download</p>
             </button>
         </div>
@@ -24,10 +24,14 @@
 <script lang="ts">
 export default {
     name: 'resume-header',
+    emits: ['download'],
     methods: {
         goTo(newPath: string) {
             const id: string | string[] | undefined = this.$route.params.id
             this.$router.push(`${newPath + id}`)
+        },
+        download() {
+            this.$emit('download')
         }
     }
 }

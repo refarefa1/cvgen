@@ -1,8 +1,6 @@
-import { defineStore, Store } from "pinia"
+import { defineStore } from "pinia"
 import { Resume } from "../interfaces/resume-interface"
 import { resumeService } from "../services/resume.service"
-import { userService } from "../services/user.service"
-import { utilService } from "../services/util.service"
 import { useUserStore } from "./user.store"
 
 type Payload = {
@@ -51,6 +49,8 @@ export const useResumeStore = defineStore('resumeStore', {
                     this.$state.resume = { ...this.$state.resume, personal: { ...val } }
                     break
                 case 'education': this.format(payload)
+                    break
+                case 'experience': this.format(payload)
                     break
                 case 'profile':
                     this.$state.resume = { ...this.$state.resume, profile: { ...val } }

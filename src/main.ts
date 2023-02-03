@@ -6,8 +6,8 @@ import router from './router'
 import App from './App.vue'
 
 import { OhVueIcon, addIcons } from 'oh-vue-icons'
-import { MdAddOutlined , FaRegularUser, RiProfileLine, CoEducation, FaWindowClose, MdEmail, RiLockLine, MdContactpageOutlined, BiDownload, BiFileText, FaRegularEdit, BiCameraFill, IoMail, BiTelephoneFill, IoLocationSharp, BiCheckLg, RiLoginBoxLine, MdKeyboardarrowdown, IoAddCircle, IoAdd } from 'oh-vue-icons/icons'
-addIcons(MdAddOutlined , FaRegularUser, RiProfileLine, CoEducation, FaWindowClose, MdEmail, RiLockLine, MdContactpageOutlined, BiDownload, BiFileText, FaRegularEdit, BiCameraFill, IoMail, BiTelephoneFill, IoLocationSharp, BiCheckLg, RiLoginBoxLine, MdKeyboardarrowdown, IoAddCircle, IoAdd)
+import { LaSuitcaseSolid, MdFiledownload, MdAddOutlined, FaRegularUser, RiProfileLine, CoEducation, FaWindowClose, MdEmail, RiLockLine, MdContactpageOutlined, BiDownload, BiFileText, FaRegularEdit, BiCameraFill, IoMail, BiTelephoneFill, IoLocationSharp, BiCheckLg, RiLoginBoxLine, MdKeyboardarrowdown, IoAddCircle, IoAdd } from 'oh-vue-icons/icons'
+addIcons(LaSuitcaseSolid, MdFiledownload, MdAddOutlined, FaRegularUser, RiProfileLine, CoEducation, FaWindowClose, MdEmail, RiLockLine, MdContactpageOutlined, BiDownload, BiFileText, FaRegularEdit, BiCameraFill, IoMail, BiTelephoneFill, IoLocationSharp, BiCheckLg, RiLoginBoxLine, MdKeyboardarrowdown, IoAddCircle, IoAdd)
 
 
 

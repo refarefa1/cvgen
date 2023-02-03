@@ -63,7 +63,8 @@
 
     }
 
-    .education-info {
+    .education-info,
+    .experience-info {
         .title {
             height: 30px;
             border-bottom: 2px solid $primary-color;
@@ -74,18 +75,21 @@
             }
         }
 
-        .education-list {
+        .education-list,
+        .experience-list {
             display: flex;
             flex-direction: column;
             gap: 12px;
-            padding-top: 8px;
+            padding-block: 8px;
 
-            .education-preview {
+            .education-preview,
+            .experience-preview {
                 display: flex;
                 flex-direction: column;
                 gap: 4px;
 
-                .education-degree {
+                .education-degree,
+                .experience-job {
                     display: flex;
                     align-items: center;
                     flex-wrap: wrap;
@@ -102,7 +106,8 @@
                     }
                 }
 
-                .education-location {
+                .education-location,
+                .experience-location {
                     display: flex;
                     align-items: center;
                     flex-wrap: wrap;
@@ -117,10 +122,15 @@
                     }
                 }
 
-                .education-desc {
+                .education-desc,
+                .experience-date {
                     font-size: rem(14px);
                 }
             }
+        }
+
+        .experience-list{
+            padding-block-start: 14px;
         }
     }
 

@@ -24,12 +24,20 @@
                 <img v-if="resume?.personal?.imgUrl" :src="resume.personal.imgUrl" alt="">
             </div>
         </div>
+        <div v-if="resume?.profile?.about" class="profile-info">
+            <div class="title">
+                <h1>Profile</h1>
+            </div>
+            <div class="education-about-txt">
+                <p>{{ resume.profile.about }}</p>
+            </div>
+        </div>
         <div v-if="resume?.education?.length" class="education-info">
             <div class="title">
                 <h1>Education</h1>
             </div>
             <ul class="education-list">
-                <li v-for="(ed, idx) in resume?.education" :key="idx" class="education-preview">
+                <li v-for="ed in resume?.education" :key="ed._id" class="education-preview">
                     <div class="education-degree">
                         <h2>{{ ed.degree }}</h2>
                         <h3>{{ ed.school }}</h3>
@@ -44,12 +52,28 @@
                 </li>
             </ul>
         </div>
-        <div v-if="resume?.profile?.about" class="profile-info">
+        <div v-if="resume?.experience?.length" class="experience-info">
             <div class="title">
-                <h1>Profile</h1>
-            </div>
-            <div class="education-about-txt">
-                <p>{{ resume.profile.about }}</p>
+                <h1>Experience</h1>
+                <ul class="experience-list">
+                    <li v-for="ex in resume?.experience" :key="ex._id" class="experience-preview">
+                        <div class="experience-job">
+                            <h2>{{ ex.employer }}<span v-if="ex.jobTitle">,</span></h2>
+                            <h3>{{ ex.jobTitle }}</h3>
+                        </div>
+                        <div class="experience-location">
+                            <h2>{{ ex.city }}<span v-if="ex.country">,</span></h2>
+                            <h3>{{ ex.country }}</h3>
+                        </div>
+                        <div class="experience-date">
+                            <p>
+                                <span v-if="ex.startDate !== 0">{{ format(ex.startDate) }}</span>
+                                <span v-if="ex.startDate !== 0 && ex.endDate !== 0"> - </span>
+                                <span v-if="ex.endDate !== 0">{{ format(ex.endDate) }}</span>
+                            </p>
+                        </div>
+                    </li>
+                </ul>
             </div>
         </div>
     </section>
@@ -83,6 +107,9 @@ export default {
             (this.$refs.template as HTMLElement).style.transform = `scale(${scale})`;
             (this.$refs.template as HTMLElement).style.width = (width * (this.originalWidth / width)) + 'px'
         },
+        format(timestamp: number) {
+            return (new Date(timestamp)).toLocaleDateString("en-GB")
+        }
     },
     watch: {
         vw() {
