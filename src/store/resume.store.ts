@@ -35,10 +35,14 @@ export const useResumeStore = defineStore('resumeStore', {
             }
         },
         async save() {
-            const deepCloneResume: Resume = JSON.parse(JSON.stringify(this.$state.resume))
-            this.$state.resume = deepCloneResume
-            await resumeService.save(deepCloneResume)
-            this.$state.userStore.query()
+            try {
+                const deepCloneResume: Resume = JSON.parse(JSON.stringify(this.$state.resume))
+                this.$state.resume = deepCloneResume
+                await resumeService.save(deepCloneResume)
+                this.$state.userStore.query()
+            } catch (err: any) {
+                console.log(err)
+            }
         },
         update(payload: Payload) {
             const { type, val } = payload

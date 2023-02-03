@@ -9,9 +9,6 @@
             <div class="a4-resume" format="A4">
                 <component is="template-no1" :resume="resume"></component>
             </div>
-            <div class="actions">
-                <button @click="download" class="download-btn">Download PDF</button>
-            </div>
         </div>
     </section>
 </template>

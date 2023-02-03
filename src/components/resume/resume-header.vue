@@ -1,19 +1,23 @@
 <template>
     <header class="resume-header">
-        <div class="content">
-            <router-link :to="'/resume/content/' + $route.params.id">
-                <span><v-icon name="bi-file-text"></v-icon></span>
-                <p>Content</p>
-            </router-link>
+        <nav class="header-nav">
+            <div class="content">
+                <router-link :to="'/resume/content/' + $route.params.id">
+                    <p>Content</p>
+                </router-link>
+            </div>
+            <div class="customize">
+                <router-link :to="'/resume/customize/' + $route.params.id">
+                    <p>Customize</p>
+                </router-link>
+            </div>
+        </nav>
+        <div class="download">
+            <button class="download-btn">
+                <span><v-icon name="bi-download"></v-icon></span>
+                <p>Download</p>
+            </button>
         </div>
-        <div class="customize">
-            <router-link :to="'/resume/customize/' + $route.params.id">
-                <span><v-icon name="fa-regular-edit"></v-icon></span>
-                <p>Customize</p>
-            </router-link>
-
-        </div>
-
     </header>
 </template>
 

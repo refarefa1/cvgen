@@ -3,10 +3,10 @@
 		<h1>Login</h1>
 
 		<CFormFloating class="mb-3">
-			<CFormInput v-model="credentials.email" type="email" placeholder="Email" required />
+			<CFormInput v-model="credentials.username" type="text" placeholder="User name" required />
 			<CFormLabel for="floatingInput">
 				<span class="floating-label">
-					<v-icon name="md-email" />Email
+					<v-icon name="fa-regular-user" />User name
 				</span>
 			</CFormLabel>
 		</CFormFloating>
@@ -15,7 +15,6 @@
 			<CFormFloating class="mb-3">
 				<CFormInput v-model="credentials.password" :type="showPassword ? 'text' : 'password'" required
 					placeholder="Password" />
-
 				<CFormLabel for="floatingInput">
 					<span class="floating-label">
 						<v-icon name="ri-lock-line" />Password
@@ -42,6 +41,7 @@
 
 <script lang="ts">
 import { CFormFloating, CFormInput, CFormLabel } from '@coreui/vue';
+import { useUserStore } from '../../store/user.store';
 
 export default {
 	name: 'loginForm',
@@ -54,15 +54,21 @@ export default {
 	data() {
 		return {
 			showPassword: false,
+			userStore: useUserStore(),
 			credentials: {
-				email: '',
+				username: '',
 				password: ''
 			}
 		}
 	},
 	methods: {
-		login() {
-			// TODO: Call userStore.login(this.credentials)
+		async login() {
+			try {
+				const res = await this.userStore.login({ ...this.credentials })
+				console.log(res)
+			} catch (err) {
+				console.log(err)
+			}
 		}
 	}
 };

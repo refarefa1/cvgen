@@ -4,7 +4,7 @@
 
         <div v-if="componentsToAdd.length" class="add-sect-cta">
             <button @click="isOpen = !isOpen" class="add-sect-btn">
-                <span v-if="!isOpen"><v-icon name="io-add-circle"></v-icon></span>
+                <span v-if="!isOpen"><v-icon name="md-add-outlined"></v-icon></span>
                 <p>{{ isOpen?'Cancel': 'Add Content' }}</p>
             </button>
         </div>

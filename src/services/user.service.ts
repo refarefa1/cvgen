@@ -1,11 +1,22 @@
 import User from "../interfaces/user.interface"
 import { storageService } from "./storage.service"
 import { utilService } from "./util.service"
+import axios from 'axios'
 
 const USER_KEY = 'loggedinUser'
 
+const prod = false
+const BASE_URL = prod ? '/api/user/' : 'http://localhost:3000/api/user/'
+
 async function query() {
-    // TODO : GET REQUEST FOR /api/user/
+    // This call should check if there is a user already logged in, if so, return the user.
+    // try {
+    //     return await axios.get(BASE_URL)
+    // } catch (err: any) {
+    //     throw new Error(err)
+    // }
+
+    // For now working hard coded for convenience
     const user = _getUser()
     return user
 }

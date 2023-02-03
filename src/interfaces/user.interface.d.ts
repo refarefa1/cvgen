@@ -6,3 +6,9 @@ export default interface User {
 	email?: string
 	resumes?: Resume[]
 }
+
+export interface Credentials {
+	username: string
+	password: string
+	email?: string
+}

@@ -4,7 +4,9 @@
 
         <div @click="add" class="resume-title">
             <h1>Education</h1>
-            <span><v-icon name="md-keyboardarrowdown"></v-icon></span>
+            <p v-if="!isOpen">Edit education
+                <span><v-icon name="md-keyboardarrowdown"></v-icon></span>
+            </p>
         </div>
 
         <div v-if="isAdding" class="add-info">
@@ -15,7 +17,7 @@
                 </li>
             </ul>
             <button class="add-btn" @click="openAccordion">
-                <span><v-icon name="io-add-circle"></v-icon></span>
+                <span><v-icon name="md-add-outlined"></v-icon></span>
                 <p>Education</p>
             </button>
         </div>

@@ -1,13 +1,7 @@
 import { defineStore } from "pinia"
-import User from "../interfaces/user.interface"
+import User, { Credentials } from "../interfaces/user.interface"
 import { authService } from "../services/auth.service"
 import { userService } from "../services/user.service"
-
-//Avishai: Move to interfaces
-type Credentials = {
-    email: string
-    password: string
-}
 
 type State = {
     user: User
@@ -17,6 +11,7 @@ export const useUserStore = defineStore('userStore', {
 
     state: () => <State>({
         user: userService.getEmptyUser(),
+        isLoggedIn: false
     }),
 
     getters: {
@@ -25,34 +20,42 @@ export const useUserStore = defineStore('userStore', {
 
     actions: {
         async query() {
-            const user: User = await userService.query()
-            this.$state.user = user
+            try {
+                const user: User = await userService.query()
+                this.$state.user = user
+            } catch (err) {
+                console.log(err)
+            }
         },
         async login(credentials: Credentials) {
-            /* TODO: Call authService.login(credentials)
-            Gets hard coded user for now and saves to state */
+            try {
+                const session = await authService.login(credentials)
+                console.log(session)
+                return session
+            } catch (err: any) {
+                console.log('There was an error when logging in, please try again', err);
+                throw new Error(err);
+            }
         },
         async signup(credentials: Credentials) {
-            /* TODO: Call authService.signup(credentials)
-            Gets hard coded user for now and saves to state */
             try {
-                const session = await authService.signup(credentials)           
-                //@ts-ignore
-                // this.commit(s => {
-                //     return {
-                //         ...s,
-                //         user: session
-                //     }
-                // })
+                const session = await authService.signup(credentials)
+                console.log(session)
                 return session
             } catch (err: any) {
                 console.log('There was an error when signing up, please try again', err);
                 throw new Error(err);
             }
-            
         },
         async reset(email: keyof Credentials) {
-            //  TODO: Call authService.reset(credentials)
+            try {
+                const session = await authService.reset(email)
+                console.log(session)
+                return session
+            } catch (err: any) {
+                console.log('There was an error while trying to send mail, please try again', err);
+                throw new Error(err);
+            }
         }
     }
 

@@ -8,6 +8,13 @@
 			</CFormLabel>
 		</CFormFloating>
 
+		<CFormFloating class="mb-3">
+			<CFormInput v-model="credentials.username" type="email" placeholder="User name" required />
+			<CFormLabel for="floatingInput"><span class="floating-label"><v-icon name="fa-regular-user" />User
+					name</span>
+			</CFormLabel>
+		</CFormFloating>
+
 		<div class="password-container">
 			<CFormFloating class="mb-3">
 				<CFormInput v-model="credentials.password" :type="showPassword ? 'text' : 'password'" required
@@ -49,7 +56,6 @@
 
 <script lang="ts">
 import { CFormFloating, CFormInput, CFormLabel } from '@coreui/vue';
-import { log } from 'console';
 import { useUserStore } from '../../store/user.store';
 
 export default {
@@ -65,6 +71,7 @@ export default {
 			subscribeCheckBox: false,
 			credentials: {
 				email: '',
+				username: '',
 				password: ''
 			},
 			userStore: useUserStore()
@@ -73,12 +80,10 @@ export default {
 	methods: {
 		async signup() {
 			try {
-				const res = await this.userStore.signup(this.credentials)
+				const res = await this.userStore.signup({ ...this.credentials })
 				console.log(res);
 			} catch (err) {
-				// Avishai: Set user msg here
 				console.log(err);
-				
 			}
 		}
 	}

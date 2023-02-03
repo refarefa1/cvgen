@@ -4,7 +4,9 @@
 
         <div @click="openAccordion" class="resume-title">
             <h1>Personal details</h1>
-            <span><v-icon name="md-keyboardarrowdown"></v-icon></span>
+            <p v-if="!isOpen">Edit personal details
+                <span><v-icon name="md-keyboardarrowdown"></v-icon></span>
+            </p>
         </div>
 
         <div v-if="isOpen" class="resume-personal">
@@ -18,6 +20,7 @@
                 <CFormInput @change="handleChange($event)" type="file" name="imgUrl" />
             </div>
         </div>
+
     </form>
 
 </template>

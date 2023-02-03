@@ -4,7 +4,9 @@
 
         <div @click="openAccordion" class="resume-title">
             <h1>Profile</h1>
-            <span><v-icon name="md-keyboardarrowdown"></v-icon></span>
+            <p v-if="!isOpen">Edit profile
+                <span><v-icon name="md-keyboardarrowdown"></v-icon></span>
+            </p>
         </div>
 
         <div v-if="isOpen" class="resume-profile">

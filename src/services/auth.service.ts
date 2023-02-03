@@ -1,27 +1,32 @@
-import { _signup } from "./appwrite.service"
+import { Credentials } from "../interfaces/user.interface";
+import axios from 'axios'
 
-type Credentials = {
-    email: string
-    password: string
-}
+const prod = false
+
+const BASE_URL = prod ? '/api/auth/' : 'http://localhost:3000/api/auth/'
 
 async function login(credentials: Credentials) {
-    // TODO : POST REQUEST FOR /api/login/
-    // For now it can be just hard coded user with _id and the credentials they sent
+    try {
+        return await axios.post(BASE_URL + 'login', { credentials })
+    } catch (err: any) {
+        throw new Error(err);
+    }
 }
 
 async function signup(credentials: Credentials) {
     try {
-        const res = await _signup(credentials)
-        return res
+        return await axios.post(BASE_URL + 'signup', { credentials })
     } catch (err: any) {
-        console.log(err);
         throw new Error(err);
     }
 }
 
 async function reset(email: keyof Credentials) {
-    // TODO : POST REQUEST FOR /api/reset/
+    try {
+        return await axios.post(BASE_URL + 'reset', { email })
+    } catch (err: any) {
+        throw new Error(err);
+    }
 }
 
 
