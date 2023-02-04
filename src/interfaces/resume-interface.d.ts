@@ -1,3 +1,16 @@
+export interface Military {
+	role: string
+	startDate: number
+	endDate: number
+	[index: string]: any
+}
+
+export interface Language {
+	_id: string
+	name: string
+	level: number
+}
+
 export interface Skill {
 	_id: string
 	name: string

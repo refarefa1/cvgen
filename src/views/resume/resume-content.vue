@@ -16,6 +16,8 @@ import resumeEducation from '../../components/resume/resume-education.vue'
 import resumeExperience from '../../components/resume/resume-experience.vue'
 import resumeProfile from '../../components/resume/resume-profile.vue'
 import resumeSkills from '../../components/resume/resume-skills.vue'
+import resumeLanguages from '../../components/resume/resume-languages.vue'
+import resumeMilitary from '../../components/resume/resume-military.vue'
 
 import resumeHeader from '../../components/resume/resume-header.vue'
 import resumeFooter from '../../components/resume/resume-footer.vue'
@@ -82,6 +84,8 @@ export default {
         resumeExperience,
         resumeProfile,
         resumeSkills,
+        resumeLanguages,
+        resumeMilitary,
         resumeHeader,
         resumeFooter,
         addResumeSection

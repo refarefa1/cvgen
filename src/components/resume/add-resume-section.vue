@@ -49,6 +49,8 @@ export default {
                 { type: 'resume-education', name: 'Education', icon: 'co-education', description: 'Show off your primary education, college degrees & exchange semesters.' },
                 { type: 'resume-experience', name: 'Experience', icon: 'la-suitcase-solid', description: 'A place to highlight your professional experience - including internships.' },
                 { type: 'resume-skills', name: 'Skills', icon: 'gi-skills', description: 'List your technical, managerial or soft skills in this section.' },
+                { type: 'resume-languages', name: 'Languages', icon: 'io-earth', description: 'You speak more than one language? Make sure to list them here.' },
+                { type: 'resume-military', name: 'Military service', icon: 'md-militarytech-outlined', description: 'If you served in the army, why not state it?' },
             ]
         }
     },

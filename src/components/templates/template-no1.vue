@@ -79,17 +79,44 @@
         <div v-if="resume?.skills?.length" class="skills-info">
             <div class="title">
                 <h1>Skills</h1>
-                <ul class="skill-list">
-                    <li v-for="skill in resume?.skills" :key="skill._id" class="skill-preview">
-                        <h2>{{ skill.name }}</h2>
-                        <div class="indication">
-                            <div v-for="i in 5" :key="i" class="level-indication"
-                                :class="{ 'active': skill.level >= i }" />
-                        </div>
-                    </li>
-                </ul>
+            </div>
+            <ul class="skill-list">
+                <li v-for="skill in resume?.skills" :key="skill._id" class="skill-preview">
+                    <h2>{{ skill.name }}</h2>
+                    <div class="indication">
+                        <div v-for="i in 5" :key="i" class="level-indication" :class="{ 'active': skill.level >= i }" />
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div v-if="resume?.languages?.length" class="languages-info">
+            <div class="title">
+                <h1>Languages</h1>
+            </div>
+            <ul class="language-list">
+                <li v-for="language in resume?.languages" :key="language._id" class="language-preview">
+                    <h2>{{ language.name }}</h2>
+                    <div class="indication">
+                        <div v-for="i in 5" :key="i" class="level-indication"
+                            :class="{ 'active': language.level >= i }" />
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div v-if="resume?.military" class="military-info">
+            <div class="title">
+                <h1>Military service</h1>
+            </div>
+            <div class="military-data">
+                <h2>{{ resume.military.role }}</h2>
+                <p>
+                    <span v-if="resume.military.startDate !== 0">{{ format(resume.military.startDate) }}</span>
+                    <span v-if="resume.military.startDate !== 0 && resume.military.endDate !== 0"> - </span>
+                    <span v-if="resume.military.endDate !== 0">{{ format(resume.military.endDate) }}</span>
+                </p>
             </div>
         </div>
+
     </section>
 </template>
 

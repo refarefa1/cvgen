@@ -16,7 +16,7 @@
         border-bottom-right-radius: 1em;
         border-bottom-left-radius: 1em;
         padding-block-end: 24px;
-        padding-inline-start: 48px;
+        padding-inline: 48px;
         position: sticky;
         top: 0px;
         background-color: white;
@@ -248,7 +248,8 @@
             }
         }
 
-        .resume-experience {
+        .resume-experience,
+        .resume-military {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 24px;
@@ -352,7 +353,8 @@
             }
         }
 
-        .resume-skills {
+        .resume-skills,
+        .resume-languages {
             display: grid;
             grid-template-columns: 1fr;
             gap: 24px;
@@ -410,6 +412,12 @@
 
             }
 
+        }
+
+        .resume-military {
+            .role-input {
+                grid-column: 1/-1;
+            }
         }
 
         .add-info {

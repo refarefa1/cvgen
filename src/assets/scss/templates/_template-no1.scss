@@ -64,7 +64,8 @@
     }
 
     .education-info,
-    .experience-info {
+    .experience-info,
+    .military-info {
         .title {
             height: 30px;
             border-bottom: 2px solid $primary-color;
@@ -152,7 +153,8 @@
         }
     }
 
-    .skills-info {
+    .skills-info,
+    .languages-info {
         .title {
             height: 30px;
             border-bottom: 2px solid $primary-color;
@@ -164,13 +166,15 @@
 
         }
 
-        .skill-list {
+        .skill-list,
+        .language-list {
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
-            padding-block: 12px;
+            padding-block: 8px;
 
-            .skill-preview {
+            .skill-preview,
+            .language-preview {
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
@@ -198,6 +202,22 @@
 
                 }
             }
+        }
+    }
+
+    .military-info {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+
+        h2 {
+            font-size: rem(16px);
+            font-weight: 800;
+        }
+
+        p {
+            font-size: rem(14px);
+
         }
     }
 

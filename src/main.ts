@@ -6,8 +6,8 @@ import router from './router'
 import App from './App.vue'
 
 import { OhVueIcon, addIcons } from 'oh-vue-icons'
-import { GiSkills, LaSuitcaseSolid, MdFiledownload, MdAddOutlined, FaRegularUser, RiProfileLine, CoEducation, FaWindowClose, MdEmail, RiLockLine, MdContactpageOutlined, BiDownload, BiFileText, FaRegularEdit, BiCameraFill, IoMail, BiTelephoneFill, IoLocationSharp, BiCheckLg, RiLoginBoxLine, MdKeyboardarrowdown, IoAddCircle, IoAdd } from 'oh-vue-icons/icons'
-addIcons(GiSkills, LaSuitcaseSolid, MdFiledownload, MdAddOutlined, FaRegularUser, RiProfileLine, CoEducation, FaWindowClose, MdEmail, RiLockLine, MdContactpageOutlined, BiDownload, BiFileText, FaRegularEdit, BiCameraFill, IoMail, BiTelephoneFill, IoLocationSharp, BiCheckLg, RiLoginBoxLine, MdKeyboardarrowdown, IoAddCircle, IoAdd)
+import { MdMilitarytechOutlined, IoEarth, GiSkills, LaSuitcaseSolid, MdFiledownload, MdAddOutlined, FaRegularUser, RiProfileLine, CoEducation, FaWindowClose, MdEmail, RiLockLine, MdContactpageOutlined, BiDownload, BiFileText, FaRegularEdit, BiCameraFill, IoMail, BiTelephoneFill, IoLocationSharp, BiCheckLg, RiLoginBoxLine, MdKeyboardarrowdown, IoAddCircle, IoAdd } from 'oh-vue-icons/icons'
+addIcons(MdMilitarytechOutlined, IoEarth, GiSkills, LaSuitcaseSolid, MdFiledownload, MdAddOutlined, FaRegularUser, RiProfileLine, CoEducation, FaWindowClose, MdEmail, RiLockLine, MdContactpageOutlined, BiDownload, BiFileText, FaRegularEdit, BiCameraFill, IoMail, BiTelephoneFill, IoLocationSharp, BiCheckLg, RiLoginBoxLine, MdKeyboardarrowdown, IoAddCircle, IoAdd)
 
 
 
