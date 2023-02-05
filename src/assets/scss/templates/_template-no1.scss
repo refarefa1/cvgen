@@ -63,162 +63,169 @@
 
     }
 
-    .education-info,
-    .experience-info,
-    .military-info {
-        .title {
-            height: 30px;
-            border-bottom: 2px solid $primary-color;
+    .template-sections {
+        display: flex;
+        flex-direction: column;
 
-            h1 {
-                font-size: rem(20px);
-                font-weight: 800;
+        .education-info,
+        .experience-info,
+        .military-info {
+            .title {
+                height: 30px;
+                border-bottom: 2px solid $primary-color;
+
+                h1 {
+                    font-size: rem(20px);
+                    font-weight: 800;
+                }
+            }
+
+            .education-list,
+            .experience-list {
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+                padding-block: 8px;
+
+                .education-preview,
+                .experience-preview {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 4px;
+
+                    .education-degree,
+                    .experience-job {
+                        display: flex;
+                        align-items: center;
+                        flex-wrap: wrap;
+                        gap: 6px;
+
+                        h2 {
+                            font-size: rem(16px);
+                            font-weight: 800;
+                        }
+
+                        h3 {
+                            font-size: rem(14px);
+                            line-height: 1;
+                        }
+                    }
+
+                    .education-location,
+                    .experience-location {
+                        display: flex;
+                        align-items: center;
+                        flex-wrap: wrap;
+                        gap: 4px;
+
+                        h2 {
+                            font-size: rem(14px);
+                        }
+
+                        h3 {
+                            font-size: rem(14px);
+                        }
+                    }
+
+                    .education-desc,
+                    .experience-date {
+                        font-size: rem(14px);
+                    }
+                }
             }
         }
 
-        .education-list,
-        .experience-list {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            padding-block: 8px;
+        .profile-info {
+            .title {
+                height: 30px;
+                border-bottom: 2px solid $primary-color;
 
-            .education-preview,
-            .experience-preview {
+                h1 {
+                    font-size: rem(20px);
+                    font-weight: 800;
+                }
+            }
+
+            .education-about-txt {
+                padding-block: 8px;
+
+
+                p {
+                    font-size: rem(16px);
+                    line-height: 1.2;
+                }
+            }
+        }
+
+        .skills-info,
+        .languages-info {
+            .title {
+                height: 30px;
+                border-bottom: 2px solid $primary-color;
+
+                h1 {
+                    font-size: rem(20px);
+                    font-weight: 800;
+                }
+
+            }
+
+            .skill-list,
+            .language-list {
                 display: flex;
-                flex-direction: column;
-                gap: 4px;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                padding-block: 8px;
 
-                .education-degree,
-                .experience-job {
+                .skill-preview,
+                .language-preview {
                     display: flex;
                     align-items: center;
-                    flex-wrap: wrap;
-                    gap: 6px;
+                    justify-content: space-between;
+                    flex-basis: 45%;
 
                     h2 {
                         font-size: rem(16px);
                         font-weight: 800;
                     }
 
-                    h3 {
-                        font-size: rem(14px);
-                        line-height: 1;
+                    .indication {
+                        display: flex;
+
+                        .level-indication {
+                            height: 8px;
+                            width: 8px;
+                            border-radius: 2em;
+                            margin-inline-end: 6px;
+                            background-color: darken($input-color, 6%);
+
+                            &.active {
+                                background-color: $primary-color;
+                            }
+                        }
+
                     }
-                }
-
-                .education-location,
-                .experience-location {
-                    display: flex;
-                    align-items: center;
-                    flex-wrap: wrap;
-                    gap: 4px;
-
-                    h2 {
-                        font-size: rem(14px);
-                    }
-
-                    h3 {
-                        font-size: rem(14px);
-                    }
-                }
-
-                .education-desc,
-                .experience-date {
-                    font-size: rem(14px);
                 }
             }
         }
-    }
 
-    .profile-info {
-        .title {
-            height: 30px;
-            border-bottom: 2px solid $primary-color;
+        .military-info {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
 
-            h1 {
-                font-size: rem(20px);
+            h2 {
+                font-size: rem(16px);
                 font-weight: 800;
             }
-        }
-
-        .education-about-txt {
-            padding-block: 8px;
-
 
             p {
-                font-size: rem(16px);
-                line-height: 1.2;
+                font-size: rem(14px);
+
             }
         }
+
     }
 
-    .skills-info,
-    .languages-info {
-        .title {
-            height: 30px;
-            border-bottom: 2px solid $primary-color;
-
-            h1 {
-                font-size: rem(20px);
-                font-weight: 800;
-            }
-
-        }
-
-        .skill-list,
-        .language-list {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            padding-block: 8px;
-
-            .skill-preview,
-            .language-preview {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                flex-basis: 45%;
-
-                h2 {
-                    font-size: rem(16px);
-                    font-weight: 800;
-                }
-
-                .indication {
-                    display: flex;
-
-                    .level-indication {
-                        height: 8px;
-                        width: 8px;
-                        border-radius: 2em;
-                        margin-inline-end: 6px;
-                        background-color: darken($input-color, 6%);
-
-                        &.active {
-                            background-color: $primary-color;
-                        }
-                    }
-
-                }
-            }
-        }
-    }
-
-    .military-info {
-        display: flex;
-        flex-direction: column;
-        gap: 6px;
-
-        h2 {
-            font-size: rem(16px);
-            font-weight: 800;
-        }
-
-        p {
-            font-size: rem(14px);
-
-        }
-    }
 
 }

@@ -28,8 +28,8 @@
 <script lang="ts">
 import { CFormInput } from '@coreui/vue';
 import { PropType } from 'vue';
-import { Personal, Resume } from '../../interfaces/resume-interface';
-import { eventBus } from '../../services/event.bus.service'
+import { Personal, Resume } from '../../../interfaces/resume-interface';
+import { eventBus } from '../../../services/event.bus.service'
 
 interface FileInputEvent extends Event {
     target: HTMLInputElement & EventTarget;

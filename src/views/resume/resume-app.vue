@@ -14,7 +14,7 @@
 </template>
 
 <script lang="ts">
-import resumeForm from '../../components/resume/resume-personal.vue'
+import resumeForm from '../../components/resume/resume-content/resume-personal.vue'
 import resumeHeader from '../../components/resume/resume-header.vue'
 import templateNo1 from '../../components/templates/template-no1.vue'
 import { useUserStore } from '../../store/user.store'

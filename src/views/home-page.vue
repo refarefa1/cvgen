@@ -21,7 +21,7 @@ export default {
 	data() {
 		return {
 			userStore: useUserStore(),
-		};
+		}
 	},
 
 	computed: {
@@ -33,7 +33,7 @@ export default {
 		homeHeader,
 		heroImg,
 		resumeList,
-		heroText
+		heroText,
 	},
 };
 </script>

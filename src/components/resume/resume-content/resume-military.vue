@@ -34,9 +34,9 @@
 <script lang="ts">
 import { CFormInput } from '@coreui/vue'
 import { PropType } from 'vue'
-import { Resume, Military } from '../../interfaces/resume-interface'
+import { Resume, Military } from '../../../interfaces/resume-interface'
 import Datepicker from 'vuejs3-datepicker'
-import { eventBus } from '../../services/event.bus.service'
+import { eventBus } from '../../../services/event.bus.service'
 
 export default {
     props: {

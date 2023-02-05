@@ -24,8 +24,8 @@
 <script lang="ts">
 import { CFormInput, CFormTextarea } from '@coreui/vue';
 import { PropType } from 'vue';
-import { Resume } from '../../interfaces/resume-interface';
-import { eventBus } from '../../services/event.bus.service';
+import { Resume } from '../../../interfaces/resume-interface';
+import { eventBus } from '../../../services/event.bus.service';
 
 export default {
     props: {

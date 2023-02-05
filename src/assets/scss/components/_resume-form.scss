@@ -1,6 +1,5 @@
 .resume-builder {
     flex-basis: 50%;
-    z-index: 10;
     background-color: white;
     padding-inline: 48px;
     padding-block-end: 48px;
@@ -92,6 +91,8 @@
 
     }
 
+    
+
     .resume-form {
         margin-block: 24px;
         padding-block-end: 24px;
@@ -101,7 +102,7 @@
             display: flex;
             gap: 8px;
             flex-direction: column;
-            height: 50px;
+            height: 60px;
             pointer-events: auto;
             padding-inline: 48px;
             cursor: pointer;
@@ -425,22 +426,31 @@
 
             .resume-cmp-list {
                 display: flex;
+                gap: 12px;
                 flex-direction: column;
 
                 .resume-cmp-preview {
                     cursor: pointer;
                     display: flex;
                     align-items: center;
+                    justify-content: space-between;
                     height: 50px;
-                    gap: 12px;
+                    border: 1px solid darken($input-color, 4%);
+                    padding-inline: 12px;
 
-                    h3 {
-                        font-size: rem(16px);
-                        font-weight: 800;
-                    }
+                    div {
+                        display: flex;
+                        align-items: center;
+                        gap: 12px;
 
-                    h4 {
-                        font-size: rem(16px);
+                        h3 {
+                            font-size: rem(16px);
+                            font-weight: 800;
+                        }
+
+                        h4 {
+                            font-size: rem(16px);
+                        }
                     }
 
                     @include hover {

@@ -13,8 +13,11 @@
             <ul class="resume-cmp-list">
                 <li @click="edit(language)" class="resume-cmp-preview" v-for="language in resume?.languages"
                     :key="language._id">
-                    <h3>{{ language.name }}<span v-if="language.level"></span></h3>
-                    <h4>{{ formatLanguageLevel(language.level) }}</h4>
+                    <div>
+                        <h3>{{ language.name }}<span v-if="language.level"></span></h3>
+                        <h4>{{ formatLanguageLevel(language.level) }}</h4>
+                    </div>
+                    <span><v-icon name="md-keyboardarrowdown"></v-icon></span>
                 </li>
             </ul>
             <button class="add-btn" @click="openAccordion">
@@ -46,9 +49,9 @@
 <script lang="ts">
 import { CFormInput, CFormTextarea } from '@coreui/vue';
 import { PropType } from 'vue';
-import { Language, Resume } from '../../interfaces/resume-interface';
-import { eventBus } from '../../services/event.bus.service';
-import { utilService } from '../../services/util.service';
+import { Language, Resume } from '../../../interfaces/resume-interface';
+import { eventBus } from '../../../services/event.bus.service';
+import { utilService } from '../../../services/util.service';
 
 export default {
     props: {

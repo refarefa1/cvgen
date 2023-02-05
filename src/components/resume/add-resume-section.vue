@@ -64,6 +64,7 @@ export default {
     computed: {
         componentsToAdd() {
             const components = this.resume?.components
+            if (!components) return []
             const componentsToShow = this.components.filter(c => !components?.includes(c.type))
             return componentsToShow
         }

@@ -12,8 +12,11 @@
         <div v-if="isAdding" class="add-info">
             <ul class="resume-cmp-list">
                 <li @click="edit(skill)" class="resume-cmp-preview" v-for="skill in resume?.skills" :key="skill._id">
-                    <h3>{{ skill.name }}<span v-if="skill.level"></span></h3>
-                    <h4>{{ formatSkillLevel(skill.level) }}</h4>
+                    <div>
+                        <h3>{{ skill.name }}<span v-if="skill.level"></span></h3>
+                        <h4>{{ formatSkillLevel(skill.level) }}</h4>
+                    </div>
+                    <span><v-icon name="md-keyboardarrowdown"></v-icon></span>
                 </li>
             </ul>
             <button class="add-btn" @click="openAccordion">

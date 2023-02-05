@@ -12,8 +12,11 @@
         <div v-if="isAdding" class="add-info">
             <ul class="resume-cmp-list">
                 <li @click="edit(ed)" class="resume-cmp-preview" v-for="ed in resume?.education" :key="ed._id">
-                    <h3>{{ ed.degree }}<span v-if="ed.degree">,</span></h3>
-                    <h4>{{ ed.school }}</h4>
+                    <div>
+                        <h3>{{ ed.degree }}<span v-if="ed.degree">,</span></h3>
+                        <h4>{{ ed.school }}</h4>
+                    </div>
+                    <span><v-icon name="md-keyboardarrowdown"></v-icon></span>
                 </li>
             </ul>
             <button class="add-btn" @click="openAccordion">
@@ -42,9 +45,9 @@
 <script lang="ts">
 import { CFormInput, CFormTextarea } from '@coreui/vue';
 import { PropType } from 'vue';
-import { Education, Resume } from '../../interfaces/resume-interface';
-import { eventBus } from '../../services/event.bus.service';
-import { utilService } from '../../services/util.service';
+import { Education, Resume } from '../../../interfaces/resume-interface';
+import { eventBus } from '../../../services/event.bus.service';
+import { utilService } from '../../../services/util.service';
 
 export default {
     props: {

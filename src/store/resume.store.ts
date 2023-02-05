@@ -1,5 +1,6 @@
 import { defineStore } from "pinia"
 import { Resume } from "../interfaces/resume-interface"
+import { eventBus } from "../services/event.bus.service"
 import { resumeService } from "../services/resume.service"
 import { useUserStore } from "./user.store"
 
@@ -62,7 +63,10 @@ export const useResumeStore = defineStore('resumeStore', {
                     break
                 case 'languages': this.format(payload)
                     break
-
+                case 'arrange':
+                    this.$state.resume = { ...this.$state.resume, components: val }
+                    eventBus.emit('customize', payload)
+                    break
             }
         },
         format(payload: Payload): void {

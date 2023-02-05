@@ -44,7 +44,7 @@ function _getUser() {
             {
                 _id: 'r101',
                 name: 'Test resume',
-                components: ['resume-personal', 'resume-profile', 'resume-education', 'resume-experience', 'resume-skills', 'resume-languages', 'resume-military'],
+                components: ['resume-profile', 'resume-education', 'resume-experience', 'resume-skills', 'resume-languages', 'resume-military'],
                 personal: {
                     fullName: 'Refael Abramov',
                     jobTitle: 'Fullstack Developer',
