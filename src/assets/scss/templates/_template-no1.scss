@@ -8,6 +8,7 @@
     .personal-info {
         display: flex;
         justify-content: space-between;
+        margin-bottom: 8px;
 
         .contact {
 
@@ -73,10 +74,32 @@
             .title {
                 height: 30px;
                 border-bottom: 2px solid $primary-color;
+                text-transform: capitalize;
 
                 h1 {
                     font-size: rem(20px);
                     font-weight: 800;
+                }
+
+                &.uppercase {
+                    text-transform: uppercase;
+                }
+
+                &.center {
+                    text-align: center;
+                    background-color: $primary-color;
+                    color: $txt-color;
+                    border: none;
+
+                }
+
+                &.normal {
+                    border-bottom: none;
+                }
+
+                &.bordered {
+                    text-align: center;
+                    border-top: 2px solid $primary-color;
                 }
             }
 
@@ -139,10 +162,33 @@
             .title {
                 height: 30px;
                 border-bottom: 2px solid $primary-color;
+                text-transform: capitalize;
+
 
                 h1 {
                     font-size: rem(20px);
                     font-weight: 800;
+                }
+
+                &.uppercase {
+                    text-transform: uppercase;
+                }
+
+                &.center {
+                    text-align: center;
+                    background-color: $primary-color;
+                    color: $txt-color;
+                    border: none;
+
+                }
+
+                &.normal {
+                    border-bottom: none;
+                }
+
+                &.bordered {
+                    text-align: center;
+                    border-top: 2px solid $primary-color;
                 }
             }
 
@@ -162,10 +208,32 @@
             .title {
                 height: 30px;
                 border-bottom: 2px solid $primary-color;
+                text-transform: capitalize;
 
                 h1 {
                     font-size: rem(20px);
                     font-weight: 800;
+                }
+
+                &.uppercase {
+                    text-transform: uppercase;
+                }
+
+                &.center {
+                    text-align: center;
+                    background-color: $primary-color;
+                    color: $txt-color;
+                    border: none;
+
+                }
+
+                &.normal {
+                    border-bottom: none;
+                }
+
+                &.bordered {
+                    text-align: center;
+                    border-top: 2px solid $primary-color;
                 }
 
             }

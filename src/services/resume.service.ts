@@ -33,7 +33,13 @@ async function save(resume: Resume) {
 function getEmptyResume(): Resume {
     const resume: Resume = {
         name: 'Resume 2',
-        components: [] as string[]
+        components: [] as string[],
+        style: {
+            heading: {
+                style: 'normal',
+                capitalization: 'capitalize'
+            }
+        }
     }
     return resume
 }

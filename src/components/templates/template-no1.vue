@@ -138,7 +138,9 @@ export default {
     mounted() {
         this.setTransform()
         eventBus.on('customize', this.customize)
+        this.setHeading(this.resume?.style.heading)
         if (this.resume?.components) this.arrange(this.resume.components)
+
     },
     data() {
         return {
@@ -160,6 +162,7 @@ export default {
             const { type, val } = payload
             switch (type) {
                 case 'arrange': this.arrange(val)
+                case 'heading': this.setHeading(val)
             }
         },
         arrange(cmpOrder: string[]) {
@@ -167,7 +170,41 @@ export default {
                 if (!this.$refs[cmp]) return
                 (this.$refs[cmp] as HTMLElement).style.order = idx + ''
             })
+        },
+        setHeading(val: any) {
+            const nodeTitles = document.querySelectorAll('.template-no1 .title')
+            const titles: Element[] = Array.from(nodeTitles)
+            this.setCapitalization(titles, val)
+            this.setHeadingStyle(titles, val)
 
+        },
+        setCapitalization(titles: Element[], val: any) {
+            const uppercase = (val.capitalization === 'uppercase')
+            titles.forEach(title => {
+                if (uppercase) title.classList.add('uppercase')
+                else title.classList.remove('uppercase')
+            })
+        },
+        setHeadingStyle(titles: Element[], val: any) {
+            titles.forEach(title => {
+                switch (val.style) {
+                    case 'underline':
+                        title.classList.remove('normal', 'bordered', 'center')
+                        break
+                    case 'center':
+                        title.classList.remove('normal', 'bordered')
+                        title.classList.add('center')
+                        break
+                    case 'normal':
+                        title.classList.remove('center', 'bordered')
+                        title.classList.add('normal')
+                        break
+                    case 'bordered':
+                        title.classList.remove('normal', 'center')
+                        title.classList.add('bordered')
+                        break
+                }
+            })
         }
     },
 

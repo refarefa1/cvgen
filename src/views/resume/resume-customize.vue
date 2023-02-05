@@ -1,12 +1,16 @@
 <template>
     <resume-header @download="download" />
-    <resume-layout @update="update" :resume="resume" />
+    <section class="resume-customize">
+        <resume-layout @update="update" :resume="resume" />
+        <resume-heading @update="update" :resume="resume" />
+    </section>
 </template>
 
 <script lang="ts">
 import resumeHeader from '../../components/resume/resume-header.vue'
 
 import resumeLayout from '../../components/resume/resume-customize/resume-layout.vue'
+import resumeHeading from '../../components/resume/resume-customize/resume-heading.vue'
 
 import { useFileStore } from '../../store/file.store'
 import { useResumeStore } from '../../store/resume.store'
@@ -40,7 +44,8 @@ export default {
 
     components: {
         resumeHeader,
-        resumeLayout
+        resumeLayout,
+        resumeHeading
     }
 
 }

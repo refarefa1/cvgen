@@ -1,29 +1,28 @@
 <template>
 
-    <section class="resume-customize">
-        <section class="resume-layout">
-            <div class="title">
-                <h1>Layout</h1>
+    <section class="resume-layout">
+        <div class="title">
+            <h1>Layout</h1>
+        </div>
+        <div class="arrange-layout">
+            <div class="sub-title">
+                <h2>Rearrange sections</h2>
             </div>
-            <div class="arrange-layout">
-                <div class="sub-title">
-                    <h2>Rearrange sections</h2>
-                </div>
-                <div class="component-item disabled">
-                    <span><v-icon name="fa-regular-user"></v-icon></span>
-                </div>
-                <SlickList axis="y" v-model:list="components">
-                    <SlickItem v-for="(component, i) in components" :key="component" :index="i">
-                        <div @mousedown="setIsDragging(true)" class="component-item">
-                            <span><v-icon name="md-dragindicator-sharp"></v-icon></span>
-                            <span><v-icon :name="getIcon(component)"></v-icon></span>
-                            <h3>{{ formatName(component) }}</h3>
-                        </div>
-                    </SlickItem>
-                </SlickList>
+            <div class="component-item disabled">
+                <span><v-icon name="fa-regular-user"></v-icon></span>
             </div>
-        </section>
+            <SlickList axis="y" v-model:list="components">
+                <SlickItem v-for="(component, i) in components" :key="component" :index="i">
+                    <div @mousedown="setIsDragging(true)" class="component-item">
+                        <span><v-icon name="md-dragindicator-sharp"></v-icon></span>
+                        <span><v-icon :name="getIcon(component)"></v-icon></span>
+                        <h3>{{ formatName(component) }}</h3>
+                    </div>
+                </SlickItem>
+            </SlickList>
+        </div>
     </section>
+    
 </template>
 
 <script lang="ts">
