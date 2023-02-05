@@ -8,6 +8,12 @@ body {
 	font-family: 'proxima-nova';
 	background-color: $bg-color;
 	color: $primary-color;
+
+	&.dragging {
+		* {
+			cursor: grabbing !important;
+		}
+	}
 }
 
 h1,

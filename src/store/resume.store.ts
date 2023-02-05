@@ -1,5 +1,6 @@
 import { defineStore } from "pinia"
 import { Resume } from "../interfaces/resume-interface"
+import { eventBus } from "../services/event.bus.service"
 import { resumeService } from "../services/resume.service"
 import { useUserStore } from "./user.store"
 
@@ -36,8 +37,9 @@ export const useResumeStore = defineStore('resumeStore', {
             try {
                 const deepCloneResume: Resume = JSON.parse(JSON.stringify(this.$state.resume))
                 this.$state.resume = deepCloneResume
-                await resumeService.save(deepCloneResume)
-                this.$state.userStore.query()
+                const resume = await resumeService.save(deepCloneResume)
+                this.$state.resume = resume
+                // this.$state.userStore.query()
             } catch (err: any) {
                 console.log(err)
             }
@@ -48,14 +50,27 @@ export const useResumeStore = defineStore('resumeStore', {
                 case 'personal':
                     this.$state.resume = { ...this.$state.resume, personal: { ...val } }
                     break
-                case ('education'): this.format(payload)
+                case 'profile':
+                    this.$state.resume = { ...this.$state.resume, profile: { ...val } }
+                    break
+                case 'military':
+                    this.$state.resume = { ...this.$state.resume, military: { ...val } }
+                    break
+                case 'education': this.format(payload)
                     break
                 case 'experience': this.format(payload)
                     break
                 case 'skills': this.format(payload)
                     break
-                case 'profile':
-                    this.$state.resume = { ...this.$state.resume, profile: { ...val } }
+                case 'languages': this.format(payload)
+                    break
+                case 'arrange':
+                    this.$state.resume = { ...this.$state.resume, components: val }
+                    eventBus.emit('customize', payload)
+                    break
+                case 'heading':
+                    this.$state.resume = { ...this.$state.resume, style:{...this.$state.resume.style,heading:val} }
+                    eventBus.emit('customize', payload)
                     break
             }
         },

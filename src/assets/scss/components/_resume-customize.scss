@@ -1,0 +1,199 @@
+.resume-customize {
+    padding-inline: 48px;
+
+    .resume-layout {
+        margin-block: 24px;
+
+        .title {
+            margin-bottom: 12px;
+
+            h1 {
+                font-size: rem(24px);
+                font-weight: 800;
+            }
+        }
+
+        .arrange-layout {
+            .sub-title {
+                h2 {
+                    font-size: rem(16px);
+                    font-weight: 800;
+                }
+            }
+
+
+        }
+    }
+
+    .resume-heading {
+        margin-block: 24px;
+
+        .title {
+            margin-bottom: 12px;
+
+            h1 {
+                font-size: rem(24px);
+                font-weight: 800;
+            }
+        }
+
+        .heading-style {
+            margin-bottom: 24px;
+
+            .sub-title {
+                h2 {
+                    font-size: rem(16px);
+                    font-weight: 800;
+                }
+            }
+
+            .style-options {
+                margin-block-start: 8px;
+                display: flex;
+                justify-content: space-between;
+
+                .option {
+                    cursor: pointer;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex-basis: 24%;
+                    height: 45px;
+                    border: 1px solid $primary-color;
+
+                    .shape {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+                        gap: 4px;
+                        padding-inline: 10%;
+                        width: 100%;
+
+                        * {
+                            background-color: $primary-color;
+                        }
+
+                        .fill-rect {
+                            height: 8px;
+                            width: 50%;
+                        }
+
+                        .rect {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            width: 100%;
+                            height: 100%;
+                            background-color: transparent;
+                            border: 2px solid $primary-color;
+                            padding-block: 4px;
+
+
+                            .fill-rect {
+                                width: 50%;
+
+                            }
+                        }
+
+                        .short-line {
+                            width: 50%;
+                            height: 2px;
+                        }
+
+                        .long-line {
+                            width: 100%;
+                            height: 2px;
+                        }
+
+                        &.center {
+                            align-items: center;
+                        }
+                    }
+
+                    &.selected {
+                        border: 1px solid $gray-color;
+                        background-color: $gray-color;
+
+                        .shape {
+
+                            .fill-rect,
+                            .short-line,
+                            .long-line {
+                                background-color: $txt-color;
+                            }
+
+                            .rect {
+                                border: 2px solid $txt-color
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .heading-capitalize {
+            .sub-title {
+                h2 {
+                    font-size: rem(16px);
+                    font-weight: 800;
+                }
+            }
+
+            .capitalize-options {
+                margin-block-start: 8px;
+                display: flex;
+                gap: 12px;
+
+                .option {
+                    cursor: pointer;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border: 1px solid $primary-color;
+                    width: 30%;
+                    height: 40px;
+                    font-size: rem(14px);
+
+                    &.selected {
+                        background-color: $gray-color;
+                        color: $txt-color;
+                        border: 1px solid $gray-color;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Out of tree for the drag and drop
+.component-item {
+    display: flex;
+    align-items: center;
+    cursor: grab;
+    margin-block: 12px;
+    border: 1px solid darken($input-color, 6%);
+    padding: 12px;
+
+    span {
+        &:first-of-type {
+            margin-inline-end: 14px;
+        }
+    }
+
+    h3 {
+        font-size: rem(16px);
+        font-weight: 800;
+        padding-inline-start: 10px;
+        text-transform: capitalize;
+    }
+
+
+    &.disabled {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        pointer-events: none;
+        padding-block: 36px;
+        cursor: auto;
+    }
+}

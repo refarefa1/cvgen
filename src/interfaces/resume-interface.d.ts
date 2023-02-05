@@ -1,3 +1,23 @@
+export interface Style {
+	heading: {
+		style: string
+		capitalization: string
+	}
+}
+
+export interface Military {
+	role: string
+	startDate: number
+	endDate: number
+	[index: string]: any
+}
+
+export interface Language {
+	_id: string
+	name: string
+	level: number
+}
+
 export interface Skill {
 	_id: string
 	name: string
@@ -37,6 +57,7 @@ export interface Resume {
 	_id?: string
 	name: string
 	components: string[]
+	style: Style
 	personal?: Personal
 	education?: Education[]
 	experience?: Experience[]

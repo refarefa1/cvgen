@@ -11,11 +11,13 @@
 </template>
 
 <script lang="ts">
-import resumePersonal from '../../components/resume/resume-personal.vue'
-import resumeEducation from '../../components/resume/resume-education.vue'
-import resumeExperience from '../../components/resume/resume-experience.vue'
-import resumeProfile from '../../components/resume/resume-profile.vue'
-import resumeSkills from '../../components/resume/resume-skills.vue'
+import resumePersonal from '../../components/resume/resume-content/resume-personal.vue'
+import resumeEducation from '../../components/resume/resume-content/resume-education.vue'
+import resumeExperience from '../../components/resume/resume-content/resume-experience.vue'
+import resumeProfile from '../../components/resume/resume-content/resume-profile.vue'
+import resumeSkills from '../../components/resume/resume-content/resume-skills.vue'
+import resumeLanguages from '../../components/resume/resume-content/resume-languages.vue'
+import resumeMilitary from '../../components/resume/resume-content/resume-military.vue'
 
 import resumeHeader from '../../components/resume/resume-header.vue'
 import resumeFooter from '../../components/resume/resume-footer.vue'
@@ -26,22 +28,23 @@ import { useResumeStore } from '../../store/resume.store'
 import { useFileStore } from '../../store/file.store'
 import { eventBus } from '../../services/event.bus.service'
 
+
 export default {
     name: 'resume-content',
     mounted() {
-        this.components = this.resume.components
+        this.components = ['resume-personal', ...this.resume.components]
     },
     data() {
         return {
             userStore: useUserStore(),
             resumeStore: useResumeStore(),
             fileStore: useFileStore(),
-            components: ['personal-details'],
+            components: [] as string[],
             isOpen: false,
         }
     },
     methods: {
-        update(payload: { type: string, val: string }) {
+        update(payload: { type: string, val: any }) {
             this.resumeStore.update(payload)
         },
         download() {
@@ -57,18 +60,19 @@ export default {
             this.isOpen = !this.isOpen
             eventBus.emit('closeAccordion', null)
             eventBus.showSuccessMsg()
-            this.components = this.resume.components
+            this.components = ['resume-personal', ...this.resume.components]
         },
         cancel() {
             this.resumeStore.cancel()
             this.isOpen = !this.isOpen
             eventBus.emit('closeAccordion', null)
-            this.components = this.resume.components
+            this.components = ['resume-personal', ...this.resume.components]
         },
         upload(file: FileList) {
             this.fileStore.upload(file)
         },
         add(cmp: string) {
+            this.components.push(cmp)
             this.resumeStore.add(cmp)
         }
     },
@@ -82,9 +86,11 @@ export default {
         resumeExperience,
         resumeProfile,
         resumeSkills,
+        resumeLanguages,
+        resumeMilitary,
         resumeHeader,
         resumeFooter,
-        addResumeSection
+        addResumeSection,
     }
 }
 </script>

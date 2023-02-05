@@ -11,8 +11,12 @@
         <div v-if="isAdding" class="add-info">
             <ul class="resume-cmp-list">
                 <li @click="edit(ex)" class="resume-cmp-preview" v-for="ex in resume?.experience" :key="ex._id">
-                    <h3>{{ ex.employer }}<span v-if="ex.jobTitle">,</span></h3>
-                    <h4>{{ ex.jobTitle }}</h4>
+                    <div>
+                        <h3>{{ ex.employer }}<span v-if="ex.jobTitle">,</span></h3>
+                        <h4>{{ ex.jobTitle }}</h4>
+                    </div>
+                    <span><v-icon name="md-keyboardarrowdown"></v-icon></span>
+
                 </li>
             </ul>
             <button class="add-btn" @click="openAccordion">
@@ -47,10 +51,10 @@
 <script lang="ts">
 import { CFormInput } from '@coreui/vue'
 import { PropType } from 'vue'
-import { Resume, Experience } from '../../interfaces/resume-interface'
+import { Resume, Experience } from '../../../interfaces/resume-interface'
 import Datepicker from 'vuejs3-datepicker'
-import { utilService } from '../../services/util.service'
-import { eventBus } from '../../services/event.bus.service'
+import { utilService } from '../../../services/util.service'
+import { eventBus } from '../../../services/event.bus.service'
 
 export default {
     props: {

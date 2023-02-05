@@ -44,7 +44,13 @@ function _getUser() {
             {
                 _id: 'r101',
                 name: 'Test resume',
-                components: ['resume-personal', 'resume-profile', 'resume-education', 'resume-experience','resume-skills'],
+                components: ['resume-profile', 'resume-education', 'resume-experience', 'resume-skills', 'resume-languages', 'resume-military'],
+                style: {
+                    heading: {
+                        style: 'underline',
+                        capitalization: 'capitalize'
+                    }
+                },
                 personal: {
                     fullName: 'Refael Abramov',
                     jobTitle: 'Fullstack Developer',
@@ -121,7 +127,30 @@ function _getUser() {
                         name: 'Express',
                         level: 1
                     },
-                ]
+                ],
+                languages: [
+                    {
+                        _id: utilService.makeId(),
+                        name: 'Hebrew',
+                        level: 5
+                    },
+                    {
+                        _id: utilService.makeId(),
+                        name: 'English',
+                        level: 4
+                    },
+                    {
+                        _id: utilService.makeId(),
+                        name: 'Russian',
+                        level: 3
+                    },
+                ],
+                military: {
+                    role: 'Orev Nahal',
+                    startDate: 1458500812000,
+                    endDate: 1542654412000
+                }
+
 
             }
         ]
