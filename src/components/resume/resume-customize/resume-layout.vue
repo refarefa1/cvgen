@@ -22,7 +22,7 @@
             </SlickList>
         </div>
     </section>
-    
+
 </template>
 
 <script lang="ts">

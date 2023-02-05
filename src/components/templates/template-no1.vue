@@ -2,7 +2,7 @@
     <section ref="template" class="template-no1">
         <div class="personal-info">
             <div class="contact">
-                <div class="title">
+                <div class="personal-title">
                     <h1>{{ resume?.personal?.fullName }}</h1>
                     <h2>{{ resume?.personal?.jobTitle }}</h2>
                 </div>
@@ -140,7 +140,6 @@ export default {
         eventBus.on('customize', this.customize)
         this.setHeading(this.resume?.style.heading)
         if (this.resume?.components) this.arrange(this.resume.components)
-
     },
     data() {
         return {
@@ -168,7 +167,7 @@ export default {
         arrange(cmpOrder: string[]) {
             cmpOrder.forEach((cmp, idx) => {
                 if (!this.$refs[cmp]) return
-                (this.$refs[cmp] as HTMLElement).style.order = idx + ''
+                (this.$refs[cmp] as HTMLElement).style.order = idx.toString()
             })
         },
         setHeading(val: any) {
@@ -207,6 +206,5 @@ export default {
             })
         }
     },
-
 }
 </script>

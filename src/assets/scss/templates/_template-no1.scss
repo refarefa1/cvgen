@@ -12,7 +12,7 @@
 
         .contact {
 
-            .title {
+            .personal-title {
                 display: flex;
                 align-items: center;
                 flex-wrap: wrap;
@@ -71,37 +71,6 @@
         .education-info,
         .experience-info,
         .military-info {
-            .title {
-                height: 30px;
-                border-bottom: 2px solid $primary-color;
-                text-transform: capitalize;
-
-                h1 {
-                    font-size: rem(20px);
-                    font-weight: 800;
-                }
-
-                &.uppercase {
-                    text-transform: uppercase;
-                }
-
-                &.center {
-                    text-align: center;
-                    background-color: $primary-color;
-                    color: $txt-color;
-                    border: none;
-
-                }
-
-                &.normal {
-                    border-bottom: none;
-                }
-
-                &.bordered {
-                    text-align: center;
-                    border-top: 2px solid $primary-color;
-                }
-            }
 
             .education-list,
             .experience-list {
@@ -159,38 +128,6 @@
         }
 
         .profile-info {
-            .title {
-                height: 30px;
-                border-bottom: 2px solid $primary-color;
-                text-transform: capitalize;
-
-
-                h1 {
-                    font-size: rem(20px);
-                    font-weight: 800;
-                }
-
-                &.uppercase {
-                    text-transform: uppercase;
-                }
-
-                &.center {
-                    text-align: center;
-                    background-color: $primary-color;
-                    color: $txt-color;
-                    border: none;
-
-                }
-
-                &.normal {
-                    border-bottom: none;
-                }
-
-                &.bordered {
-                    text-align: center;
-                    border-top: 2px solid $primary-color;
-                }
-            }
 
             .education-about-txt {
                 padding-block: 8px;
@@ -205,38 +142,6 @@
 
         .skills-info,
         .languages-info {
-            .title {
-                height: 30px;
-                border-bottom: 2px solid $primary-color;
-                text-transform: capitalize;
-
-                h1 {
-                    font-size: rem(20px);
-                    font-weight: 800;
-                }
-
-                &.uppercase {
-                    text-transform: uppercase;
-                }
-
-                &.center {
-                    text-align: center;
-                    background-color: $primary-color;
-                    color: $txt-color;
-                    border: none;
-
-                }
-
-                &.normal {
-                    border-bottom: none;
-                }
-
-                &.bordered {
-                    text-align: center;
-                    border-top: 2px solid $primary-color;
-                }
-
-            }
 
             .skill-list,
             .language-list {
@@ -295,5 +200,36 @@
 
     }
 
+    .title {
+        height: 30px;
+        border-bottom: 2px solid $primary-color;
+        text-transform: capitalize;
 
+
+        h1 {
+            font-size: rem(20px);
+            font-weight: 800;
+        }
+
+        &.uppercase {
+            text-transform: uppercase;
+        }
+
+        &.center {
+            text-align: center;
+            background-color: $primary-color;
+            color: $txt-color;
+            border: none;
+
+        }
+
+        &.normal {
+            border-bottom: none;
+        }
+
+        &.bordered {
+            text-align: center;
+            border-top: 2px solid $primary-color;
+        }
+    }
 }

@@ -13,7 +13,7 @@
                     :class="{ 'selected': resume?.style.heading.style === 'underline' }">
                     <div class="shape">
                         <div class="fill-rect" />
-                        <div class="short-line" />
+                        <div class="long-line" />
                     </div>
                 </div>
                 <div @click="setHeading('center')" class="option"

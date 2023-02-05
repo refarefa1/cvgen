@@ -36,7 +36,7 @@ function getEmptyResume(): Resume {
         components: [] as string[],
         style: {
             heading: {
-                style: 'normal',
+                style: 'underline',
                 capitalization: 'capitalize'
             }
         }

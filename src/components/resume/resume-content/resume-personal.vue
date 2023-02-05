@@ -65,13 +65,15 @@ export default {
         },
         handleChange(ev: FileInputEvent) {
             if (!ev.target.files) return
-
+            
             // Just for now until we got backend
             this.personal.imgUrl = URL.createObjectURL(ev.target.files[0])
             this.update()
 
             // This is for backend
             this.$emit('upload', ev.target.files[0])
+
+
         },
         save(ev: KeyboardEvent) {
             if (ev.key !== 'Enter') return

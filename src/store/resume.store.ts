@@ -56,7 +56,7 @@ export const useResumeStore = defineStore('resumeStore', {
                 case 'military':
                     this.$state.resume = { ...this.$state.resume, military: { ...val } }
                     break
-                case ('education'): this.format(payload)
+                case 'education': this.format(payload)
                     break
                 case 'experience': this.format(payload)
                     break
