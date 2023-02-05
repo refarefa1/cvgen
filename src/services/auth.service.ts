@@ -1,9 +1,21 @@
 import { Credentials } from "../interfaces/user.interface";
 import axios from 'axios'
+import { Resume } from "../interfaces/resume-interface";
+
+import { appwriteService } from "./appwrite.service";
+
+// @ts-ignore
+window.signup = appwriteService.signup
+// @ts-ignore
+window.getAccount = appwriteService.getAccount
+// @ts-ignore
+window.logout = appwriteService.logout
+// @ts-ignore
+window.login = appwriteService.login
 
 const prod = false
-
 const BASE_URL = prod ? '/api/auth/' : 'http://localhost:3000/api/auth/'
+
 
 async function login(credentials: Credentials) {
     try {
@@ -13,9 +25,9 @@ async function login(credentials: Credentials) {
     }
 }
 
-async function signup(credentials: Credentials) {
+async function signup(credentials: Credentials, resume: Resume) {
     try {
-        return await axios.post(BASE_URL + 'signup', { credentials })
+        return await axios.post(BASE_URL + 'signup', { credentials, resume })
     } catch (err: any) {
         throw new Error(err);
     }
