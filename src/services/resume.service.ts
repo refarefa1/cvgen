@@ -27,12 +27,13 @@ async function save(resume: Resume) {
         user.resumes[idx] = resume
     }
     userService.save(user)
+    return resume
 }
 
 function getEmptyResume(): Resume {
     const resume: Resume = {
         name: 'Resume 2',
-        components: ['']
+        components: [] as string[]
     }
     return resume
 }

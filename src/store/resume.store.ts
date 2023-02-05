@@ -37,8 +37,9 @@ export const useResumeStore = defineStore('resumeStore', {
             try {
                 const deepCloneResume: Resume = JSON.parse(JSON.stringify(this.$state.resume))
                 this.$state.resume = deepCloneResume
-                await resumeService.save(deepCloneResume)
-                this.$state.userStore.query()
+                const resume = await resumeService.save(deepCloneResume)
+                this.$state.resume = resume
+                // this.$state.userStore.query()
             } catch (err: any) {
                 console.log(err)
             }

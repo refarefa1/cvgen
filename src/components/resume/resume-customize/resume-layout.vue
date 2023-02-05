@@ -44,7 +44,7 @@ export default {
     },
     data() {
         return {
-            components: [''],
+            components: [] as string[],
             isDragging: false
         }
     },

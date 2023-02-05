@@ -8,8 +8,6 @@
 
     <resume-footer v-if="isOpen" @save="save" @cancel="cancel" />
 
-
-
 </template>
 
 <script lang="ts">
@@ -41,7 +39,7 @@ export default {
             userStore: useUserStore(),
             resumeStore: useResumeStore(),
             fileStore: useFileStore(),
-            components: [''],
+            components: [] as string[],
             isOpen: false,
         }
     },
@@ -74,6 +72,7 @@ export default {
             this.fileStore.upload(file)
         },
         add(cmp: string) {
+            this.components.push(cmp)
             this.resumeStore.add(cmp)
         }
     },
