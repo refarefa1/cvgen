@@ -173,7 +173,6 @@ export default {
         setHeading(val: any) {
             const nodeTitles = document.querySelectorAll('.template-no1 .title')
             const titles: Element[] = Array.from(nodeTitles)
-
             this.setCapitalization(titles, val)
             this.setHeadingStyle(titles, val)
             this.setHeadingColor(titles, val)
@@ -181,7 +180,13 @@ export default {
         },
         setHeadingColor(titles: Element[], val: any) {
             titles.forEach(title => {
-                (title as HTMLElement).style.color = val.headingColor
+                const elTitle = title as HTMLElement
+                elTitle.style.color = val.headingColor;
+                elTitle.style.borderColor = val.headingColor;
+                elTitle.style.backgroundColor =
+                    elTitle.classList.contains('center')
+                        ? `${val.headingColor}10`
+                        : 'transparent';
             })
         },
         setCapitalization(titles: Element[], val: any) {

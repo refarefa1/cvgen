@@ -217,10 +217,16 @@
 
         &.center {
             text-align: center;
-            background-color: $primary-color;
+            // background-color: $primary-color;
             color: $txt-color;
             border: none;
 
+            h1 {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100%;
+            }
         }
 
         &.normal {

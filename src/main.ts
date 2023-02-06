@@ -7,8 +7,8 @@ import router from './router'
 import App from './App.vue'
 
 import { OhVueIcon, addIcons } from 'oh-vue-icons'
-import { MdDragindicatorSharp, MdMilitarytechOutlined, IoEarth, GiSkills, LaSuitcaseSolid, MdFiledownload, MdAddOutlined, FaRegularUser, RiProfileLine, CoEducation, FaWindowClose, MdEmail, RiLockLine, MdContactpageOutlined, BiDownload, BiFileText, FaRegularEdit, BiCameraFill, IoMail, BiTelephoneFill, IoLocationSharp, BiCheckLg, RiLoginBoxLine, MdKeyboardarrowdown, IoAddCircle, IoAdd } from 'oh-vue-icons/icons'
-addIcons(MdDragindicatorSharp, MdMilitarytechOutlined, IoEarth, GiSkills, LaSuitcaseSolid, MdFiledownload, MdAddOutlined, FaRegularUser, RiProfileLine, CoEducation, FaWindowClose, MdEmail, RiLockLine, MdContactpageOutlined, BiDownload, BiFileText, FaRegularEdit, BiCameraFill, IoMail, BiTelephoneFill, IoLocationSharp, BiCheckLg, RiLoginBoxLine, MdKeyboardarrowdown, IoAddCircle, IoAdd)
+import { MdDragindicatorSharp, MdMilitarytechOutlined, IoEarth, GiSkills, LaSuitcaseSolid, MdFiledownload, IoCheckmark, MdAddOutlined, FaRegularUser, RiProfileLine, CoEducation, FaWindowClose, MdEmail, RiLockLine, MdContactpageOutlined, BiDownload, BiFileText, FaRegularEdit, BiCameraFill, IoMail, BiTelephoneFill, IoLocationSharp, BiCheckLg, RiLoginBoxLine, MdKeyboardarrowdown, IoAddCircle, IoAdd } from 'oh-vue-icons/icons'
+addIcons(MdDragindicatorSharp, MdMilitarytechOutlined, IoEarth, GiSkills, LaSuitcaseSolid, MdFiledownload, IoCheckmark, MdAddOutlined, FaRegularUser, RiProfileLine, CoEducation, FaWindowClose, MdEmail, RiLockLine, MdContactpageOutlined, BiDownload, BiFileText, FaRegularEdit, BiCameraFill, IoMail, BiTelephoneFill, IoLocationSharp, BiCheckLg, RiLoginBoxLine, MdKeyboardarrowdown, IoAddCircle, IoAdd)
 
 
 

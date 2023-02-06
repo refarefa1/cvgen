@@ -23,7 +23,7 @@ export async function signup() {
         const res = await login(mail, mail)
     } catch (err) {
         console.log(err);
-    }     
+    }
 }
 
 export async function login(email: string, password: string) {
@@ -34,13 +34,13 @@ export async function login(email: string, password: string) {
         return res
     } catch (err) {
         console.log(err);
-    }      
+    }
 }
 
 export async function logout() {
     try {
         const res = await account.deleteSessions()
-    } catch(err) {
+    } catch (err) {
         console.log(err);
     }
 }
@@ -53,7 +53,7 @@ async function getAccount() {
         console.log("🚀 ~ file: appwrite.service.ts:54 ~ getAccount ~ loggedInAccount", loggedInAccount)
     } catch (err) {
         console.log(err);
-    }   
+    }
 }
 
 async function _sendJWT(jwt: string) {
@@ -61,7 +61,7 @@ async function _sendJWT(jwt: string) {
         const res = await axios.post(BASE_URL + 'setJWT', { jwt })
     } catch (err) {
         console.log(err);
-    }    
+    }
 }
 
 

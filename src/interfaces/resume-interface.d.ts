@@ -2,6 +2,7 @@ export interface Style {
 	heading: {
 		style: string
 		capitalization: string
+		headingColor: string
 	}
 }
 
