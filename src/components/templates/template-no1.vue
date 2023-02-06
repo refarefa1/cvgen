@@ -126,6 +126,7 @@
 import { PropType } from 'vue';
 import { Resume } from '../../interfaces/resume-interface';
 import { eventBus } from '../../services/event.bus.service';
+import { utilService } from '../../services/util.service';
 
 export default {
     name: 'template-no1',
@@ -183,9 +184,10 @@ export default {
                 const elTitle = title as HTMLElement
                 elTitle.style.color = val.headingColor;
                 elTitle.style.borderColor = val.headingColor;
+                const bgColor = utilService.getLighterColor(val.headingColor)
                 elTitle.style.backgroundColor =
                     elTitle.classList.contains('center')
-                        ? `${val.headingColor}10`
+                        ? bgColor
                         : 'transparent';
             })
         },
