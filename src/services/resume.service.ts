@@ -37,7 +37,8 @@ function getEmptyResume(): Resume {
         style: {
             heading: {
                 style: 'underline',
-                capitalization: 'capitalize'
+                capitalization: 'capitalize',
+                headingColor: '#000000'
             }
         }
     }
