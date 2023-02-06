@@ -1,6 +1,6 @@
 <template>
 	<section class="resume-list-container">
-		
+
 		<div class="resume-list-header">
 			<h2>My resumes</h2>
 		</div>
@@ -8,7 +8,7 @@
 			<div class="resume-preview-add">
 				<router-link to="resume/content">
 					<div class="resume-info">
-						<span class="resume-icon"><v-icon name="md-contactpage-outlined" /></span>
+						<span v-svg-icon="'resume'" class="resume-icon"></span>
 						<p class="resume-title">New resume</p>
 					</div>
 				</router-link>

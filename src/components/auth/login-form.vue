@@ -5,9 +5,8 @@
 		<CFormFloating class="mb-3">
 			<CFormInput v-model="credentials.username" type="text" placeholder="User name" required />
 			<CFormLabel for="floatingInput">
-				<span class="floating-label">
-					<v-icon name="fa-regular-user" />User name
-				</span>
+				<span v-svg-icon="'username'" class="floating-label" />
+				<p>User name</p>
 			</CFormLabel>
 		</CFormFloating>
 
@@ -16,9 +15,8 @@
 				<CFormInput v-model="credentials.password" :type="showPassword ? 'text' : 'password'" required
 					placeholder="Password" />
 				<CFormLabel for="floatingInput">
-					<span class="floating-label">
-						<v-icon name="ri-lock-line" />Password
-					</span>
+					<span v-svg-icon="'password'" class="floating-label" />
+					<p>Password</p>
 				</CFormLabel>
 			</CFormFloating>
 

@@ -45,11 +45,28 @@
 			align-items: center;
 			column-gap: 1rem;
 		}
+
+		.form-label {
+			display: flex;
+			align-items: center;
+
+			.email-input {
+				padding-inline-end: 4px;
+			}
+
+			span {
+				position: relative;
+				bottom: 1px;
+
+				svg {
+					scale: .8;
+				}
+			}
+		}
 	}
 
 	.password-container {
 		display: flex;
-		flex-direction: row;
 		justify-content: space-between;
 
 		input {
@@ -62,6 +79,7 @@
 			}
 		}
 
+
 		.password-reveal {
 			z-index: 2;
 			font-weight: 700;
@@ -70,6 +88,9 @@
 		.forget-password {
 			position: absolute;
 			transform: translateY(4.25rem);
+
+
+
 		}
 	}
 
@@ -144,11 +165,11 @@
 
 	}
 
-	@include for-mobile-layout{
+	@include for-mobile-layout {
 		width: 90%;
 		padding: 0;
 
-		.form-submit{
+		.form-submit {
 			margin: 0;
 			width: 100%;
 		}

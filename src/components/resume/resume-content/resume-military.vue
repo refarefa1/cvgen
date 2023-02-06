@@ -4,14 +4,14 @@
         <div @click="openAccordion" class="resume-title">
             <h1>Military service</h1>
             <p v-if="!isOpen">Edit Military service
-                <span><v-icon name="md-keyboardarrowdown"></v-icon></span>
+                <span v-svg-icon="'expand'" />
             </p>
         </div>
 
 
         <div v-if="isOpen" class="resume-military">
             <div v-for="input in inputs" :key="input.label" :class="'resume-input ' + input.class">
-                <span v-if="input.type === 'file'"><v-icon name="bi-camera-fill"></v-icon></span>
+                <span v-svg-icon="'camera'" v-if="input.type === 'file'" />
                 <CFormInput v-model="(military as Military)[input.name]" @input="update" :name="input.name"
                     :label="input.label" :type="input.type" :placeholder="input.placeholder"
                     aria-label="default input" />

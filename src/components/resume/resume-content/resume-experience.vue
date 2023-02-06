@@ -4,7 +4,7 @@
         <div @click="add" class="resume-title">
             <h1>Experience</h1>
             <p v-if="!isOpen">Edit experience
-                <span><v-icon name="md-keyboardarrowdown"></v-icon></span>
+                <span v-svg-icon="'expand'" />
             </p>
         </div>
 
@@ -15,12 +15,11 @@
                         <h3>{{ ex.employer }}<span v-if="ex.jobTitle">,</span></h3>
                         <h4>{{ ex.jobTitle }}</h4>
                     </div>
-                    <span><v-icon name="md-keyboardarrowdown"></v-icon></span>
-
+                    <span v-svg-icon="'expand'" />
                 </li>
             </ul>
             <button class="add-btn" @click="openAccordion">
-                <span><v-icon name="md-add-outlined"></v-icon></span>
+                <span v-svg-icon="'plus'" />
                 <p>Experience</p>
             </button>
         </div>
@@ -28,7 +27,7 @@
 
         <div v-if="!isAdding && isOpen" class="resume-experience">
             <div v-for="input in inputs" :key="input.label" :class="'resume-input ' + input.class">
-                <span v-if="input.type === 'file'"><v-icon name="bi-camera-fill"></v-icon></span>
+                <span v-svg-icon="'camera'" v-if="input.type === 'file'" />
                 <CFormInput v-model="(experience as Experience)[input.name]" @input="update" :name="input.name"
                     :label="input.label" :type="input.type" :placeholder="input.placeholder"
                     aria-label="default input" />

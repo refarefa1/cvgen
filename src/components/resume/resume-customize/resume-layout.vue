@@ -9,13 +9,13 @@
                 <h2>Rearrange sections</h2>
             </div>
             <div class="component-item disabled">
-                <span><v-icon name="fa-regular-user"></v-icon></span>
+                <span v-svg-icon="'username'" />
             </div>
             <SlickList axis="y" v-model:list="components">
                 <SlickItem v-for="(component, i) in components" :key="component" :index="i">
                     <div @mousedown="setIsDragging(true)" class="component-item">
-                        <span><v-icon name="md-dragindicator-sharp"></v-icon></span>
-                        <span><v-icon :name="getIcon(component)"></v-icon></span>
+                        <span v-svg-icon="'drag'"></span>
+                        <span v-svg-icon="getIcon(component)" />
                         <h3>{{ formatName(component) }}</h3>
                     </div>
                 </SlickItem>
@@ -50,12 +50,12 @@ export default {
     methods: {
         getIcon(cmp: string) {
             switch (cmp) {
-                case 'resume-profile': return 'ri-profile-line'
-                case 'resume-education': return 'co-education'
-                case 'resume-experience': return 'la-suitcase-solid'
-                case 'resume-skills': return 'gi-skills'
-                case 'resume-languages': return 'io-earth'
-                case 'resume-military': return 'md-militarytech-outlined'
+                case 'resume-profile': return 'profile'
+                case 'resume-education': return 'education'
+                case 'resume-experience': return 'experience'
+                case 'resume-skills': return 'skill'
+                case 'resume-languages': return 'language'
+                case 'resume-military': return 'military'
             }
         },
         formatName(cmp: string) {

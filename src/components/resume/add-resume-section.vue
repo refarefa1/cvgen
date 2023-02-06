@@ -4,7 +4,7 @@
 
         <div v-if="componentsToAdd.length" class="add-sect-cta">
             <button @click="isOpen = !isOpen" class="add-sect-btn">
-                <span v-if="!isOpen"><v-icon name="md-add-outlined"></v-icon></span>
+                <span v-svg-icon="'plus'" v-if="!isOpen" />
                 <p>{{ isOpen?'Cancel': 'Add Content' }}</p>
             </button>
         </div>
@@ -16,7 +16,7 @@
                     <li @click="addComponent(component.type)" v-for="component in componentsToAdd" :key="component.type"
                         class="modal-content-preview">
                         <div class="preview-header">
-                            <span><v-icon :name="component.icon" /></span>
+                            <span v-svg-icon="`${component.icon}`"></span>
                             <p>{{ component.name }}</p>
                         </div>
                         <div class="preview-desc">
@@ -45,12 +45,12 @@ export default {
         return {
             isOpen: false,
             components: [
-                { type: 'resume-profile', name: 'Profile', icon: 'ri-profile-line', description: 'Make a great first impression by presenting yourself in a few sentences.' },
-                { type: 'resume-education', name: 'Education', icon: 'co-education', description: 'Show off your primary education, college degrees & exchange semesters.' },
-                { type: 'resume-experience', name: 'Experience', icon: 'la-suitcase-solid', description: 'A place to highlight your professional experience - including internships.' },
-                { type: 'resume-skills', name: 'Skills', icon: 'gi-skills', description: 'List your technical, managerial or soft skills in this section.' },
-                { type: 'resume-languages', name: 'Languages', icon: 'io-earth', description: 'You speak more than one language? Make sure to list them here.' },
-                { type: 'resume-military', name: 'Military service', icon: 'md-militarytech-outlined', description: 'If you served in the army, why not state it?' },
+                { type: 'resume-profile', name: 'Profile', icon: 'profile', description: 'Make a great first impression by presenting yourself in a few sentences.' },
+                { type: 'resume-education', name: 'Education', icon: 'education', description: 'Show off your primary education, college degrees & exchange semesters.' },
+                { type: 'resume-experience', name: 'Experience', icon: 'experience', description: 'A place to highlight your professional experience - including internships.' },
+                { type: 'resume-skills', name: 'Skills', icon: 'skill', description: 'List your technical, managerial or soft skills in this section.' },
+                { type: 'resume-languages', name: 'Languages', icon: 'language', description: 'You speak more than one language? Make sure to list them here.' },
+                { type: 'resume-military', name: 'Military service', icon: 'military', description: 'If you served in the army, why not state it?' },
             ]
         }
     },

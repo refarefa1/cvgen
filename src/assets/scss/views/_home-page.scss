@@ -26,16 +26,28 @@
 
 			.login-btn {
 				display: flex;
-				gap: 12px;
 				justify-content: center;
 				align-items: center;
 				height: 45px;
 				width: 150px;
 				border-radius: 2em;
-				font-weight: 700;
-				font-size: rem(16px);
 				@include btn($primary-color, $secondary-color);
-				color: $txt-color;
+
+				p {
+					display: flex;
+					gap: 12px;
+					justify-content: center;
+					align-items: center;
+					font-weight: 700;
+					font-size: rem(16px);
+					color: $txt-color;
+				}
+
+				span{
+					svg{
+						fill: $txt-color;
+					}
+				}
 			}
 		}
 	}
@@ -240,15 +252,15 @@
 					}
 				}
 
-				p{
+				p {
 					font-size: rem(18px);
 
 				}
 			}
 
-			.resume-list-container{
-				.resume-list-header{
-					h2{
+			.resume-list-container {
+				.resume-list-header {
+					h2 {
 						font-size: rem(26px);
 					}
 				}

@@ -5,7 +5,7 @@
         <div @click="openAccordion" class="resume-title">
             <h1>Profile</h1>
             <p v-if="!isOpen">Edit profile
-                <span><v-icon name="md-keyboardarrowdown"></v-icon></span>
+                <span v-svg-icon="'expand'" />
             </p>
         </div>
 

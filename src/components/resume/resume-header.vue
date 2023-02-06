@@ -14,7 +14,7 @@
         </nav>
         <div @click="download" class="download">
             <button class="download-btn">
-                <span><v-icon name="md-filedownload"></v-icon></span>
+                <span v-svg-icon="'download'"></span>
                 <p>Download</p>
             </button>
         </div>

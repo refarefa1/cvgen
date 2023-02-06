@@ -5,7 +5,7 @@
         <div @click="add" class="resume-title">
             <h1>Skills</h1>
             <p v-if="!isOpen">Edit skills
-                <span><v-icon name="md-keyboardarrowdown"></v-icon></span>
+                <span v-svg-icon="'expand'" />
             </p>
         </div>
 
@@ -16,18 +16,18 @@
                         <h3>{{ skill.name }}<span v-if="skill.level"></span></h3>
                         <h4>{{ formatSkillLevel(skill.level) }}</h4>
                     </div>
-                    <span><v-icon name="md-keyboardarrowdown"></v-icon></span>
+                    <span v-svg-icon="'expand'" />
                 </li>
             </ul>
             <button class="add-btn" @click="openAccordion">
-                <span><v-icon name="md-add-outlined"></v-icon></span>
+                <span v-svg-icon="'plus'" />
                 <p>Skill</p>
             </button>
         </div>
 
         <div v-if="!isAdding && isOpen" class="resume-skills">
             <div v-for="input in inputs" :key="input.label" :class="'resume-input ' + input.class">
-                <span v-if="input.type === 'file'"><v-icon name="bi-camera-fill"></v-icon></span>
+                <span v-if="input.type === 'file'" v-svg-icon="'camera'" />
                 <CFormInput v-model="skill[input.name as keyof Skill]" @input="update" :name="input.name"
                     :label="input.label" :type="input.type" :placeholder="input.placeholder"
                     aria-label="default input" />

@@ -66,12 +66,11 @@
                     </div>
                     <div @click="setHeadingColor(color)" v-for="color in colors" :key="color" class="color-preview"
                         :style="{ 'background-color': color }">
-                        <span v-if="resume?.style.heading.headingColor === color" class="checkmark"><v-icon
-                                name="io-checkmark"></v-icon></span>
+                        <span v-if="resume?.style.heading.headingColor === color" class="checkmark" v-svg-icon="'checkmark'" />
                     </div>
                     <div class="color-preview rainbow">
                         <input v-model="color" @input="colorizeHeading()" type="color" name="color-picker" />
-                        <span v-if="isRandomColor" class="checkmark"><v-icon name="io-checkmark"></v-icon></span>
+                        <span v-if="isRandomColor" class="checkmark" v-svg-icon="'checkmark'" />
                     </div>
                 </div>
             </div>

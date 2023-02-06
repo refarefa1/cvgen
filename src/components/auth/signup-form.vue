@@ -4,14 +4,17 @@
 
 		<CFormFloating class="mb-3">
 			<CFormInput v-model="credentials.email" type="email" placeholder="Email" autofocus required />
-			<CFormLabel for="floatingInput"><span class="floating-label"><v-icon name="md-email" />Email</span>
+			<CFormLabel for="floatingInput">
+				<span v-svg-icon="'email'" />
+				<p>Email</p>
 			</CFormLabel>
 		</CFormFloating>
 
 		<CFormFloating class="mb-3">
 			<CFormInput v-model="credentials.username" type="email" placeholder="User name" required />
-			<CFormLabel for="floatingInput"><span class="floating-label"><v-icon name="fa-regular-user" />User
-					name</span>
+			<CFormLabel for="floatingInput">
+				<span v-svg-icon="'username'" />
+				<p>User name</p>
 			</CFormLabel>
 		</CFormFloating>
 
@@ -19,11 +22,9 @@
 			<CFormFloating class="mb-3">
 				<CFormInput v-model="credentials.password" :type="showPassword ? 'text' : 'password'" required
 					placeholder="Password" inputmode="tel" />
-
 				<CFormLabel for="floatingInput">
-					<span class="floating-label">
-						<v-icon name="ri-lock-line" />Password
-					</span>
+					<span v-svg-icon="'password'" />
+					<p>Password</p>
 				</CFormLabel>
 			</CFormFloating>
 
