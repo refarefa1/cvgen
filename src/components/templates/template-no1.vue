@@ -173,9 +173,16 @@ export default {
         setHeading(val: any) {
             const nodeTitles = document.querySelectorAll('.template-no1 .title')
             const titles: Element[] = Array.from(nodeTitles)
+
             this.setCapitalization(titles, val)
             this.setHeadingStyle(titles, val)
+            this.setHeadingColor(titles, val)
 
+        },
+        setHeadingColor(titles: Element[], val: any) {
+            titles.forEach(title => {
+                (title as HTMLElement).style.color = val.headingColor
+            })
         },
         setCapitalization(titles: Element[], val: any) {
             const uppercase = (val.capitalization === 'uppercase')
@@ -204,7 +211,7 @@ export default {
                         break
                 }
             })
-        }
+        },
     },
 }
 </script>

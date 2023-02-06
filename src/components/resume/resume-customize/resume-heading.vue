@@ -55,6 +55,14 @@
                 </div>
             </div>
         </div>
+        <div class="heading-color">
+            <div class="sub-title">
+                <h2>Color</h2>
+            </div>
+            <div class="color-picker">
+                <input v-model="color" @change="colorizeHeading()" type="color" name="color-picker" />
+            </div>
+        </div>
     </section>
 </template>
 
@@ -74,7 +82,8 @@ export default {
     data() {
         return {
             components: [] as string[],
-            isDragging: false
+            isDragging: false,
+            color: '#000000'
         }
     },
     methods: {
@@ -87,8 +96,12 @@ export default {
             const heading = this.resume?.style.heading
             const payload = { type: 'heading', val: { ...heading, style: option } }
             this.$emit('update', payload)
+        },
+        colorizeHeading() {
+            const heading = this.resume?.style.heading
+            const payload = { type: 'heading', val: { ...heading, headingColor: this.color } }
+            this.$emit('update', payload)
         }
     },
-
 }
 </script>
