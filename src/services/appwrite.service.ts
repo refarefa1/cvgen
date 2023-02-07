@@ -49,8 +49,6 @@ export async function logout() {
     }
 }
 
-
-
 async function getAccount() {
     try {
         const loggedInAccount = await account.get()
@@ -67,7 +65,6 @@ async function _sendJWT(jwt: string) {
         console.log(err);
     }
 }
-
 
 
 export const appwriteService = {

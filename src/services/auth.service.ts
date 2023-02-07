@@ -92,16 +92,16 @@ export const authService = {
     login,
 }
 
-// @ts-ignore
-window.signup = signup
-// @ts-ignore
-window.getAccount = getAccount
-// @ts-ignore
-window.logout = logout
+// // @ts-ignore
+// window.signup = signup
+// // @ts-ignore
+// window.getAccount = getAccount
+// // @ts-ignore
+// window.logout = logout
 // @ts-ignore
 window.login = login
 // @ts-ignore
-window.newAccount = {"$id":"63e0b784b51f1a85005a","$createdAt":"2023-02-06T08:17:08.843+00:00","$updatedAt":"2023-02-06T08:17:08.843+00:00","name":"0.13869023395258528@gmail.com","registration":"2023-02-06T08:17:08.843+00:00","status":true,"passwordUpdate":"2023-02-06T08:17:08.843+00:00","email":"0.13869023395258528@gmail.com","phone":"","emailVerification":false,"phoneVerification":false,"prefs":{}}
+// window.newAccount = {"$id":"63e0b784b51f1a85005a","$createdAt":"2023-02-06T08:17:08.843+00:00","$updatedAt":"2023-02-06T08:17:08.843+00:00","name":"0.13869023395258528@gmail.com","registration":"2023-02-06T08:17:08.843+00:00","status":true,"passwordUpdate":"2023-02-06T08:17:08.843+00:00","email":"0.13869023395258528@gmail.com","phone":"","emailVerification":false,"phoneVerification":false,"prefs":{}}
 
 
 
