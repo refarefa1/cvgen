@@ -1,3 +1,9 @@
+html {
+	@include for-middle-layout {
+		font-size: 14px;
+	}
+}
+
 * {
 	box-sizing: border-box;
 }
@@ -9,6 +15,7 @@ body {
 	background-color: $bg-color;
 	color: $primary-color;
 	letter-spacing: 0.01px;
+	overflow-x: hidden;
 
 	&.dragging {
 		* {
@@ -55,5 +62,13 @@ button {
 }
 
 ::-webkit-scrollbar {
-	display: none;
+	height: 0.8em;
+
+	@include for-mobile-layout {
+		display: none;
+	}
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: darkgrey;
 }

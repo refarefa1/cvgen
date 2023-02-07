@@ -12,8 +12,8 @@
         <div v-if="isOpen" class="resume-military">
             <div v-for="input in inputs" :key="input.label" :class="'resume-input ' + input.class">
                 <span v-svg-icon="'camera'" v-if="input.type === 'file'" />
-                <CFormInput v-model="(military as Military)[input.name]" @input="update" :name="input.name"
-                    :label="input.label" :type="input.type" :placeholder="input.placeholder"
+                <CFormInput v-model="(military as Military)[input.name]" @keydown.enter="save" @input="update"
+                    :name="input.name" :label="input.label" :type="input.type" :placeholder="input.placeholder"
                     aria-label="default input" />
             </div>
             <div class="resume-input date-input">
@@ -42,7 +42,7 @@ export default {
     props: {
         resume: Object as PropType<Resume>,
     },
-    emits: ['update', 'open'],
+    emits: ['update', 'open', 'save'],
     created() {
         eventBus.on('closeAccordion', () => { this.isOpen = false })
     },
@@ -61,6 +61,9 @@ export default {
                 const payload = { type: 'military', val: { ...this.military } }
                 this.$emit('update', payload)
             }, 0)
+        },
+        save() {
+            this.$emit('save')
         },
         openAccordion() {
             this.isOpen = true

@@ -1,14 +1,14 @@
 <template>
-	<section class="resume-list-container">
+	<section ref="container" class="resume-list-container">
 
 		<div class="resume-list-header">
 			<h2>My resumes</h2>
 		</div>
-		<div class="resume-list">
-			<div class="resume-preview-add">
+		<div ref="list" class="resume-list" :class="{ 'overflow': isOverflow }">
+			<div class=" resume-preview-add">
 				<router-link to="resume/content">
 					<div class="resume-info">
-						<span v-svg-icon="'resume'" class="resume-icon"></span>
+						<span v-svg-icon="'plus'" class="resume-icon"></span>
 						<p class="resume-title">New resume</p>
 					</div>
 				</router-link>
@@ -35,5 +35,26 @@ export default {
 			required: true,
 		},
 	},
+	mounted() {
+		this.isOverflow = this.checkIfOverflow()
+	},
+	data() {
+		return {
+			isOverflow: false
+		}
+	},
+	computed: {
+		overflow() {
+			return this.isOverflow
+		}
+	},
+	methods: {
+		checkIfOverflow() {
+			if (!this.$refs.list) return false
+			const elemWidth = (this.$refs.list as HTMLElement).scrollWidth
+			const parentWidth = (this.$refs.container as HTMLElement).getBoundingClientRect().width - 48
+			return elemWidth > parentWidth
+		}
+	}
 };
 </script>

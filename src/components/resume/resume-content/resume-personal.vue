@@ -72,11 +72,8 @@ export default {
 
             // This is for backend
             this.$emit('upload', ev.target.files[0])
-
-
         },
-        save(ev: KeyboardEvent) {
-            if (ev.key !== 'Enter') return
+        save() {
             this.$emit('save')
         },
         openAccordion() {

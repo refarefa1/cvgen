@@ -91,7 +91,7 @@
 
     }
 
-    
+
 
     .resume-form {
         margin-block: 24px;
@@ -487,6 +487,21 @@
                     padding-inline-end: 6px;
                 }
             }
+
+            .close-btn {
+                margin-top: 12px;
+                cursor: pointer;
+                color: $link-color;
+                font-size: 1rem;
+                font-weight: 800;
+
+                span {
+                    svg {
+                        transform: rotate(180deg);
+                        fill: $link-color;
+                    }
+                }
+            }
         }
 
         &.open {
@@ -509,7 +524,7 @@
     .resume-footer {
         display: flex;
         align-items: center;
-        flex-direction: row-reverse;
+        justify-content: flex-end;
         background-color: white;
         border-radius: 1em;
         height: 80px;

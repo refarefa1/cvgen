@@ -23,13 +23,16 @@
                 <span v-svg-icon="'plus'" />
                 <p>Education</p>
             </button>
+            <p @click="close" class="close-btn">Close education
+                <span v-svg-icon="'expand'" />
+            </p>
         </div>
 
         <div v-if="!isAdding && isOpen" class="resume-education">
             <div v-for="input in inputs" :key="input.label" :class="'resume-input ' + input.class">
                 <span v-svg-icon="'camera'" v-if="input.type === 'file'" />
-                <CFormInput v-model="education[input.name as keyof Education]" @input="update" :name="input.name"
-                    :label="input.label" :type="input.type" :placeholder="input.placeholder"
+                <CFormInput v-model="education[input.name as keyof Education]" @keydown.enter="save" @input="update"
+                    :name="input.name" :label="input.label" :type="input.type" :placeholder="input.placeholder"
                     aria-label="default input" />
             </div>
             <div ref="textarea" class="resume-input resume-textarea">
@@ -53,7 +56,7 @@ export default {
     props: {
         resume: Object as PropType<Resume>,
     },
-    emits: ['update', 'open'],
+    emits: ['update', 'open', 'save'],
     created() {
         eventBus.on('closeAccordion', () => { this.isOpen = false })
     },
@@ -86,9 +89,16 @@ export default {
             this.education = { ...ed }
             this.openAccordion()
         },
+        save() {
+            this.$emit('save')
+        },
         openAccordion() {
             this.isAdding = false
             this.$emit('open', 'resume-education')
+        },
+        close() {
+            this.isAdding = false
+            this.isOpen = false
         }
     },
     components: {

@@ -23,13 +23,16 @@
                 <span v-svg-icon="'plus'" />
                 <p>Skill</p>
             </button>
+            <p @click="close" class="close-btn">Close skills
+                <span v-svg-icon="'expand'" />
+            </p>
         </div>
 
         <div v-if="!isAdding && isOpen" class="resume-skills">
             <div v-for="input in inputs" :key="input.label" :class="'resume-input ' + input.class">
                 <span v-svg-icon="'camera'" v-if="input.type === 'file'" />
-                <CFormInput v-model="skill[input.name as keyof Skill]" @input="update" :name="input.name"
-                    :label="input.label" :type="input.type" :placeholder="input.placeholder"
+                <CFormInput v-model="skill[input.name as keyof Skill]" @keydown.enter="save" @input="update"
+                    :name="input.name" :label="input.label" :type="input.type" :placeholder="input.placeholder"
                     aria-label="default input" />
             </div>
             <div class="resume-input level-input">
@@ -56,7 +59,7 @@ export default {
     props: {
         resume: Object as PropType<Resume>,
     },
-    emits: ['update', 'open'],
+    emits: ['update', 'open', 'save'],
     created() {
         eventBus.on('closeAccordion', () => { this.isOpen = false })
     },
@@ -85,6 +88,13 @@ export default {
         edit(skill: Skill) {
             this.skill = { ...skill }
             this.openAccordion()
+        },
+        save() {
+            this.$emit('save')
+        },
+        close() {
+            this.isAdding = false
+            this.isOpen = false
         },
         openAccordion() {
             this.isAdding = false

@@ -7,10 +7,7 @@
 
 			<div class="login">
 				<router-link to="/login" class="login-btn">
-					<p>
-						Log In
-						<span v-svg-icon="'login'"></span>
-					</p>
+					<p> Login </p>
 				</router-link>
 			</div>
 		</div>
@@ -18,7 +15,6 @@
 </template>
 
 <script lang="ts">
-import { log } from 'console';
 import { PropType } from 'vue';
 import User from '../../interfaces/user.interface';
 import customModal from '../../views/auth/auth-modal.vue';

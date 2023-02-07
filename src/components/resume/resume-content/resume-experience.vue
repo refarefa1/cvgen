@@ -22,14 +22,17 @@
                 <span v-svg-icon="'plus'" />
                 <p>Experience</p>
             </button>
+            <p @click="close" class="close-btn">Close experience
+                <span v-svg-icon="'expand'" />
+            </p>
         </div>
 
 
         <div v-if="!isAdding && isOpen" class="resume-experience">
             <div v-for="input in inputs" :key="input.label" :class="'resume-input ' + input.class">
                 <span v-svg-icon="'camera'" v-if="input.type === 'file'" />
-                <CFormInput v-model="(experience as Experience)[input.name]" @input="update" :name="input.name"
-                    :label="input.label" :type="input.type" :placeholder="input.placeholder"
+                <CFormInput v-model="(experience as Experience)[input.name]" @keydown.enter="save" @input="update"
+                    :name="input.name" :label="input.label" :type="input.type" :placeholder="input.placeholder"
                     aria-label="default input" />
             </div>
             <div class="resume-input date-input">
@@ -59,7 +62,7 @@ export default {
     props: {
         resume: Object as PropType<Resume>,
     },
-    emits: ['update', 'open'],
+    emits: ['update', 'open', 'save'],
     created() {
         eventBus.on('closeAccordion', () => { this.isOpen = false })
     },
@@ -92,6 +95,9 @@ export default {
             (this.experience as Experience) = { ...ex }
             this.openAccordion()
         },
+        save() {
+            this.$emit('save')
+        },
         openAccordion() {
             this.isAdding = false
             this.$emit('open', 'resume-experience')
@@ -102,6 +108,10 @@ export default {
             const date: number = Math.round(val.getTime());
             (this.experience as Experience)[key] = date
             this.update()
+        },
+        close() {
+            this.isAdding = false
+            this.isOpen = false
         }
 
     },

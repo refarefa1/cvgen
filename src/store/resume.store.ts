@@ -66,11 +66,11 @@ export const useResumeStore = defineStore('resumeStore', {
                     break
                 case 'arrange':
                     this.$state.resume = { ...this.$state.resume, components: val }
-                    eventBus.emit('customize', payload)
+                    setTimeout(() => eventBus.emit('customize', payload), 0)
                     break
                 case 'heading':
                     this.$state.resume = { ...this.$state.resume, style: { ...this.$state.resume.style, heading: val } }
-                    eventBus.emit('customize', payload)
+                    setTimeout(() => eventBus.emit('customize', payload), 0)
                     break
             }
         },

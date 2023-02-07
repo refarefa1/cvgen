@@ -1,11 +1,11 @@
 <template>
     <footer class="resume-footer">
+        <div @click="cancel" class="cancel">
+            <button>Cancel</button>
+        </div>
         <div @click="save" class="save">
             <span v-svg-icon="'checkmark'"></span>
             <button class="save-btn">Save</button>
-        </div>
-        <div @click="cancel" class="cancel">
-            <button>Cancel</button>
         </div>
     </footer>
 </template>

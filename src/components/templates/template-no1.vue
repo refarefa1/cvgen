@@ -162,7 +162,7 @@ export default {
             const { type, val } = payload
             switch (type) {
                 case 'arrange': this.arrange(val)
-                case 'heading': this.setHeading(val)
+                case 'heading': this.setHeading(this.resume?.style.heading)
             }
         },
         arrange(cmpOrder: string[]) {
