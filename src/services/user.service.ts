@@ -1,6 +1,9 @@
 import User from "../interfaces/user.interface"
 import { storageService } from "./storage.service"
 import { utilService } from "./util.service"
+
+import { httpService } from "./http.service"
+
 import axios from 'axios'
 
 const USER_KEY = 'loggedinUser'
@@ -159,8 +162,30 @@ function _getUser() {
     return user
 }
 
+
+
+
+
+
+async function createUser({$id, name, email}: {$id: string, name: string, email: string}, resume: object | undefined) {
+    try {
+        const user = {
+            $id, 
+            name,
+            email,
+            resumes: resume ? [resume] : []
+        }
+        
+        const res = await httpService.post('user', {user})
+    } catch (err: any) {
+        console.log('Failed to create user database', err);
+        throw new Error(err);
+    }
+}
+
 export const userService = {
     query,
     save,
-    getEmptyUser
+    getEmptyUser,
+    createUser
 }
