@@ -69,7 +69,6 @@ async function _sendJWT(jwt: string) {
 }
 
 
-
 export const appwriteService = {
     signup,
     getAccount,

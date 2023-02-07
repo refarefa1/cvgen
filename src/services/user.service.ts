@@ -4,6 +4,8 @@ import { utilService } from "./util.service"
 
 import { httpService } from "./http.service"
 
+const serverRoute = 'user'
+
 import axios from 'axios'
 
 const USER_KEY = 'loggedinUser'
@@ -165,7 +167,14 @@ function _getUser() {
 
 
 
-
+async function updateUser(user: any) {
+    try {
+        const res = await httpService.put(`${serverRoute}/${user.$id}`, {user})
+    } catch (err: any) {
+        console.log('Failed To Update User');
+        throw new Error(err);
+    }
+}
 
 
 async function createUser({$id, name, email}: {$id: string, name: string, email: string}, resume: object | undefined) {
@@ -177,16 +186,20 @@ async function createUser({$id, name, email}: {$id: string, name: string, email:
             resumes: resume ? [resume] : []
         }
         
-        const res = await httpService.post('user', {user})
+        const res = await httpService.post(`${serverRoute}`, user)
     } catch (err: any) {
         console.log('Failed to create user database', err);
         throw new Error(err);
     }
 }
 
+// @ts-ignore
+window.updateUser = updateUser
+
 export const userService = {
     query,
     save,
     getEmptyUser,
-    createUser
+    createUser,
+    updateUser
 }
