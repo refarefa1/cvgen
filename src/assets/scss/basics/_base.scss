@@ -22,6 +22,11 @@ body {
 			cursor: grabbing !important;
 		}
 	}
+
+	&.no-overflow {
+		height: 100%;
+		overflow-y: hidden;
+	}
 }
 
 h1,

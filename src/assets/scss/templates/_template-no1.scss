@@ -238,4 +238,8 @@
             border-top: 2px solid $primary-color;
         }
     }
+
+    @include for-middle-layout {
+        height: unset;
+    }
 }

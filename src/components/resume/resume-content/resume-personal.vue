@@ -15,10 +15,12 @@
                     :name="input.name" :label="input.label" :type="input.type" :placeholder="input.placeholder"
                     aria-label="default input" />
             </div>
+            <h1 class="file-label">Upload file</h1>
             <div class="resume-input file-input">
                 <span v-svg-icon="'camera'" />
                 <CFormInput @change="handleChange($event)" type="file" name="imgUrl" />
             </div>
+
         </div>
 
     </form>
