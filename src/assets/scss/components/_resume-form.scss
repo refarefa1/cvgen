@@ -2,8 +2,11 @@
     flex-basis: 50%;
     background-color: white;
     padding-inline: 48px;
-    padding-block-end: 48px;
     overflow-y: auto;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
 
 
     .resume-header {
