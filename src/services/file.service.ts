@@ -1,6 +1,5 @@
 import { jsPDF } from "jspdf"
 
-
 async function upload(file: FileList) {
   // TODO : POST REQUEST FOR (/api/upload/, {query:file})
 }

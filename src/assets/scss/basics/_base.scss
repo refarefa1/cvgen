@@ -5,9 +5,10 @@
 body {
 	line-height: 1;
 	margin: 0;
-	font-family: 'proxima-nova';
+	font-family: 'Roboto', sans-serif;
 	background-color: $bg-color;
 	color: $primary-color;
+	letter-spacing: 0.01px;
 
 	&.dragging {
 		* {
@@ -44,7 +45,7 @@ ul {
 button {
 	border: none;
 	cursor: pointer;
-	font-family: 'proxima-nova';
+	font-family: 'Roboto', sans-serif;
 	background-color: transparent;
 }
 

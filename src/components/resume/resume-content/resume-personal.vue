@@ -5,7 +5,7 @@
         <div @click="openAccordion" class="resume-title">
             <h1>Personal details</h1>
             <p v-if="!isOpen">Edit personal details
-                <span><v-icon name="md-keyboardarrowdown"></v-icon></span>
+                <span v-svg-icon="'expand'" />
             </p>
         </div>
 
@@ -16,7 +16,7 @@
                     aria-label="default input" />
             </div>
             <div class="resume-input file-input">
-                <span><v-icon name="bi-camera-fill"></v-icon></span>
+                <span v-svg-icon="'camera'" />
                 <CFormInput @change="handleChange($event)" type="file" name="imgUrl" />
             </div>
         </div>
@@ -65,7 +65,7 @@ export default {
         },
         handleChange(ev: FileInputEvent) {
             if (!ev.target.files) return
-            
+
             // Just for now until we got backend
             this.personal.imgUrl = URL.createObjectURL(ev.target.files[0])
             this.update()

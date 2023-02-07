@@ -51,7 +51,8 @@ function _getUser() {
                 style: {
                     heading: {
                         style: 'underline',
-                        capitalization: 'capitalize'
+                        capitalization: 'capitalize',
+                        headingColor: '#000000'
                     }
                 },
                 personal: {

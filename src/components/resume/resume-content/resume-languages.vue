@@ -5,7 +5,7 @@
         <div @click="add" class="resume-title">
             <h1>Languages</h1>
             <p v-if="!isOpen">Edit languages
-                <span><v-icon name="md-keyboardarrowdown"></v-icon></span>
+                <span v-svg-icon="'expand'" />
             </p>
         </div>
 
@@ -17,18 +17,18 @@
                         <h3>{{ language.name }}<span v-if="language.level"></span></h3>
                         <h4>{{ formatLanguageLevel(language.level) }}</h4>
                     </div>
-                    <span><v-icon name="md-keyboardarrowdown"></v-icon></span>
+                    <span v-svg-icon="'expand'" />
                 </li>
             </ul>
             <button class="add-btn" @click="openAccordion">
-                <span><v-icon name="md-add-outlined"></v-icon></span>
+                <span v-svg-icon="'plus'" />
                 <p>Language</p>
             </button>
         </div>
 
         <div v-if="!isAdding && isOpen" class="resume-languages">
             <div v-for="input in inputs" :key="input.label" :class="'resume-input ' + input.class">
-                <span v-if="input.type === 'file'"><v-icon name="bi-camera-fill"></v-icon></span>
+                <span v-svg-icon="'camera'" v-if="input.type === 'file'" />
                 <CFormInput v-model="language[input.name as keyof Language]" @input="update" :name="input.name"
                     :label="input.label" :type="input.type" :placeholder="input.placeholder"
                     aria-label="default input" />

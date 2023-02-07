@@ -10,9 +10,8 @@
 		<CFormFloating class="mb-3">
 			<CFormInput type="email" placeholder="Email" autofocus v-model="email" />
 			<CFormLabel for="floatingInput">
-				<span class="floating-label">
-					<v-icon name="md-email" />Email
-				</span>
+				<span v-svg-icon="'email'" class="email-input"/>
+				<p>Email</p>
 			</CFormLabel>
 			<div v-if="msg" class="validate-messages">
 				<div class="email">{{ msg }}</div>

@@ -1,7 +1,7 @@
 <template>
     <footer class="resume-footer">
         <div @click="save" class="save">
-            <span><v-icon name="bi-check-lg"></v-icon></span>
+            <span v-svg-icon="'checkmark'"></span>
             <button class="save-btn">Save</button>
         </div>
         <div @click="cancel" class="cancel">

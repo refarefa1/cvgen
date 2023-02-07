@@ -55,6 +55,26 @@
                 </div>
             </div>
         </div>
+        <div class="heading-color">
+            <div class="sub-title">
+                <h2>Color</h2>
+            </div>
+            <div class="color-picker">
+                <div class="color-list">
+                    <div @click="setHeadingColor('#000000')" class="color-preview empty">
+                        <div class="line" />
+                    </div>
+                    <div @click="setHeadingColor(color)" v-for="color in colors" :key="color" class="color-preview"
+                        :style="{ 'background-color': color }">
+                        <span v-if="resume?.style.heading.headingColor === color" class="checkmark" v-svg-icon="'checkmark'" />
+                    </div>
+                    <div class="color-preview rainbow">
+                        <input v-model="color" @input="colorizeHeading()" type="color" name="color-picker" />
+                        <span v-if="isRandomColor" class="checkmark" v-svg-icon="'checkmark'" />
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 </template>
 
@@ -74,7 +94,9 @@ export default {
     data() {
         return {
             components: [] as string[],
-            isDragging: false
+            isDragging: false,
+            colors: ['#20262E', '#567189', '#7B8FA1', '#205375', '#112B3C', '#548CA8', '#6096B4', '#93C6E7', '#0081B4', '#13005A', '#850000', '#9D3C72', '#C85C8E', '#EB455F'],
+            color: '#000000'
         }
     },
     methods: {
@@ -87,8 +109,22 @@ export default {
             const heading = this.resume?.style.heading
             const payload = { type: 'heading', val: { ...heading, style: option } }
             this.$emit('update', payload)
+        },
+        setHeadingColor(color: string) {
+            this.color = color
+            this.colorizeHeading()
+        },
+        colorizeHeading() {
+            const heading = this.resume?.style.heading
+            const payload = { type: 'heading', val: { ...heading, headingColor: this.color } }
+            this.$emit('update', payload)
         }
     },
-
+    computed: {
+        isRandomColor() {
+            const currentColor = this.resume?.style.heading.headingColor
+            return this.colors.every(color => (color !== currentColor && currentColor !== '#000000'))
+        }
+    },
 }
 </script>

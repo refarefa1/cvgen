@@ -126,6 +126,7 @@
 import { PropType } from 'vue';
 import { Resume } from '../../interfaces/resume-interface';
 import { eventBus } from '../../services/event.bus.service';
+import { utilService } from '../../services/util.service';
 
 export default {
     name: 'template-no1',
@@ -175,7 +176,20 @@ export default {
             const titles: Element[] = Array.from(nodeTitles)
             this.setCapitalization(titles, val)
             this.setHeadingStyle(titles, val)
+            this.setHeadingColor(titles, val)
 
+        },
+        setHeadingColor(titles: Element[], val: any) {
+            titles.forEach(title => {
+                const elTitle = title as HTMLElement
+                elTitle.style.color = val.headingColor;
+                elTitle.style.borderColor = val.headingColor;
+                const bgColor = utilService.getLighterColor(val.headingColor)
+                elTitle.style.backgroundColor =
+                    elTitle.classList.contains('center')
+                        ? bgColor
+                        : 'transparent';
+            })
         },
         setCapitalization(titles: Element[], val: any) {
             const uppercase = (val.capitalization === 'uppercase')
@@ -204,7 +218,7 @@ export default {
                         break
                 }
             })
-        }
+        },
     },
 }
 </script>
