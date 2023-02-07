@@ -7,15 +7,15 @@
                     <h2>{{ resume?.personal?.jobTitle }}</h2>
                 </div>
                 <div v-if="resume?.personal?.email" class="contact-item">
-                    <img src="src/assets/images/mail.png" alt="">
+                    <img src="/src/assets/images/mail.png" alt="">
                     <p class="mail">{{ resume.personal.email }}</p>
                 </div>
                 <div v-if="resume?.personal?.phone" class="contact-item">
-                    <img src="src/assets/images/whatsapp.png" alt="">
+                    <img src="/src/assets/images/whatsapp.png" alt="">
                     <p class="phone">{{ resume.personal.phone }}</p>
                 </div>
                 <div v-if="resume?.personal?.address" class="contact-item">
-                    <img src="src/assets/images/address.png" alt="">
+                    <img src="/src/assets/images/address.png" alt="">
                     <p class="address">{{ resume.personal?.address }}</p>
                 </div>
             </div>

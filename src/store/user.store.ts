@@ -29,9 +29,9 @@ export const useUserStore = defineStore('userStore', {
         },
         async login(credentials: Credentials) {
             try {
-                const session = await authService.login(credentials)
-                console.log(session)
-                return session
+                // const session = await authService.login(credentials)
+                // console.log(session)
+                // return session
             } catch (err: any) {
                 console.log('There was an error when logging in, please try again', err);
                 throw new Error(err);
@@ -49,9 +49,9 @@ export const useUserStore = defineStore('userStore', {
         },
         async reset(email: keyof Credentials) {
             try {
-                const session = await authService.reset(email)
-                console.log(session)
-                return session
+                // const session = await authService.reset(email)
+                // console.log(session)
+                // return session
             } catch (err: any) {
                 console.log('There was an error while trying to send mail, please try again', err);
                 throw new Error(err);

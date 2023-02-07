@@ -7,6 +7,7 @@ import { httpService } from "./http.service"
 const serverRoute = 'user'
 
 import axios from 'axios'
+import { Resume } from "../interfaces/resume-interface"
 
 const USER_KEY = 'loggedinUser'
 
@@ -167,22 +168,21 @@ function _getUser() {
 
 async function updateUser(user: any) {
     try {
-        const res = await httpService.put(`${serverRoute}/${user.$id}`, {user})
+        const res = await httpService.put(`${serverRoute}/${user.$id}`, { user })
     } catch (err: any) {
         console.log('Failed To Update User');
         throw new Error(err);
     }
 }
 
-async function createUser({$id, name, email}: {$id: string, name: string, email: string}, resume: object | undefined) {
+async function createUser({ $id, name, email }: { $id: string, name: string, email: string }) {
     try {
         const user = {
-            $id, 
+            $id,
             name,
             email,
-            resumes: resume ? [resume] : []
+            // resumes: resume ? [resume] : []
         }
-        
         const res = await httpService.post(`${serverRoute}`, user)
     } catch (err: any) {
         console.log('Failed to create user database', err);
@@ -192,7 +192,7 @@ async function createUser({$id, name, email}: {$id: string, name: string, email:
 
 async function getUser(userId: string) {
     try {
-        const user = await httpService.get(`${serverRoute}/${userId}`, {params: userId})
+        const user = await httpService.get(`${serverRoute}/${userId}`, { params: userId })
 
         console.log('Got User: ', user);
         return user
