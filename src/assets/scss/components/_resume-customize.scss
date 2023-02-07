@@ -15,9 +15,20 @@
 
         .arrange-layout {
             .sub-title {
+                margin-bottom: 8px;
                 h2 {
                     font-size: rem(16px);
                     font-weight: 800;
+                }
+            }
+
+            .component-list {
+                padding-top: 12px;
+                display: flex;
+                flex-direction: column;
+
+                .component-preview   {
+                    height: 62px;
                 }
             }
 
@@ -243,7 +254,7 @@
     display: flex;
     align-items: center;
     cursor: grab;
-    margin-block: 12px;
+    // margin-block: 12px;
     border: 1px solid darken($input-color, 6%);
     padding: 12px;
 

@@ -11,8 +11,8 @@
             <div class="component-item disabled">
                 <span v-svg-icon="'username'" />
             </div>
-            <SlickList axis="y" v-model:list="components">
-                <SlickItem v-for="(component, i) in components" :key="component" :index="i">
+            <SlickList class="component-list" axis="y" v-model:list="components">
+                <SlickItem class="component-preview" v-for="(component, i) in components" :key="component" :index="i">
                     <div @mousedown="setIsDragging(true)" class="component-item">
                         <span v-svg-icon="'drag'"></span>
                         <span v-svg-icon="getIcon(component)" />
