@@ -49,8 +49,6 @@ export async function logout() {
     }
 }
 
-
-
 async function getAccount() {
     try {
         const loggedInAccount = await account.get()

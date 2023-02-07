@@ -165,8 +165,6 @@ function _getUser() {
     return user
 }
 
-
-
 async function updateUser(user: any) {
     try {
         const res = await httpService.put(`${serverRoute}/${user.$id}`, {user})
@@ -175,7 +173,6 @@ async function updateUser(user: any) {
         throw new Error(err);
     }
 }
-
 
 async function createUser({$id, name, email}: {$id: string, name: string, email: string}, resume: object | undefined) {
     try {
@@ -193,8 +190,23 @@ async function createUser({$id, name, email}: {$id: string, name: string, email:
     }
 }
 
+async function getUser(userId: string) {
+    try {
+        const user = await httpService.get(`${serverRoute}/${userId}`, {params: userId})
+
+        console.log('Got User: ', user);
+        return user
+    } catch (err: any) {
+        console.log('Failed To get user');
+        throw new Error(err);
+    }
+}
+
+
 // @ts-ignore
 window.updateUser = updateUser
+// @ts-ignore
+window.getUser = getUser
 
 export const userService = {
     query,
