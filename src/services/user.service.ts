@@ -183,7 +183,7 @@ async function createUser({ $id, name, email }: { $id: string, name: string, ema
             email,
             // resumes: resume ? [resume] : []
         }
-        const res = await httpService.post(`${serverRoute}`, user)
+        const res = await httpService.post(serverRoute, user)
     } catch (err: any) {
         console.log('Failed to create user database', err);
         throw new Error(err);
