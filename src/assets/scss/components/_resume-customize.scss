@@ -253,6 +253,29 @@
         padding-inline: 0;
         margin-block-end: 48px;
     }
+
+    @include for-mobile-layout {
+        .resume-heading {
+            .heading-style {
+                .style-options {
+                    flex-wrap: wrap;
+                    gap: 12px;
+
+                    .option {
+                        flex-basis: 48%;
+                    }
+                }
+            }
+
+            .heading-capitalize {
+                .capitalize-options {
+                    .option {
+                        flex-basis: 48%;
+                    }
+                }
+            }
+        }
+    }
 }
 
 // Out of tree for the drag and drop

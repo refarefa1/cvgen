@@ -27,7 +27,7 @@
         <section class="template-sections">
             <div ref="resume-profile" v-if="resume?.profile?.about" class="profile-info">
                 <div class="title">
-                    <h1>Profile</h1>
+                    <h1>About me</h1>
                 </div>
                 <div class="education-about-txt">
                     <p>{{ resume.profile.about }}</p>

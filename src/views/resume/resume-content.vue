@@ -1,8 +1,12 @@
 <template>
     <resume-header @download="download" />
 
-    <component v-for="component in components" :key="component" :is="component" :resume="resume" @update="update"
-        @open="open" @save="save" @upload="upload" />
+    <resume-title @update="update" @save="save" :resume="resume" />
+
+    <section class="resume-forms">
+        <component v-for="component in components" :key="component" :is="component" :resume="resume" @update="update"
+            @open="open" @save="save" @upload="upload" />
+    </section>
 
     <add-resume-section v-if="!isOpen" @add="add" :resume="resume" />
 
@@ -19,8 +23,10 @@ import resumeSkills from '../../components/resume/resume-content/resume-skills.v
 import resumeLanguages from '../../components/resume/resume-content/resume-languages.vue'
 import resumeMilitary from '../../components/resume/resume-content/resume-military.vue'
 
+
 import resumeHeader from '../../components/resume/resume-header.vue'
 import resumeFooter from '../../components/resume/resume-footer.vue'
+import resumeTitle from '../../components/resume/resume-title.vue'
 import addResumeSection from '../../components/resume/add-resume-section.vue'
 
 import { useUserStore } from '../../store/user.store'
@@ -53,18 +59,18 @@ export default {
         },
         open(cmp: string) {
             this.components = [cmp]
-            this.isOpen = !this.isOpen
+            this.isOpen = true
         },
         save() {
             this.resumeStore.save()
-            this.isOpen = !this.isOpen
+            this.isOpen = false
             eventBus.emit('closeAccordion', null)
             eventBus.showSuccessMsg()
             this.components = ['resume-personal', ...this.resume.components]
         },
         cancel() {
             this.resumeStore.cancel()
-            this.isOpen = !this.isOpen
+            this.isOpen = false
             eventBus.emit('closeAccordion', null)
             this.components = ['resume-personal', ...this.resume.components]
         },
@@ -91,6 +97,7 @@ export default {
         resumeHeader,
         resumeFooter,
         addResumeSection,
+        resumeTitle
     }
 }
 </script>

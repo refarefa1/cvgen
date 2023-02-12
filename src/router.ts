@@ -30,17 +30,17 @@ const routes = [
 		]
 	},
 	{
-		path: '/resume',
+		path: '/resume/:id',
 		name: 'resume-app',
 		component: resumeApp,
 		children: [
 			{
-				path: 'content/:id?',
+				path: 'content',
 				name: 'resume-content',
 				component: resumeContent
 			},
 			{
-				path: 'customize/:id?',
+				path: 'customize',
 				name: 'resume-customize',
 				component: resumeCustomize
 			},

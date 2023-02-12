@@ -34,7 +34,7 @@ async function save(resume: Resume) {
 
 function getEmptyResume(): Resume {
     const resume: Resume = {
-        name: 'Resume 2',
+        name: 'Untitled',
         components: [] as string[],
         style: {
             heading: {

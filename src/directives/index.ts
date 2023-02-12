@@ -14,6 +14,7 @@ export const svgIconDirective = {
 }
 
 const svgsIcons = {
+  home: `<svg xmlns="http://www.w3.org/2000/svg" height="40" width="40"><path d="M6.667 35V15L20 5l13.333 10v20h-10V23.333h-6.666V35Z"/></svg>`,
   plus: `<svg xmlns="http://www.w3.org/2000/svg" height="24" width="24"><path d="M11.5 18.5v-6h-6v-1h6v-6h1v6h6v1h-6v6Z"/></svg>`,
   checkmark: `<svg xmlns="http://www.w3.org/2000/svg" height="24" width="24"><path d="m9.55 17.3-4.975-4.95.725-.725 4.25 4.25 9.15-9.15.725.725Z"/></svg>`,
   download: `<svg xmlns="http://www.w3.org/2000/svg" height="24" width="24"><path d="M6.625 19q-.7 0-1.162-.462Q5 18.075 5 17.375V15h1v2.375q0 .25.188.437.187.188.437.188h10.75q.25 0 .437-.188.188-.187.188-.437V15h1v2.375q0 .7-.462 1.163-.463.462-1.163.462ZM12 15.225 8.45 11.7l.725-.725L11.5 13.3V4.65h1v8.65l2.325-2.325.725.725Z"/></svg>`,

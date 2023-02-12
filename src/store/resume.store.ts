@@ -26,11 +26,19 @@ export const useResumeStore = defineStore('resumeStore', {
     },
 
     actions: {
-        query(id: string | string[]) {
-            if (!id) this.$state.resume = resumeService.getEmptyResume()
-            else {
-                const resume = (this.$state.userStore.loggedinUser.resumes as Resume[]).find(r => r._id === id)
-                if (resume) this.$state.resume = JSON.parse(JSON.stringify(resume))
+        async query(resumeId: string | null) {
+            try {
+                if (!resumeId) {
+                    this.$state.resume = resumeService.getEmptyResume()
+                    await this.save()
+                    return this.$state.resume._id
+                }
+                else {
+                    const resume = (this.$state.userStore.loggedinUser.resumes as Resume[]).find(r => r._id === resumeId)
+                    if (resume) this.$state.resume = JSON.parse(JSON.stringify(resume))
+                }
+            } catch (err) {
+                console.log(err)
             }
         },
         async save() {
@@ -39,7 +47,7 @@ export const useResumeStore = defineStore('resumeStore', {
                 this.$state.resume = deepCloneResume
                 const resume = await resumeService.save(deepCloneResume)
                 this.$state.resume = resume
-                // this.$state.userStore.query()
+                this.$state.userStore.query()
             } catch (err: any) {
                 console.log(err)
             }
@@ -47,6 +55,9 @@ export const useResumeStore = defineStore('resumeStore', {
         update(payload: Payload) {
             const { type, val } = payload
             switch (type) {
+                case 'title':
+                    this.$state.resume = { ...this.$state.resume, name: val }
+                    break
                 case 'personal':
                     this.$state.resume = { ...this.$state.resume, personal: { ...val } }
                     break
@@ -91,9 +102,6 @@ export const useResumeStore = defineStore('resumeStore', {
         add(cmp: string) {
             this.$state.resume.components.push(cmp)
         },
-
-
-
     }
 
 })
