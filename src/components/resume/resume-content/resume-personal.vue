@@ -23,6 +23,7 @@
 
         </div>
 
+        <div v-animate-number="number"></div>
     </form>
 
 </template>
@@ -54,6 +55,7 @@ export default {
                 { name: 'phone', class: 'phone-input', label: "Phone", type: "text", placeholder: "Enter Phone" },
                 { name: 'address', class: 'address-input', label: "Address", type: "text", placeholder: "City, Country" },
             ],
+            number: 5,
             personal: { fullName: '', jobTitle: '', email: '', phone: '', address: '', imgUrl: '' },
             isOpen: false,
         }

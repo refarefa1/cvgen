@@ -22,8 +22,8 @@
 
 	<div class="progress-bar-container">
 		<p>
-			<span class="percent" :style="{ color: progressBarColor }" v-animate-number="progressBarPercent"
-				>{{ progressBarPercent }}%
+			<span class="percent" :style="{ color: progressBarColor }">
+				<span v-animate-number="progressBarPercent" />%
 			</span>
 			Profile completeness
 		</p>

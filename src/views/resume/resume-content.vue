@@ -3,7 +3,7 @@
 
     <resume-title @update="update" @save="save" :resume="resume" />
 
-    <section class="resume-forms">
+    <section class="resume-forms" :class="{ 'open': isOpen }">
         <component v-for="component in components" :key="component" :is="component" :resume="resume" @update="update"
             @open="open" @save="save" @upload="upload" />
     </section>
