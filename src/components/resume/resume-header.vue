@@ -28,12 +28,10 @@
 			Profile completeness
 		</p>
 		<div class="progress-bar">
-			<div
-				class="inner"
-				:style="{
-					backgroundColor: progressBarColor,
-					width: `${progressBarPercent}%`,
-				}" />
+			<div class="inner" :style="{
+				backgroundColor: progressBarColor,
+				width: `${progressBarPercent}%`,
+			}" />
 		</div>
 	</div>
 </template>
@@ -59,11 +57,11 @@ export default {
 		},
 	},
 	computed: {
-		progressBarPercent: function () {
-			const res = this.resume?.components.length! / 6;
+		progressBarPercent() {
+			const res = (this.resume?.components.length! + 1) / 7;
 			return Math.floor(100 * res);
 		},
-		progressBarColor: function () {
+		progressBarColor() {
 			const percent = this.progressBarPercent;
 			if (percent < 30) return '#fb4458';
 			else if (percent < 70) return '#cf760d';
