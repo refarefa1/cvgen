@@ -54,6 +54,12 @@ ul {
 	margin: 0;
 }
 
+input{
+	@include for-mobile-layout{
+		font-size: 16px !important;
+	}
+}
+
 button {
 	border: none;
 	cursor: pointer;
