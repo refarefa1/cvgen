@@ -1,7 +1,5 @@
 <template>
-    <resume-header @download="download" :resume="resume"/>
-
-    <resume-title @update="update" @save="save" :resume="resume" />
+    <resume-header @update="update" @save="save" @download="download" :resume="resume" />
 
     <section class="resume-forms" :class="{ 'open': isOpen }">
         <component v-for="component in components" :key="component" :is="component" :resume="resume" @update="update"
@@ -26,7 +24,6 @@ import resumeMilitary from '../../components/resume/resume-content/resume-milita
 
 import resumeHeader from '../../components/resume/resume-header.vue'
 import resumeFooter from '../../components/resume/resume-footer.vue'
-import resumeTitle from '../../components/resume/resume-title.vue'
 import addResumeSection from '../../components/resume/add-resume-section.vue'
 
 import { useUserStore } from '../../store/user.store'
@@ -97,7 +94,6 @@ export default {
         resumeHeader,
         resumeFooter,
         addResumeSection,
-        resumeTitle
     }
 }
 </script>

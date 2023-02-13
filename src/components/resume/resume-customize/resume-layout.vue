@@ -11,10 +11,15 @@
             <div class="component-item disabled">
                 <span v-svg-icon="'username'" />
             </div>
-            <SlickList class="component-list" axis="y" v-model:list="components">
+            <SlickList :useDragHandle="isMobile" class="component-list" axis="y" v-model:list="components">
                 <SlickItem class="component-preview" v-for="(component, i) in components" :key="component" :index="i">
                     <div @mousedown="setIsDragging(true)" class="component-item">
-                        <span v-svg-icon="'drag'"></span>
+                        <div class="mobile-drag">
+                            <DragHandle>
+                                <span v-svg-icon="'drag'"></span>
+                            </DragHandle>
+                        </div>
+                        <span class="desktop-drag" v-svg-icon="'drag'"></span>
                         <span v-svg-icon="getIcon(component)" />
                         <h3>{{ formatName(component) }}</h3>
                     </div>
@@ -28,9 +33,7 @@
 <script lang="ts">
 import { PropType } from 'vue';
 import { Resume } from '../../../interfaces/resume-interface';
-import { SlickList, SlickItem } from 'vue-slicksort';
-
-
+import { SlickList, SlickItem, DragHandle } from 'vue-slicksort';
 
 export default {
     name: 'resume-layout',
@@ -79,9 +82,16 @@ export default {
             this.$emit('update', payload)
         }
     },
+    computed: {
+        isMobile() {
+            const vw = window.innerWidth
+            return vw < 500
+        }
+    },
     components: {
         SlickItem,
-        SlickList
+        SlickList,
+        DragHandle
     },
     watch: {
         components() {

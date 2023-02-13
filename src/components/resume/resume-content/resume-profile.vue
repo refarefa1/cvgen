@@ -19,7 +19,11 @@
                     <span v-svg-icon="'trash'"></span>
                     <h3>Remove</h3>
                 </div>
+                <div @click.stop="toggleModal" class="cancel-modal">
+                    <h3>Cancel</h3>
+                </div>
             </div>
+            <div v-if="isModalOpen" @click.stop="toggleModal" class="black-screen" />
 
         </div>
 

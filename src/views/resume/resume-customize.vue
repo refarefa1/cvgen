@@ -1,5 +1,5 @@
 <template>
-    <resume-header @download="download" />
+    <resume-header :resume="resume" @download="download" />
     <section class="resume-customize">
         <resume-layout @update="update" :resume="resume" />
         <resume-heading @update="update" :resume="resume" />

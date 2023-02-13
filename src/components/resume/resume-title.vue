@@ -1,5 +1,5 @@
 <template>
-    <section class="resume-title" :class="{ 'editing': isEditing }">
+    <section class="resume-main-title" :class="{ 'editing': isEditing }">
         <h1 ref="title" @keydown.enter="enter" @focus="isEditing = true" @blur="edit" class="title-content"
             contenteditable="true">
             {{ resume?.name }}</h1>

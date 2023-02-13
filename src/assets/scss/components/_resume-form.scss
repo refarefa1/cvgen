@@ -103,12 +103,12 @@
             }
         }
 
-        
+
     }
 
     .progress-bar-container {
         padding-inline: 48px;
-        
+
         .progress-bar {
             width: 100%;
             height: 3px;
@@ -128,13 +128,13 @@
             .percent {
                 color: red;
                 font-weight: 600;
+                margin-inline-end: 6px;
             }
         }
     }
 
-    .resume-title {
+    .resume-main-title {
         padding-inline: 48px;
-        padding-block-start: 12px;
         width: fit-content;
 
         .title-content {
@@ -183,7 +183,7 @@
     .resume-forms {
 
         .resume-form {
-            margin-block: 24px;
+            margin-block: 38px;
             transition: .5s;
 
             .resume-title {
@@ -213,10 +213,13 @@
                     }
                 }
 
+                .black-screen {
+                    display: none;
+                }
                 .more-options {
                     display: none;
                     position: absolute;
-                    right: 0;
+                    right: 48px;
                     top: 50%;
                     transform: translateY(-50%);
                 }
@@ -225,7 +228,7 @@
                     position: absolute;
                     display: flex;
                     flex-direction: column;
-                    right: 0px;
+                    right: 48px;
                     top: 48px;
                     z-index: 200;
                     background-color: white;
@@ -233,12 +236,13 @@
                     padding: 8px;
 
                     .edit,
-                    .remove {
+                    .remove,
+                    .cancel-modal {
                         display: flex;
                         align-items: center;
                         gap: 6px;
                         padding: 8px;
-                        
+
                         h3 {
                             font-size: rem(16px);
                             color: $primary-color;
@@ -247,6 +251,10 @@
                         @include hover {
                             background-color: darken(white, 8%);
                         }
+                    }
+
+                    .cancel-modal {
+                        display: none;
                     }
                 }
 
@@ -672,7 +680,6 @@
 
     }
 
-
     .resume-footer {
         display: flex;
         align-items: center;
@@ -819,14 +826,9 @@
 
     }
 
-
-
     @include for-middle-layout {
         flex-basis: 100%;
 
-        .resume-title {
-            padding: 0;
-        }
 
         .add-section {
             padding: 0;
@@ -841,18 +843,6 @@
             justify-content: center;
             padding-inline: 0;
 
-            .header-nav {
-                .content {
-                    a {
-                        &.router-link-exact-active {
-                            p {
-                                box-shadow: 0px 2px 0px -1px $primary-color;
-                            }
-                        }
-                    }
-                }
-            }
-
             .download {
                 display: none;
             }
@@ -863,6 +853,15 @@
             .resume-form {
                 .resume-title {
                     padding-inline: 0;
+
+                    .more-options {
+                        right: 0px;
+
+                    }
+
+                    .options-modal {
+                        right: 0px;
+                    }
                 }
 
                 >* {
@@ -910,6 +909,14 @@
             }
         }
 
+        .resume-main-title {
+            padding: 0;
+        }
+
+        .progress-bar-container {
+            padding: 0;
+        }
+
 
         .resume-footer {
             padding: 0;
@@ -943,10 +950,45 @@
         .resume-forms {
             padding-bottom: 48px;
 
-            .resume-form{
-                .resume-title{
-                    .more-options{
+            .resume-form {
+                .resume-title {
+                    .more-options {
                         display: block;
+                    }
+
+                    .options-modal {
+                        width: 100%;
+                        position: fixed;
+                        bottom: 0px;
+                        top: unset;
+
+                        .edit,
+                        .remove,
+                        .cancel-modal {
+                            padding-block: 18px;
+                        }
+
+                        .cancel-modal {
+                            display: block;
+                            text-align: center;
+                            background-color: $link-color;
+
+                            h3 {
+                                color: $txt-color;
+                            }
+                        }
+
+                    }
+
+                    .black-screen {
+                        display: block;
+                        width: 100%;
+                        height: 100vh;
+                        background-color: rgba(0, 0, 0, 0.493);
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        z-index: 50;
                     }
                 }
             }

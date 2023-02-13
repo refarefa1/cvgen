@@ -289,7 +289,7 @@
 
     span {
         &:first-of-type {
-            margin-inline-end: 14px;
+            margin-inline-end: 10px;
         }
     }
 
@@ -300,6 +300,10 @@
         text-transform: capitalize;
     }
 
+    .mobile-drag {
+        display: none;
+    }
+
 
     &.disabled {
         display: flex;
@@ -308,5 +312,20 @@
         pointer-events: none;
         padding-block: 36px;
         cursor: auto;
+    }
+
+    @include for-mobile-layout {
+        .mobile-drag {
+            display: block;
+
+            span {
+                margin-inline-end: 4px;
+            }
+        }
+
+        .desktop-drag {
+            display: none;
+
+        }
     }
 }
