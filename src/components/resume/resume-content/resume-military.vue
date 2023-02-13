@@ -6,6 +6,20 @@
             <p v-if="!isOpen">Edit Military service
                 <span v-svg-icon="'expand'" />
             </p>
+            <div @click.stop="toggleModal" class="more-options">
+                <span v-svg-icon="'options'"></span>
+            </div>
+            <div v-if="isModalOpen" v-click-outside="toggleModal" class="options-modal">
+                <div @click="edit" class="edit">
+                    <span v-svg-icon="'edit'"></span>
+                    <h3>Edit</h3>
+                </div>
+                <div class="remove">
+                    <span v-svg-icon="'trash'"></span>
+                    <h3>Remove</h3>
+                </div>
+            </div>
+
         </div>
 
 
@@ -52,6 +66,7 @@ export default {
                 { name: 'role', class: 'role-input', label: "Role", type: "text", placeholder: "Enter your role" },
             ],
             isOpen: false,
+            isModalOpen: false,
             military: { role: '', startDate: 0, endDate: 0 }
         }
     },
@@ -74,6 +89,13 @@ export default {
             const date: number = Math.round(val.getTime());
             (this.military as Military)[key] = date
             this.update()
+        },
+        toggleModal() {
+            this.isModalOpen = !this.isModalOpen
+        },
+        edit() {
+            this.toggleModal()
+            this.openAccordion()
         }
 
     },

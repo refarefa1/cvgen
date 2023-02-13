@@ -7,6 +7,20 @@
             <p v-if="!isOpen">Edit profile
                 <span v-svg-icon="'expand'" />
             </p>
+            <div @click.stop="toggleModal" class="more-options">
+                <span v-svg-icon="'options'"></span>
+            </div>
+            <div v-if="isModalOpen" v-click-outside="toggleModal" class="options-modal">
+                <div @click="edit" class="edit">
+                    <span v-svg-icon="'edit'"></span>
+                    <h3>Edit</h3>
+                </div>
+                <div class="remove">
+                    <span v-svg-icon="'trash'"></span>
+                    <h3>Remove</h3>
+                </div>
+            </div>
+
         </div>
 
         <div v-if="isOpen" class="resume-profile">
@@ -39,7 +53,9 @@ export default {
     data() {
         return {
             isOpen: false,
-            profile: { about: '' }
+            isModalOpen: false,
+            profile: { about: '' },
+
         }
     },
     methods: {
@@ -55,6 +71,13 @@ export default {
             this.profile.about = this.resume?.profile?.about
             this.$emit('open', 'resume-profile')
         },
+        toggleModal() {
+            this.isModalOpen = !this.isModalOpen
+        },
+        edit() {
+            this.toggleModal()
+            this.openAccordion()
+        }
 
 
     },

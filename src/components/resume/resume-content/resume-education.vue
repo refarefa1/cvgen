@@ -7,6 +7,20 @@
             <p v-if="!isOpen">Edit education
                 <span v-svg-icon="'expand'" />
             </p>
+            <div @click.stop="toggleModal" class="more-options">
+                <span v-svg-icon="'options'"></span>
+            </div>
+            <div v-if="isModalOpen" v-click-outside="toggleModal" class="options-modal">
+                <div @click="open" class="edit">
+                    <span v-svg-icon="'edit'"></span>
+                    <h3>Edit</h3>
+                </div>
+                <div class="remove">
+                    <span v-svg-icon="'trash'"></span>
+                    <h3>Remove</h3>
+                </div>
+            </div>
+
         </div>
 
         <div v-if="isAdding" class="add-info">
@@ -70,6 +84,7 @@ export default {
             ],
             education: { _id: '', degree: '', school: '', city: '', country: '', description: '' },
             isOpen: false,
+            isModalOpen: false,
             isAdding: false,
         }
     },
@@ -95,6 +110,13 @@ export default {
         openAccordion() {
             this.isAdding = false
             this.$emit('open', 'resume-education')
+        },
+        toggleModal() {
+            this.isModalOpen = !this.isModalOpen
+        },
+        open() {
+            this.toggleModal()
+            this.add()
         },
         close() {
             this.isAdding = false

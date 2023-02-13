@@ -13,6 +13,31 @@ export const svgIconDirective = {
   }
 }
 
+export const clickOutsideDirective = {
+  
+  mounted(el: any, { value: cb }: any) {
+    el.clickOutside = ({ clientX, clientY }: any) => {
+      const { left, top, width, height } = el.getBoundingClientRect()
+      if (
+        !(clientX > left &&
+          clientX < left + width &&
+          clientY > top &&
+          clientY < top + height)
+      ) {
+        cb()
+      } else {
+        console.log('inside')
+      }
+    }
+    setTimeout(() => {
+      document.addEventListener('click', el.clickOutside)
+    }, 0)
+  },
+  unmounted(el: any) {
+    document.removeEventListener('click', el.clickOutside)
+  },
+}
+
 export const animateNumbersDirective = {
   mounted(el: HTMLElement, binding: DirectiveBinding<number>) {
     el.innerHTML = binding.value + ''
@@ -39,6 +64,8 @@ export const animateNumbersDirective = {
 }
 
 const svgsIcons = {
+  edit: `<svg xmlns="http://www.w3.org/2000/svg" height="24" width="24"><path d="M5.3 19h1.075l9.9-9.9L15.2 8.025l-9.9 9.9ZM18.425 8.375l-2.5-2.475 1.2-1.2q.3-.325.725-.325t.725.325l1.05 1.025q.3.3.3.725t-.3.725ZM17.7 9.1 6.8 20H4.3v-2.5L15.2 6.6Zm-1.975-.55-.525-.525L16.275 9.1Z"/></svg>`,
+  options: `<svg xmlns="http://www.w3.org/2000/svg" height="24" width="24"><path d="M6.45 13q-.4 0-.7-.288-.3-.287-.3-.712t.3-.713q.3-.287.7-.287.425 0 .712.287.288.288.288.713t-.288.712Q6.875 13 6.45 13ZM12 13q-.425 0-.712-.288Q11 12.425 11 12t.288-.713Q11.575 11 12 11t.713.287Q13 11.575 13 12t-.287.712Q12.425 13 12 13Zm5.55 0q-.425 0-.713-.288-.287-.287-.287-.712t.287-.713q.288-.287.713-.287.4 0 .7.287.3.288.3.713t-.3.712q-.3.288-.7.288Z"/></svg>`,
   trash: `<svg xmlns="http://www.w3.org/2000/svg" height="24" width="24"><path d="M7.625 20q-.675 0-1.15-.475Q6 19.05 6 18.375V6H5V5h4v-.775h6V5h4v1h-1v12.375q0 .7-.462 1.163-.463.462-1.163.462ZM17 6H7v12.375q0 .275.175.45t.45.175h8.75q.25 0 .437-.188.188-.187.188-.437ZM9.8 17h1V8h-1Zm3.4 0h1V8h-1ZM7 6v13-.625Z"/></svg>`,
   home: `<svg xmlns="http://www.w3.org/2000/svg" height="40" width="40"><path d="M6.667 35V15L20 5l13.333 10v20h-10V23.333h-6.666V35Z"/></svg>`,
   plus: `<svg xmlns="http://www.w3.org/2000/svg" height="24" width="24"><path d="M11.5 18.5v-6h-6v-1h6v-6h1v6h6v1h-6v6Z"/></svg>`,

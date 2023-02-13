@@ -8,7 +8,8 @@ import App from './App.vue'
 import {
     focusDirective,
     svgIconDirective,
-    animateNumbersDirective
+    animateNumbersDirective,
+    clickOutsideDirective
 } from './directives'
 
 
@@ -18,6 +19,10 @@ const pinia = createPinia()
 app.directive('focus', focusDirective)
 app.directive('svg-icon', svgIconDirective)
 app.directive('animate-number', animateNumbersDirective)
+app.directive('click-outside', clickOutsideDirective)
+
+
+
 
 app.use(pinia)
 app.use(router)

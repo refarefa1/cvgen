@@ -153,437 +153,498 @@
 
     }
 
-    .resume-form {
-        margin-block: 24px;
-        padding-block-end: 24px;
-        transition: .5s;
+    .resume-forms {
 
-        .resume-title {
-            display: flex;
-            gap: 8px;
-            flex-direction: column;
-            height: 60px;
-            pointer-events: auto;
-            padding-inline: 48px;
-            cursor: pointer;
+        .resume-form {
+            margin-block: 24px;
+            transition: .5s;
 
-            h1 {
-                font-size: rem(24px);
-                font-weight: 800;
-            }
-
-            p {
-                color: $link-color;
-                font-size: rem(16px);
-                font-weight: 800;
-
-                span {
-                    svg {
-                        fill: $link-color;
-                    }
-                }
-            }
-        }
-
-        .resume-personal {
-            padding-inline: 48px;
-            position: relative;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 24px;
-            grid-template-areas:
-                'name name name file'
-                'job job job file'
-                'email email phone phone'
-                'address address address address'
-            ;
-
-            .file-label {
-                display: none;
-            }
-
-            .resume-input {
-                label {
-                    font-weight: 600;
-                }
-
-                input {
-                    background-color: $input-color;
-                    height: 50px;
-                    border: none;
-                    border-radius: 0px;
-
-                    &:focus {
-                        box-shadow: none;
-                    }
-                }
-
-                &.name-input {
-                    grid-area: name;
-                }
-
-                &.job-input {
-                    grid-area: job;
-                }
-
-                &.phone-input {
-                    grid-area: phone;
-                }
-
-                &.address-input {
-                    grid-area: address;
-                }
-
-                &.mail-input {
-                    grid-area: email;
-                }
-
-                &.file-input {
-                    grid-area: file;
-                    position: absolute;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    top: 24px;
-                    right: 0px;
-                    height: 148px;
-                    background-color: $input-color;
-                    // aspect-ratio: 1 / 1;
-
-                    span {
-                        position: absolute;
-                        top: 50%;
-                        left: 50%;
-                        transform: translate(-50%, -50%);
-
-                        svg {
-                            scale: 1.5;
-                            fill: white;
-                        }
-                    }
-
-                    input {
-                        border-radius: 10em;
-                        opacity: 0;
-                    }
-                }
-            }
-
-
-        }
-
-        .resume-education {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 24px;
-            padding-inline: 48px;
-
-            .resume-input {
-                label {
-                    font-weight: 600;
-                }
-
-                input {
-                    background-color: $input-color;
-                    height: 50px;
-                    border: none;
-                    border-radius: 0;
-
-                    &:focus {
-                        box-shadow: none;
-                    }
-
-                }
-
-                &.resume-textarea {
-                    grid-column: 1/-1;
-
-                    textarea {
-                        border-radius: 0px;
-                        border: none;
-                        background-color: $input-color;
-                        resize: none;
-
-                        &:focus {
-                            box-shadow: none;
-                        }
-                    }
-                }
-
-            }
-        }
-
-        .resume-experience,
-        .resume-military {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 24px;
-            padding-inline: 48px;
-
-            .resume-input {
-                label {
-                    font-weight: 600;
-                }
-
-                input {
-                    background-color: $input-color;
-                    height: 50px;
-                    border: none;
-                    border-radius: 0;
-
-                    &:focus {
-                        box-shadow: none;
-                    }
-
-                }
-
-                &.date-input {
-                    label {
-                        margin-bottom: 0.5rem;
-                    }
-
-                    .vuejs3-datepicker {
-                        width: 100%;
-
-                        div {
-                            #calendar-div {
-                                .vuejs3-datepicker__value {
-                                    padding: 0px;
-                                    height: 50px;
-                                    width: 100%;
-                                    border: none;
-                                    border-radius: 0px;
-                                    background-color: $input-color;
-                                    display: flex;
-                                    align-items: center;
-                                    padding-inline-start: 18px;
-                                }
-                            }
-                        }
-
-                        .vuejs3-datepicker__calendar {
-                            .vuejs3-datepicker__calendar-topbar {
-                                background-color: $link-color;
-                            }
-
-                            .vuejs3-datepicker__calendar-actionarea {
-                                div {
-                                    .cell {
-                                        &.selected {
-                                            background-color: $link-color;
-                                        }
-                                    }
-                                }
-
-                                span {
-                                    &.cell {
-                                        &.selected {
-                                            background-color: $link-color;
-                                        }
-
-                                        @include hover {
-                                            border: 1px solid $link-color;
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-
-        }
-
-        .resume-profile {
-            padding-inline: 48px;
-
-            .resume-input {
-                &.resume-textarea {
-
-                    label {
-                        font-weight: 800;
-                    }
-
-                    textarea {
-                        border: none;
-                        border-radius: 0px;
-                        background-color: $input-color;
-                        resize: none;
-
-                        &:focus {
-                            box-shadow: none;
-                        }
-                    }
-                }
-            }
-        }
-
-        .resume-skills,
-        .resume-languages {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 24px;
-            padding-inline: 48px;
-
-            .resume-input {
-                label {
-                    font-weight: 600;
-                }
-
-                input {
-                    background-color: $input-color;
-                    height: 50px;
-                    border: none;
-                    border-radius: 0;
-
-                    &:focus {
-                        box-shadow: none;
-                    }
-
-                }
-
-                &.level-input {
-                    width: 100%;
-
-                    label {
-                        margin-bottom: 0.5rem;
-                    }
-
-                    p {
-                        font-size: rem(14px);
-                        margin-bottom: 0.5rem;
-
-                        span {
-                            font-weight: 800;
-                        }
-                    }
-
-                    .level-list {
-                        display: flex;
-                        gap: 12px;
-
-                        .level-preview {
-                            cursor: pointer;
-                            background-color: $input-color;
-                            flex-grow: 1;
-                            height: 50px;
-
-                            &.selected {
-                                background-color: $link-color;
-                            }
-                        }
-                    }
-                }
-
-            }
-
-        }
-
-        .resume-military {
-            .role-input {
-                grid-column: 1/-1;
-            }
-        }
-
-        .add-info {
-            padding-inline: 48px;
-
-            .resume-cmp-list {
+            .resume-title {
                 display: flex;
-                gap: 12px;
+                gap: 8px;
                 flex-direction: column;
+                position: relative;
+                pointer-events: auto;
+                padding-inline: 48px;
+                width: 100%;
+                cursor: pointer;
 
-                .resume-cmp-preview {
-                    cursor: pointer;
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-between;
-                    height: 50px;
-                    border: 1px solid darken($input-color, 4%);
-                    padding-inline: 12px;
-
-                    div {
-                        display: flex;
-                        align-items: center;
-                        gap: 12px;
-
-                        h3 {
-                            font-size: rem(16px);
-                            font-weight: 800;
-                        }
-
-                        h4 {
-                            font-size: rem(16px);
-                        }
-                    }
-
-                    @include hover {
-                        opacity: .8;
-                    }
-                }
-
-                >*:last-child {
-                    margin-bottom: 12px;
-                }
-
-            }
-
-            .add-btn {
-                display: flex;
-                align-items: center;
-                height: 45px;
-                padding-inline: 16px;
-                background-color: $gray-color;
-
-                span {
-
-                    svg {
-                        width: 28px;
-                        height: 28px;
-                        scale: .8;
-                        fill: $txt-color;
-                    }
+                h1 {
+                    font-size: rem(24px);
+                    font-weight: 800;
                 }
 
                 p {
+                    color: $link-color;
+                    font-size: rem(16px);
                     font-weight: 800;
-                    color: $txt-color;
-                    padding-inline-end: 6px;
+
+                    span {
+                        svg {
+                            fill: $link-color;
+                        }
+                    }
                 }
-            }
 
-            .close-btn {
-                margin-top: 12px;
-                cursor: pointer;
-                color: $link-color;
-                font-size: 1rem;
-                font-weight: 800;
+                .more-options {
+                    display: none;
+                    position: absolute;
+                    right: 0;
+                    top: 50%;
+                    transform: translateY(-50%);
+                }
 
-                span {
-                    svg {
-                        transform: rotate(180deg);
-                        fill: $link-color;
+                .options-modal {
+                    position: absolute;
+                    display: flex;
+                    flex-direction: column;
+                    right: 0px;
+                    top: 48px;
+                    z-index: 200;
+                    background-color: white;
+                    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+                    padding: 8px;
+
+                    .edit,
+                    .remove {
+                        display: flex;
+                        align-items: center;
+                        gap: 6px;
+                        padding: 8px;
+                        
+                        h3 {
+                            font-size: rem(16px);
+                            color: $primary-color;
+                        }
+
+                        @include hover {
+                            background-color: darken(white, 8%);
+                        }
+                    }
+                }
+
+                @include hover {
+                    .more-options {
+                        display: block;
                     }
                 }
             }
-        }
 
-        &.open {
-            height: auto;
+            .resume-personal {
+                padding-inline: 48px;
+                padding-block-start: 24px;
+                position: relative;
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 24px;
+                grid-template-areas:
+                    'name name name file'
+                    'job job job file'
+                    'email email phone phone'
+                    'address address address address'
+                ;
 
-            .resume-title {
-                pointer-events: none;
-                background-color: transparent;
+                .file-label {
+                    display: none;
+                }
+
+                .resume-input {
+                    label {
+                        font-weight: 600;
+                    }
+
+                    input {
+                        background-color: $input-color;
+                        height: 50px;
+                        border: none;
+                        border-radius: 0px;
+
+                        &:focus {
+                            box-shadow: none;
+                        }
+                    }
+
+                    &.name-input {
+                        grid-area: name;
+                    }
+
+                    &.job-input {
+                        grid-area: job;
+                    }
+
+                    &.phone-input {
+                        grid-area: phone;
+                    }
+
+                    &.address-input {
+                        grid-area: address;
+                    }
+
+                    &.mail-input {
+                        grid-area: email;
+                    }
+
+                    &.file-input {
+                        grid-area: file;
+                        position: absolute;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        top: 24px;
+                        right: 0px;
+                        height: 148px;
+                        background-color: $input-color;
+                        // aspect-ratio: 1 / 1;
+
+                        span {
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+
+                            svg {
+                                scale: 1.5;
+                                fill: white;
+                            }
+                        }
+
+                        input {
+                            border-radius: 10em;
+                            opacity: 0;
+                        }
+                    }
+                }
 
 
-                span {
-                    svg {
-                        display: none;
+            }
+
+            .resume-education {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 24px;
+                padding-inline: 48px;
+                padding-block-start: 24px;
+
+                .resume-input {
+                    label {
+                        font-weight: 600;
+                    }
+
+                    input {
+                        background-color: $input-color;
+                        height: 50px;
+                        border: none;
+                        border-radius: 0;
+
+                        &:focus {
+                            box-shadow: none;
+                        }
+
+                    }
+
+                    &.resume-textarea {
+                        grid-column: 1/-1;
+
+                        textarea {
+                            border-radius: 0px;
+                            border: none;
+                            background-color: $input-color;
+                            resize: none;
+
+                            &:focus {
+                                box-shadow: none;
+                            }
+                        }
+                    }
+
+                }
+            }
+
+            .resume-experience,
+            .resume-military {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 24px;
+                padding-inline: 48px;
+                padding-block-start: 24px;
+
+                .resume-input {
+                    label {
+                        font-weight: 600;
+                    }
+
+                    input {
+                        background-color: $input-color;
+                        height: 50px;
+                        border: none;
+                        border-radius: 0;
+
+                        &:focus {
+                            box-shadow: none;
+                        }
+
+                    }
+
+                    &.date-input {
+                        label {
+                            margin-bottom: 0.5rem;
+                        }
+
+                        .vuejs3-datepicker {
+                            width: 100%;
+
+                            div {
+                                #calendar-div {
+                                    .vuejs3-datepicker__value {
+                                        padding: 0px;
+                                        height: 50px;
+                                        width: 100%;
+                                        border: none;
+                                        border-radius: 0px;
+                                        background-color: $input-color;
+                                        display: flex;
+                                        align-items: center;
+                                        padding-inline-start: 18px;
+                                    }
+                                }
+                            }
+
+                            .vuejs3-datepicker__calendar {
+                                .vuejs3-datepicker__calendar-topbar {
+                                    background-color: $link-color;
+                                }
+
+                                .vuejs3-datepicker__calendar-actionarea {
+                                    div {
+                                        .cell {
+                                            &.selected {
+                                                background-color: $link-color;
+                                            }
+                                        }
+                                    }
+
+                                    span {
+                                        &.cell {
+                                            &.selected {
+                                                background-color: $link-color;
+                                            }
+
+                                            @include hover {
+                                                border: 1px solid $link-color;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+            }
+
+            .resume-profile {
+                padding-inline: 48px;
+                padding-block-start: 24px;
+
+                .resume-input {
+                    &.resume-textarea {
+
+                        label {
+                            font-weight: 800;
+                        }
+
+                        textarea {
+                            border: none;
+                            border-radius: 0px;
+                            background-color: $input-color;
+                            resize: none;
+
+                            &:focus {
+                                box-shadow: none;
+                            }
+                        }
                     }
                 }
             }
+
+            .resume-skills,
+            .resume-languages {
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 24px;
+                padding-inline: 48px;
+                padding-block-start: 24px;
+
+                .resume-input {
+                    label {
+                        font-weight: 600;
+                    }
+
+                    input {
+                        background-color: $input-color;
+                        height: 50px;
+                        border: none;
+                        border-radius: 0;
+
+                        &:focus {
+                            box-shadow: none;
+                        }
+
+                    }
+
+                    &.level-input {
+                        width: 100%;
+
+                        label {
+                            margin-bottom: 0.5rem;
+                        }
+
+                        p {
+                            font-size: rem(14px);
+                            margin-bottom: 0.5rem;
+
+                            span {
+                                font-weight: 800;
+                            }
+                        }
+
+                        .level-list {
+                            display: flex;
+                            gap: 12px;
+
+                            .level-preview {
+                                cursor: pointer;
+                                background-color: $input-color;
+                                flex-grow: 1;
+                                height: 50px;
+
+                                &.selected {
+                                    background-color: $link-color;
+                                }
+                            }
+                        }
+                    }
+
+                }
+
+            }
+
+            .resume-military {
+                padding-block-start: 24px;
+
+                .role-input {
+                    grid-column: 1/-1;
+                }
+            }
+
+            .add-info {
+                padding-inline: 48px;
+                padding-block-start: 24px;
+
+
+                .resume-cmp-list {
+                    display: flex;
+                    gap: 12px;
+                    flex-direction: column;
+
+                    .resume-cmp-preview {
+                        cursor: pointer;
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        height: 50px;
+                        border: 1px solid darken($input-color, 4%);
+                        padding-inline: 12px;
+
+                        div {
+                            display: flex;
+                            align-items: center;
+                            gap: 12px;
+
+                            h3 {
+                                font-size: rem(16px);
+                                font-weight: 800;
+                            }
+
+                            h4 {
+                                font-size: rem(16px);
+                            }
+                        }
+
+                        @include hover {
+                            opacity: .8;
+                        }
+                    }
+
+                    >*:last-child {
+                        margin-bottom: 12px;
+                    }
+
+                }
+
+                .add-btn {
+                    display: flex;
+                    align-items: center;
+                    height: 45px;
+                    padding-inline: 16px;
+                    background-color: $gray-color;
+
+                    span {
+
+                        svg {
+                            width: 28px;
+                            height: 28px;
+                            scale: .8;
+                            fill: $txt-color;
+                        }
+                    }
+
+                    p {
+                        font-weight: 800;
+                        color: $txt-color;
+                        padding-inline-end: 6px;
+                    }
+                }
+
+                .close-btn {
+                    margin-top: 12px;
+                    cursor: pointer;
+                    color: $link-color;
+                    font-size: 1rem;
+                    font-weight: 800;
+
+                    span {
+                        svg {
+                            transform: rotate(180deg);
+                            fill: $link-color;
+                        }
+                    }
+                }
+            }
+
+
+
+            &.open {
+                height: auto;
+
+                .resume-title {
+                    pointer-events: none;
+                    background-color: transparent;
+
+
+                    span {
+                        svg {
+                            display: none;
+                        }
+                    }
+                }
+            }
+
+
         }
+
     }
+
 
     .resume-footer {
         display: flex;
@@ -854,6 +915,14 @@
 
         .resume-forms {
             padding-bottom: 48px;
+
+            .resume-form{
+                .resume-title{
+                    .more-options{
+                        display: block;
+                    }
+                }
+            }
 
             &.open {
                 padding-bottom: 0px;

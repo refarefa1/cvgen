@@ -6,6 +6,20 @@
             <p v-if="!isOpen">Edit experience
                 <span v-svg-icon="'expand'" />
             </p>
+            <div @click.stop="toggleModal" class="more-options">
+                <span v-svg-icon="'options'"></span>
+            </div>
+            <div v-if="isModalOpen" v-click-outside="toggleModal" class="options-modal">
+                <div @click="open" class="edit">
+                    <span v-svg-icon="'edit'"></span>
+                    <h3>Edit</h3>
+                </div>
+                <div class="remove">
+                    <span v-svg-icon="'trash'"></span>
+                    <h3>Remove</h3>
+                </div>
+            </div>
+
         </div>
 
         <div v-if="isAdding" class="add-info">
@@ -75,6 +89,7 @@ export default {
                 { name: 'country', class: 'country-input', label: "Country", type: "text", placeholder: "Enter Country" },
             ],
             isOpen: false,
+            isModalOpen: false,
             isAdding: false,
             experience: { _id: '', employer: '', jobTitle: '', city: '', country: '', startDate: 0, endDate: 0 }
         }
@@ -101,6 +116,13 @@ export default {
         openAccordion() {
             this.isAdding = false
             this.$emit('open', 'resume-experience')
+        },
+        toggleModal() {
+            this.isModalOpen = !this.isModalOpen
+        },
+        open() {
+            this.toggleModal()
+            this.add()
         },
         handleDate(val: Date, key: string): void {
             console.log('handling');
