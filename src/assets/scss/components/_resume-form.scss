@@ -103,6 +103,33 @@
             }
         }
 
+        
+    }
+
+    .progress-bar-container {
+        padding-inline: 48px;
+        
+        .progress-bar {
+            width: 100%;
+            height: 3px;
+            background-color: rgba(39, 39, 39, 0.23);
+
+            .inner {
+                height: 3px;
+                width: 50%;
+                transition: all 0.5s linear;
+            }
+        }
+
+        p {
+            color: rgb(130, 139, 162);
+            padding: 12px 0;
+
+            .percent {
+                color: red;
+                font-weight: 600;
+            }
+        }
     }
 
     .resume-title {

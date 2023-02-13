@@ -1,5 +1,5 @@
 <template>
-    <resume-header @download="download" />
+    <resume-header @download="download" :resume="resume"/>
 
     <resume-title @update="update" @save="save" :resume="resume" />
 
