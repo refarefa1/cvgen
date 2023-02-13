@@ -13,6 +13,31 @@ export const svgIconDirective = {
   }
 }
 
+export const animateNumbersDirective = {
+  mounted(el: HTMLElement, binding: DirectiveBinding<number>) {
+    el.innerHTML = binding.value + ''
+  },
+
+  updated(el: HTMLElement, binding: DirectiveBinding<number>) {
+    let intervalId: any = null
+    let oldVal: number = binding.oldValue!
+    const newVal: number = binding.value!
+    if (newVal > oldVal) {
+      const time = 500 / (newVal - oldVal)
+      intervalId = setInterval(() => {
+        el.innerHTML = (oldVal++) + ''
+        if (oldVal === newVal + 1) clearInterval(intervalId)
+      }, time)
+    } else {
+      const time = 500 / (oldVal - newVal)
+      intervalId = setInterval(() => {
+        el.innerHTML = (oldVal--) + ''
+        if (oldVal === newVal - 1) clearInterval(intervalId)
+      }, time)
+    }
+  }
+}
+
 const svgsIcons = {
   trash: `<svg xmlns="http://www.w3.org/2000/svg" height="24" width="24"><path d="M7.625 20q-.675 0-1.15-.475Q6 19.05 6 18.375V6H5V5h4v-.775h6V5h4v1h-1v12.375q0 .7-.462 1.163-.463.462-1.163.462ZM17 6H7v12.375q0 .275.175.45t.45.175h8.75q.25 0 .437-.188.188-.187.188-.437ZM9.8 17h1V8h-1Zm3.4 0h1V8h-1ZM7 6v13-.625Z"/></svg>`,
   home: `<svg xmlns="http://www.w3.org/2000/svg" height="40" width="40"><path d="M6.667 35V15L20 5l13.333 10v20h-10V23.333h-6.666V35Z"/></svg>`,
