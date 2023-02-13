@@ -31,13 +31,17 @@ function emit(type: string, payload: any) {
     listeners[type].forEach(callback => callback(payload));
 }
 
-function showSuccessMsg(){
-    emit('show-msg','Personal details saved successfully')
+function showSuccessMsg() {
+    emit('show-msg', 'Personal details saved successfully')
+}
+function showDeleteMsg(section: string) {
+    emit('show-msg', `${section} Section removed successfully`)
 }
 
 export const eventBus = {
     on,
     off,
     emit,
-    showSuccessMsg
+    showSuccessMsg,
+    showDeleteMsg
 }

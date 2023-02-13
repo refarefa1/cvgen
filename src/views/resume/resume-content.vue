@@ -3,7 +3,7 @@
 
     <section class="resume-forms" :class="{ 'open': isOpen }">
         <component v-for="component in components" :key="component" :is="component" :resume="resume" @update="update"
-            @open="open" @save="save" @upload="upload" />
+            @open="open" @save="save" @upload="upload" @remove="remove" />
     </section>
 
     <add-resume-section v-if="!isOpen" @add="add" :resume="resume" />
@@ -65,6 +65,12 @@ export default {
             eventBus.showSuccessMsg()
             this.components = ['resume-personal', ...this.resume.components]
         },
+        remove(payload: { type: string, val: any }) {
+            this.resumeStore.remove(payload)
+            this.resumeStore.save()
+            eventBus.showDeleteMsg(this.getSect(payload.type))
+            this.components = ['resume-personal', ...this.resume.components]
+        },
         cancel() {
             this.resumeStore.cancel()
             this.isOpen = false
@@ -77,6 +83,24 @@ export default {
         add(cmp: string) {
             this.components.push(cmp)
             this.resumeStore.add(cmp)
+        },
+        getSect(cmp: string): string {
+            let str = ''
+            switch (cmp) {
+                case 'profile': str = 'Profile'
+                    break
+                case 'education': str = 'Education'
+                    break
+                case 'experience': str = 'Experience'
+                    break
+                case 'languages': str = 'Languages'
+                    break
+                case 'skills': str = 'Skills'
+                    break
+                case 'military': str = 'Military'
+                    break
+            }
+            return str
         }
     },
     computed: {

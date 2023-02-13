@@ -85,6 +85,36 @@ export const useResumeStore = defineStore('resumeStore', {
                     break
             }
         },
+        remove(payload: Payload) {
+            const { type, val } = payload
+            const resume = { ...this.$state.resume }
+            switch (type) {
+                case 'profile':
+                    delete this.$state.resume.profile
+                    this.$state.resume.components = resume.components.filter((cmp: string) => cmp !== 'resume-profile')
+                    break
+                case 'military':
+                    delete this.$state.resume.military
+                    this.$state.resume.components = resume.components.filter((cmp: string) => cmp !== 'resume-military')
+                    break
+                case 'education':
+                    delete this.$state.resume.education
+                    this.$state.resume.components = resume.components.filter((cmp: string) => cmp !== 'resume-education')
+                    break
+                case 'experience':
+                    delete this.$state.resume.experience
+                    this.$state.resume.components = resume.components.filter((cmp: string) => cmp !== 'resume-experience')
+                    break
+                case 'skills':
+                    delete this.$state.resume.skills
+                    this.$state.resume.components = resume.components.filter((cmp: string) => cmp !== 'resume-skills')
+                    break
+                case 'languages':
+                    delete this.$state.resume.languages
+                    this.$state.resume.components = resume.components.filter((cmp: string) => cmp !== 'resume-languages')
+                    break
+            }
+        },
         format(payload: Payload): void {
             const { type, val } = payload
             if (!this.$state.resume[type]) this.$state.resume[type] = []

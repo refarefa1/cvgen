@@ -7,24 +7,6 @@
             <p v-if="!isOpen">Edit personal details
                 <span v-svg-icon="'expand'" />
             </p>
-            <div @click.stop="toggleModal" class="more-options">
-                <span v-svg-icon="'options'"></span>
-            </div>
-            <div v-if="isModalOpen" v-click-outside="toggleModal" class="options-modal">
-                <div @click="edit" class="edit">
-                    <span v-svg-icon="'edit'"></span>
-                    <h3>Edit</h3>
-                </div>
-                <div class="remove">
-                    <span v-svg-icon="'trash'"></span>
-                    <h3>Remove</h3>
-                </div>
-                <div @click.stop="toggleModal" class="cancel-modal">
-                    <h3>Cancel</h3>
-                </div>
-            </div>
-            <div v-if="isModalOpen" @click.stop="toggleModal" class="black-screen" />
-
         </div>
 
         <div v-if="isOpen" class="resume-personal">
@@ -74,7 +56,6 @@ export default {
             ],
             personal: { fullName: '', jobTitle: '', email: '', phone: '', address: '', imgUrl: '' },
             isOpen: false,
-            isModalOpen: false
         }
     },
     methods: {
@@ -102,13 +83,6 @@ export default {
             if (this.resume?.personal) this.personal = this.resume.personal
             this.$emit('open', 'resume-personal')
         },
-        toggleModal() {
-            this.isModalOpen = !this.isModalOpen
-        },
-        edit() {
-            this.toggleModal()
-            this.openAccordion()
-        }
     },
     components: {
         CFormInput

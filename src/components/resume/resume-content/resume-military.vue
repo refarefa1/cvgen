@@ -6,26 +6,26 @@
             <p v-if="!isOpen">Edit Military service
                 <span v-svg-icon="'expand'" />
             </p>
-            <div @click.stop="toggleModal" class="more-options">
+            <div @click.stop="isModalOpen = !isModalOpen" class="more-options">
                 <span v-svg-icon="'options'"></span>
             </div>
-            <div v-if="isModalOpen" v-click-outside="toggleModal" class="options-modal">
+            <div v-if="isModalOpen" v-click-outside="closeModal" class="options-modal">
                 <div @click="edit" class="edit">
                     <span v-svg-icon="'edit'"></span>
                     <h3>Edit</h3>
                 </div>
-                <div class="remove">
+                <div @click.stop="openRemoveModal" class="remove">
                     <span v-svg-icon="'trash'"></span>
                     <h3>Remove</h3>
                 </div>
-                <div @click.stop="toggleModal" class="cancel-modal">
+                <div @click.stop="closeModal" class="cancel-modal">
                     <h3>Cancel</h3>
                 </div>
             </div>
-            <div v-if="isModalOpen" @click.stop="toggleModal" class="black-screen" />
-
-
+            <div v-if="isOptionsOpen || isRemoving" @click.stop="closeModal" class="black-screen" />
         </div>
+
+        <remove-modal v-if="isRemoving" @cancel="closeModal" @remove="remove" />
 
 
         <div v-if="isOpen" class="resume-military">
@@ -56,12 +56,13 @@ import { PropType } from 'vue'
 import { Resume, Military } from '../../../interfaces/resume-interface'
 import Datepicker from 'vuejs3-datepicker'
 import { eventBus } from '../../../services/event.bus.service'
+import removeModal from '../remove-modal.vue'
 
 export default {
     props: {
         resume: Object as PropType<Resume>,
     },
-    emits: ['update', 'open', 'save'],
+    emits: ['update', 'open', 'save', 'remove'],
     created() {
         eventBus.on('closeAccordion', () => { this.isOpen = false })
     },
@@ -72,6 +73,7 @@ export default {
             ],
             isOpen: false,
             isModalOpen: false,
+            isRemoving: false,
             military: { role: '', startDate: 0, endDate: 0 }
         }
     },
@@ -95,18 +97,33 @@ export default {
             (this.military as Military)[key] = date
             this.update()
         },
-        toggleModal() {
-            this.isModalOpen = !this.isModalOpen
+        openRemoveModal() {
+            this.isRemoving = true
+            this.isModalOpen = false
+        },
+        closeModal() {
+            this.isModalOpen = false
+            this.isRemoving = false
         },
         edit() {
-            this.toggleModal()
+            this.closeModal()
             this.openAccordion()
+        },
+        remove() {
+            const payload = { type: 'military', val: null }
+            this.$emit('remove', payload)
+            this.closeModal()
         }
-
+    },
+    computed: {
+        isOptionsOpen() {
+            return (this.isModalOpen && window.innerWidth < 500)
+        }
     },
     components: {
         CFormInput,
-        Datepicker
+        Datepicker,
+        removeModal
     }
 }
 </script>

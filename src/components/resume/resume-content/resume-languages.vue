@@ -7,23 +7,23 @@
             <p v-if="!isOpen">Edit languages
                 <span v-svg-icon="'expand'" />
             </p>
-            <div @click.stop="toggleModal" class="more-options">
+            <div @click.stop="isModalOpen = true" class="more-options">
                 <span v-svg-icon="'options'"></span>
             </div>
-            <div v-if="isModalOpen" v-click-outside="toggleModal" class="options-modal">
+            <div v-if="isModalOpen" v-click-outside="closeModal" class="options-modal">
                 <div @click="open" class="edit">
                     <span v-svg-icon="'edit'"></span>
                     <h3>Edit</h3>
                 </div>
-                <div class="remove">
+                <div @click.stop="openRemoveModal" class="remove">
                     <span v-svg-icon="'trash'"></span>
                     <h3>Remove</h3>
                 </div>
-                <div @click.stop="toggleModal" class="cancel-modal">
+                <div @click.stop="closeModal" class="cancel-modal">
                     <h3>Cancel</h3>
                 </div>
             </div>
-            <div v-if="isModalOpen" @click.stop="toggleModal" class="black-screen" />
+            <div v-if="isOptionsOpen || isRemoving" @click.stop="closeModal" class="black-screen" />
 
         </div>
 
@@ -46,6 +46,8 @@
                 <span v-svg-icon="'expand'" />
             </p>
         </div>
+
+        <remove-modal v-if="isRemoving" @cancel="closeModal" @remove="remove" />
 
         <div v-if="!isAdding && isOpen" class="resume-languages">
             <div v-for="input in inputs" :key="input.label" :class="'resume-input ' + input.class">
@@ -73,12 +75,14 @@ import { PropType } from 'vue';
 import { Language, Resume } from '../../../interfaces/resume-interface';
 import { eventBus } from '../../../services/event.bus.service';
 import { utilService } from '../../../services/util.service';
+import removeModal from '../remove-modal.vue';
+
 
 export default {
     props: {
         resume: Object as PropType<Resume>,
     },
-    emits: ['update', 'open', 'save'],
+    emits: ['update', 'open', 'save', 'remove'],
     created() {
         eventBus.on('closeAccordion', () => { this.isOpen = false })
     },
@@ -90,7 +94,9 @@ export default {
             language: { _id: '', name: '', level: 0 },
             isOpen: false,
             isModalOpen: false,
+            isRemoving: false,
             isAdding: false,
+            selected: null as string | null
         }
     },
     methods: {
@@ -116,15 +122,27 @@ export default {
             this.isAdding = false
             this.isOpen = false
         },
+        remove() {
+            const val = this.selected
+            const payload = { type: 'languages', val }
+            this.$emit('remove', payload)
+            this.closeModal()
+            this.selected = null
+        },
         openAccordion() {
             this.isAdding = false
             this.$emit('open', 'resume-languages')
         },
-        toggleModal() {
-            this.isModalOpen = !this.isModalOpen
+        openRemoveModal() {
+            this.isRemoving = true
+            this.isModalOpen = false
+        },
+        closeModal() {
+            this.isModalOpen = false
+            this.isRemoving = false
         },
         open() {
-            this.toggleModal()
+            this.isModalOpen = false
             this.add()
         },
         handleLanguageLevel(level: number) {
@@ -141,10 +159,15 @@ export default {
             }
         }
     },
-
+    computed: {
+        isOptionsOpen() {
+            return (this.isModalOpen && window.innerWidth < 500)
+        }
+    },
     components: {
         CFormInput,
-        CFormTextarea
+        CFormTextarea,
+        removeModal
     }
 }
 </script>
