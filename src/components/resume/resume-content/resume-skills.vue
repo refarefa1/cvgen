@@ -35,7 +35,7 @@
                         <h3>{{ skill.name }}<span v-if="skill.level"></span></h3>
                         <h4>{{ formatSkillLevel(skill.level) }}</h4>
                     </div>
-                    <span v-svg-icon="'expand'" />
+                    <span class="remove" title="Remove" @click.stop="removeDeep(skill._id)" v-svg-icon="'trash'"></span>
                 </li>
             </ul>
             <button class="add-btn" @click="openAccordion">
@@ -125,7 +125,10 @@ export default {
             const payload = { type: 'skills', val }
             this.$emit('remove', payload)
             this.closeModal()
-            this.selected = null
+        },
+        removeDeep(id: string) {
+            this.selected = id
+            this.openRemoveModal()
         },
         openAccordion() {
             this.isAdding = false
@@ -138,6 +141,7 @@ export default {
         closeModal() {
             this.isModalOpen = false
             this.isRemoving = false
+            this.selected = null
         },
         open() {
             this.isModalOpen = false

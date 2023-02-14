@@ -35,7 +35,7 @@ function showSuccessMsg() {
     emit('show-msg', 'Personal details saved successfully')
 }
 function showDeleteMsg(section: string) {
-    emit('show-msg', `${section} Section removed successfully`)
+    emit('show-msg', `${section} section removed successfully`)
 }
 
 export const eventBus = {

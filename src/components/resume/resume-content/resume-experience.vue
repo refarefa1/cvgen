@@ -34,7 +34,7 @@
                         <h3>{{ ex.employer }}<span v-if="ex.jobTitle">,</span></h3>
                         <h4>{{ ex.jobTitle }}</h4>
                     </div>
-                    <span v-svg-icon="'expand'" />
+                    <span class="remove" title="Remove" @click.stop="removeDeep(ex._id)" v-svg-icon="'trash'"></span>
                 </li>
             </ul>
             <button class="add-btn" @click="openAccordion">
@@ -133,6 +133,7 @@ export default {
         closeModal() {
             this.isModalOpen = false
             this.isRemoving = false
+            this.selected = null
         },
         open() {
             this.isModalOpen = false
@@ -143,7 +144,10 @@ export default {
             const payload = { type: 'experience', val }
             this.$emit('remove', payload)
             this.closeModal()
-            this.selected = null
+        },
+        removeDeep(id: string) {
+            this.selected = id
+            this.openRemoveModal()
         },
         handleDate(val: Date, key: string): void {
             console.log('handling');

@@ -613,8 +613,16 @@
                             }
                         }
 
+                        .remove {
+                            display: none;
+                        }
+
                         @include hover {
                             opacity: .8;
+
+                            .remove {
+                                display: block;
+                            }
                         }
                     }
 
@@ -1055,6 +1063,16 @@
 
                         button {
                             width: 45%;
+                        }
+                    }
+                }
+
+                .add-info {
+                    .resume-cmp-list {
+                        .resume-cmp-preview {
+                            .remove {
+                                display: block;
+                            }
                         }
                     }
                 }

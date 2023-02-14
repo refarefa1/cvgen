@@ -35,7 +35,8 @@
                         <h3>{{ language.name }}<span v-if="language.level"></span></h3>
                         <h4>{{ formatLanguageLevel(language.level) }}</h4>
                     </div>
-                    <span v-svg-icon="'expand'" />
+                    <span class="remove" title="Remove" @click.stop="removeDeep(language._id)"
+                        v-svg-icon="'trash'"></span>
                 </li>
             </ul>
             <button class="add-btn" @click="openAccordion">
@@ -127,7 +128,10 @@ export default {
             const payload = { type: 'languages', val }
             this.$emit('remove', payload)
             this.closeModal()
-            this.selected = null
+        },
+        removeDeep(id: string) {
+            this.selected = id
+            this.openRemoveModal()
         },
         openAccordion() {
             this.isAdding = false
@@ -136,6 +140,7 @@ export default {
         openRemoveModal() {
             this.isRemoving = true
             this.isModalOpen = false
+            this.selected = null
         },
         closeModal() {
             this.isModalOpen = false

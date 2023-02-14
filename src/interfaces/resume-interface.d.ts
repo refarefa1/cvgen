@@ -62,6 +62,7 @@ export interface Resume {
 	personal?: Personal
 	education?: Education[]
 	experience?: Experience[]
+	languages?: Language[]
 	skills?: Skill[]
 	[index: string]: any
 }

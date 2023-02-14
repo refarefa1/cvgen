@@ -36,7 +36,7 @@
                         <h3>{{ ed.degree }}<span v-if="ed.degree">,</span></h3>
                         <h4>{{ ed.school }}</h4>
                     </div>
-                    <span v-svg-icon="'expand'" />
+                    <span class="remove" title="Remove" @click.stop="removeDeep(ed._id)" v-svg-icon="'trash'"></span>
                 </li>
             </ul>
             <button class="add-btn" @click="openAccordion">
@@ -121,7 +121,10 @@ export default {
             const payload = { type: 'education', val }
             this.$emit('remove', payload)
             this.closeModal()
-            this.selected = null
+        },
+        removeDeep(id: string) {
+            this.selected = id
+            this.openRemoveModal()
         },
         openAccordion() {
             this.isAdding = false
@@ -134,6 +137,7 @@ export default {
         closeModal() {
             this.isModalOpen = false
             this.isRemoving = false
+            this.selected = null
         },
         open() {
             this.isModalOpen = false

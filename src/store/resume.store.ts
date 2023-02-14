@@ -88,6 +88,10 @@ export const useResumeStore = defineStore('resumeStore', {
         remove(payload: Payload) {
             const { type, val } = payload
             const resume = { ...this.$state.resume }
+            if (val) {
+                this.removeDeep(payload)
+                return
+            }
             switch (type) {
                 case 'profile':
                     delete this.$state.resume.profile
@@ -112,6 +116,24 @@ export const useResumeStore = defineStore('resumeStore', {
                 case 'languages':
                     delete this.$state.resume.languages
                     this.$state.resume.components = resume.components.filter((cmp: string) => cmp !== 'resume-languages')
+                    break
+            }
+        },
+        removeDeep(payload: Payload) {
+            const { type, val } = payload
+            const resume = { ...this.$state.resume }
+            switch (type) {
+                case 'education':
+                    this.$state.resume.education = resume.education?.filter(ed => ed._id !== val)
+                    break
+                case 'experience':
+                    this.$state.resume.experience = resume.experience?.filter(exp => exp._id !== val)
+                    break
+                case 'skills':
+                    this.$state.resume.skills = resume.skills?.filter(skill => skill._id !== val)
+                    break
+                case 'languages':
+                    this.$state.resume.languages = resume.languages?.filter(lang => lang._id !== val)
                     break
             }
         },
