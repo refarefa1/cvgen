@@ -1,5 +1,4 @@
 <template>
-
     <form class="resume-form" :class="{ 'open': isOpen }">
 
         <div @click="openAccordion" class="resume-title">
@@ -16,15 +15,28 @@
                     aria-label="default input" />
             </div>
             <h1 class="file-label">Upload file</h1>
-            <div class="resume-input file-input">
-                <span v-svg-icon="'camera'" />
+            <div ref="fileInput" class="resume-input file-input" :style="{ 'background-image': `url(${resume?.personal?.imgUrl})` }">
+                <div v-if="isLoading" class="loader">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <span v-if="!isLoading && !resume?.personal?.imgUrl" v-svg-icon="'camera'" />
                 <CFormInput @change="handleChange($event)" type="file" name="imgUrl" />
             </div>
 
         </div>
 
-    </form>
-
+</form>
 </template>
 
 <script lang="ts">
@@ -44,6 +56,7 @@ export default {
     emits: ['update', 'open', 'save', 'upload'],
     created() {
         eventBus.on('closeAccordion', () => { this.isOpen = false })
+        eventBus.on('file-uploaded', this.handleFinishUpload)
     },
     data() {
         return {
@@ -56,6 +69,7 @@ export default {
             ],
             personal: { fullName: '', jobTitle: '', email: '', phone: '', address: '', imgUrl: '' },
             isOpen: false,
+            isLoading: false
         }
     },
     methods: {
@@ -66,14 +80,22 @@ export default {
             }, 0)
         },
         handleChange(ev: FileInputEvent) {
+            this.isLoading = true
             if (!ev.target.files) return
-
-            // Just for now until we got backend
-            this.personal.imgUrl = URL.createObjectURL(ev.target.files[0])
-            this.update()
-
-            // This is for backend
-            this.$emit('upload', ev.target.files[0])
+            const file = ev.target.files[0]
+            const reader = new FileReader()
+            reader.readAsDataURL(file)
+            reader.onloadend = () => {
+                this.$emit('upload', reader.result)
+            }
+        },
+        handleFinishUpload() {
+            this.isLoading = false
+            this.drawImage()
+        },
+        drawImage() {
+            const elFileInput = this.$refs.fileInput as HTMLElement
+            elFileInput.style.backgroundImage = `url(${this.resume?.personal?.imgUrl})`
         },
         save() {
             this.$emit('save')

@@ -13,8 +13,9 @@ export const useFileStore = defineStore('fileStore', {
 
     actions: {
 
-        upload(file: FileList) {
-            fileService.upload(file)
+        async upload(file: string) {
+            const url = await fileService.upload(file)
+            return url
         },
 
         download(file: HTMLElement) {

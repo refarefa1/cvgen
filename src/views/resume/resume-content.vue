@@ -8,8 +8,7 @@
 
     <add-resume-section v-if="!isOpen" @add="add" :resume="resume" />
 
-    <resume-footer v-if="isOpen" @save="save" @cancel="cancel" />
-
+<resume-footer v-if="isOpen" @save="save" @cancel="cancel" />
 </template>
 
 <script lang="ts">
@@ -77,8 +76,13 @@ export default {
             eventBus.emit('closeAccordion', null)
             this.components = ['resume-personal', ...this.resume.components]
         },
-        upload(file: FileList) {
-            this.fileStore.upload(file)
+        async upload(file: string) {
+            const imgUrl = await this.fileStore.upload(file)
+            const personal = this.resume.personal
+            const payload = { type: 'personal', val: { ...personal, imgUrl } }
+            this.update(payload)
+            this.resumeStore.save()
+            eventBus.emit('file-uploaded', null)
         },
         add(cmp: string) {
             this.components.push(cmp)

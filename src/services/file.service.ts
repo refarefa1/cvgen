@@ -1,7 +1,13 @@
 import { jsPDF } from "jspdf"
+import { httpService } from "./http.service";
 
-async function upload(file: FileList) {
-  // TODO : POST REQUEST FOR (/api/upload/, {query:file})
+const BASE_URL = 'file/'
+
+// file: FileList
+
+async function upload(file: string) {
+  const fileObject = { file }
+  return await httpService.post(BASE_URL + 'upload', fileObject)
 }
 
 function download(file: HTMLElement) {

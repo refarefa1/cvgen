@@ -332,11 +332,13 @@
                         display: flex;
                         align-items: center;
                         justify-content: center;
-                        top: 24px;
                         right: 0px;
-                        height: 148px;
                         background-color: $input-color;
-                        // aspect-ratio: 1 / 1;
+                        top: 24px;
+                        height: calc(100% - 24px);
+                        background-size: cover;
+                        background-position: center;
+                        background-repeat: no-repeat;
 
                         span {
                             position: absolute;
@@ -353,6 +355,7 @@
                         input {
                             border-radius: 10em;
                             opacity: 0;
+                            height: 100%;
                         }
                     }
                 }
@@ -899,6 +902,18 @@
     @include for-middle-layout {
         flex-basis: 100%;
 
+        .resume-forms {
+            .resume-form {
+                .resume-personal {
+                    .resume-input {
+                        &.file-input {
+                            top: 21px;
+                            height: calc(100% - 21px);
+                        }
+                    }
+                }
+            }
+        }
 
         .add-section {
             padding: 0;
@@ -957,11 +972,12 @@
                         margin-bottom: 24px;
 
                         &.file-input {
-                            top: 8px;
+                            // top: 8px;
                             display: flex;
                             position: relative;
                             height: 80px;
                             width: 80px;
+
 
                         }
                     }

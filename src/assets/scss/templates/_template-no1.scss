@@ -37,6 +37,7 @@
             }
 
             .contact-item {
+                position: relative;
                 display: flex;
                 align-items: center;
                 gap: 10px;
@@ -48,6 +49,13 @@
 
                 p {
                     font-size: rem(14px);
+                    pointer-events: none;
+                }
+
+                a {
+                    z-index: 50;
+                    // left: 0;
+                    // opacity: 0;
                 }
             }
         }
