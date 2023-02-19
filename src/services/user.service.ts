@@ -62,7 +62,7 @@ function _getUser() {
                     },
                     languages: {
                         display: 'grid'
-                    }
+                    },
                 },
                 personal: {
                     fullName: 'Refael Abramov',

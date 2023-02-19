@@ -51,7 +51,7 @@ export default {
         resumeLayout,
         resumeHeading,
         resumeCSkills,
-        resumeCLanguages
+        resumeCLanguages,
     }
 
 }

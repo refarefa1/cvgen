@@ -1,18 +1,18 @@
 <template>
-    <section ref="template" class="template-no1">
+    <section ref="template" class="template-no1" :style="getFont">
         <div class="personal-info">
             <div class="contact">
                 <div class="personal-title">
                     <h1>{{ resume?.personal?.fullName }}</h1>
                     <h2>{{ resume?.personal?.jobTitle }}</h2>
                 </div>
-                <div v-if="resume?.personal?.email" class="contact-item">
-                    <img src="/src/assets/images/mail.png" alt="">
-                    <p class="mail">{{ resume.personal.email }}</p>
-                </div>
                 <div v-if="resume?.personal?.phone" class="contact-item">
                     <img src="/src/assets/images/whatsapp.png" alt="">
                     <p class="phone">{{ resume.personal.phone }}</p>
+                </div>
+                <div v-if="resume?.personal?.email" class="contact-item">
+                    <img src="/src/assets/images/mail.png" alt="">
+                    <p class="mail">{{ resume.personal.email }}</p>
                 </div>
                 <div v-if="resume?.personal?.address" class="contact-item">
                     <img src="/src/assets/images/address.png" alt="">
@@ -156,7 +156,7 @@ export default {
             (this.$refs.template as HTMLElement).style.width = (width * (this.originalWidth / width)) + 'px'
         },
         format(timestamp: number) {
-            return (new Date(timestamp)).toLocaleDateString("en-GB")
+            return (new Date(timestamp)).toLocaleDateString("en-GB").replaceAll('/', '.')
         },
         customize(payload: any) {
             const { type, val } = payload
@@ -198,7 +198,6 @@ export default {
                 else title.classList.remove('uppercase')
             })
         },
-
         setHeadingStyle(titles: Element[], val: any) {
             titles.forEach(title => {
                 switch (val.style) {
@@ -221,5 +220,10 @@ export default {
             })
         },
     },
+    computed: {
+        getFont() {
+            return ''
+        }
+    }
 }
 </script>

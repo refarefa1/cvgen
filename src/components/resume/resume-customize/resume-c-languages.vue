@@ -19,7 +19,7 @@ import { PropType } from 'vue';
 import { Resume } from '../../../interfaces/resume-interface';
 
 export default {
-    name: 'resume-skills-customize',
+    name: 'resume-skills-languages',
     emits: ['update'],
     props: {
         resume: Object as PropType<Resume>,

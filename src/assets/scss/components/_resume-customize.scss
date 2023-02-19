@@ -274,6 +274,7 @@
                 width: 30%;
                 height: 40px;
                 font-size: rem(14px);
+                text-transform: capitalize;
 
                 &.selected {
                     background-color: $gray-color;
@@ -307,6 +308,17 @@
                     .option {
                         flex-basis: 48%;
                     }
+                }
+            }
+        }
+
+        .resume-customize-skills,
+        .resume-customize-languages {
+
+            .options {
+                justify-content: space-between;
+                .option {
+                    flex-basis: 48%;
                 }
             }
         }

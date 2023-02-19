@@ -47,7 +47,7 @@ function getEmptyResume(): Resume {
             },
             languages: {
                 display: 'grid'
-            }
+            },
         }
     }
     return resume
