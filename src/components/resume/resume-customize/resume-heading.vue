@@ -88,12 +88,8 @@ export default {
     props: {
         resume: Object as PropType<Resume>,
     },
-    created() {
-        this.components = this.resume?.components as string[]
-    },
     data() {
         return {
-            components: [] as string[],
             isDragging: false,
             colors: ['#20262E', '#567189', '#7B8FA1', '#205375', '#112B3C', '#548CA8', '#6096B4', '#93C6E7', '#0081B4', '#13005A', '#850000', '#9D3C72', '#C85C8E', '#EB455F'],
             color: '#000000'

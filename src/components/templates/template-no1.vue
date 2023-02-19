@@ -81,12 +81,11 @@
                 <div class="title">
                     <h1>Skills</h1>
                 </div>
-                <ul class="skill-list">
+                <ul class="skill-list" :class="{ 'bubble': resume.style.skills.display === 'bubble' }">
                     <li v-for="skill in resume?.skills" :key="skill._id" class="skill-preview">
                         <h2>{{ skill.name }}</h2>
                         <div class="indication">
-                            <div v-for="i in 5" :key="i" class="level-indication"
-                                :class="{ 'active': skill.level >= i }" />
+                            <div v-for="i in 5" :key="i" class="level-indication" :class="{ 'active': skill.level >= i }" />
                         </div>
                     </li>
                 </ul>
@@ -95,7 +94,7 @@
                 <div class="title">
                     <h1>Languages</h1>
                 </div>
-                <ul class="language-list">
+                <ul class="language-list" :class="{ 'bubble': resume.style.languages.display === 'bubble' }">
                     <li v-for="language in resume?.languages" :key="language._id" class="language-preview">
                         <h2>{{ language.name }}</h2>
                         <div class="indication">
@@ -119,10 +118,11 @@
                 </div>
             </div>
         </section>
-    </section>
+</section>
 </template>
 
 <script lang="ts">
+import { resume } from 'pdfkit';
 import { PropType } from 'vue';
 import { Resume } from '../../interfaces/resume-interface';
 import { eventBus } from '../../services/event.bus.service';
@@ -198,6 +198,7 @@ export default {
                 else title.classList.remove('uppercase')
             })
         },
+
         setHeadingStyle(titles: Element[], val: any) {
             titles.forEach(title => {
                 switch (val.style) {

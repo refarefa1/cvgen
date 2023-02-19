@@ -4,6 +4,12 @@ export interface Style {
 		capitalization: string
 		headingColor: string
 	}
+	skills: {
+		display: string
+	}
+	languages: {
+		display: string
+	}
 }
 
 export interface Military {

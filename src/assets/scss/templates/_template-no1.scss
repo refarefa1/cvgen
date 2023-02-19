@@ -188,6 +188,23 @@
 
                     }
                 }
+
+                &.bubble {
+                    justify-content: unset;
+                    gap: 12px;
+
+                    .skill-preview,
+                    .language-preview {
+                        flex-basis: unset;
+                        padding-inline: 8px;
+                        padding-block: 4px;
+                        border: 1px solid black;
+
+                        .indication {
+                            display: none;
+                        }
+                    }
+                }
             }
         }
 

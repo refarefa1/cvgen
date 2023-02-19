@@ -56,6 +56,12 @@ function _getUser() {
                         style: 'underline',
                         capitalization: 'capitalize',
                         headingColor: '#000000'
+                    },
+                    skills: {
+                        display: 'grid'
+                    },
+                    languages: {
+                        display: 'grid'
                     }
                 },
                 personal: {
@@ -64,7 +70,7 @@ function _getUser() {
                     email: 'refaelavramov@gmail.com',
                     phone: '0538207782',
                     address: 'Givolim 10, Tel Aviv, Israel',
-                    imgUrl: '',
+                    imgUrl: 'https://res.cloudinary.com/dznyyt4xc/image/upload/v1676808139/udnqwklz5xat1rn25zc4.jpg',
                 },
                 profile: {
                     about: `A junior full stack developer with a strong background in graphic design and exceptional computer skills developed from years of experience`

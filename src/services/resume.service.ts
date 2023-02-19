@@ -41,6 +41,12 @@ function getEmptyResume(): Resume {
                 style: 'underline',
                 capitalization: 'capitalize',
                 headingColor: '#000000'
+            },
+            skills: {
+                display: 'grid'
+            },
+            languages: {
+                display: 'grid'
             }
         }
     }
