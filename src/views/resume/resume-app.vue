@@ -59,7 +59,7 @@ export default {
             if (isPreviewing) {
                 document.querySelector('body')?.classList.add('no-overflow')
                 document.querySelector('.a4-container')?.classList.add('show')
-                window.scrollTo(0,0)
+                window.scrollTo(0, 0)
             }
             else {
                 document.querySelector('body')?.classList.remove('no-overflow')

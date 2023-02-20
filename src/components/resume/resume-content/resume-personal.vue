@@ -15,7 +15,8 @@
                     aria-label="default input" />
             </div>
             <h1 class="file-label">Upload file</h1>
-            <div ref="fileInput" class="resume-input file-input" :style="{ 'background-image': `url(${resume?.personal?.imgUrl})` }">
+            <div ref="fileInput" class="resume-input file-input"
+                :style="{ 'background-image': `url(${resume?.personal?.imgUrl})` }">
                 <div v-if="isLoading" class="loader">
                     <div></div>
                     <div></div>
@@ -36,7 +37,7 @@
 
         </div>
 
-</form>
+    </form>
 </template>
 
 <script lang="ts">
@@ -83,11 +84,7 @@ export default {
             this.isLoading = true
             if (!ev.target.files) return
             const file = ev.target.files[0]
-            const reader = new FileReader()
-            reader.readAsDataURL(file)
-            reader.onloadend = () => {
-                this.$emit('upload', reader.result)
-            }
+            this.$emit('upload', file)
         },
         handleFinishUpload() {
             this.isLoading = false

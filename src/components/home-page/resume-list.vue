@@ -1,6 +1,9 @@
 <template>
 	<section ref="container" class="resume-list-container">
 
+		<remove-modal v-if="isRemoving" @cancel="closeModal" @remove="remove" />
+		<div v-if="isRemoving" @click.stop="closeModal" class="black-screen" />
+
 		<div class="resume-list-header">
 			<h2>My resumes</h2>
 		</div>
@@ -13,6 +16,7 @@
 			</div>
 			<div @click="read(resume._id)" v-for="resume in user.resumes" :key="resume._id" class="resume-preview">
 				<div class="resume-info">
+					<span @click.stop="openRemoveModal(resume._id)" class="remove" v-svg-icon="'trash'"></span>
 					<p class="resume-title">{{ resume.name }}</p>
 				</div>
 			</div>
@@ -24,9 +28,10 @@
 import { PropType } from 'vue';
 import User from '../../interfaces/user.interface';
 import { useResumeStore } from '../../store/resume.store';
+import removeModal from '../resume/remove-modal.vue';
 
 export default {
-	emits:['create'],
+	emits: ['create', 'remove'],
 	props: {
 		user: {
 			type: Object as PropType<User>,
@@ -39,6 +44,8 @@ export default {
 	data() {
 		return {
 			isOverflow: false,
+			isRemoving: false,
+			selected: null as string | null,
 			resumeStore: useResumeStore()
 		}
 	},
@@ -57,7 +64,22 @@ export default {
 		read(resumeId: string | null) {
 			if (resumeId) this.$router.push(`resume/${resumeId}/content`)
 			else this.$emit('create')
+		},
+		openRemoveModal(resumeId: string) {
+			this.isRemoving = true
+			this.selected = resumeId
+		},
+		closeModal() {
+			this.isRemoving = false
+			this.selected = null
+		},
+		remove() {
+			this.$emit('remove', this.selected)
+			this.isRemoving = false
 		}
+	},
+	components: {
+		removeModal
 	}
 };
 </script>

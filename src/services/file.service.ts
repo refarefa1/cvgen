@@ -1,13 +1,23 @@
 import { jsPDF } from "jspdf"
-import { httpService } from "./http.service";
+import axios from 'axios'
 
-const BASE_URL = 'file/'
 
-// file: FileList
+async function upload(file: any) {
+  const UPLOAD_PRESET = 'cvgenerator' // Insert your upload preset
+  const CLOUD_NAME = 'cvgencloud' // Insert your cloud name
+  const UPLOAD_URL = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`
+  const FORM_DATA = new FormData()
+  // Building the request body
+  FORM_DATA.append('file', file)
+  FORM_DATA.append('upload_preset', UPLOAD_PRESET)
 
-async function upload(file: string) {
-  const fileObject = { file }
-  return await httpService.post(BASE_URL + 'upload', fileObject)
+  // Sending a post method request to Cloudniarys' API
+  try {
+    const res = await axios.post(UPLOAD_URL, FORM_DATA)
+    return res.data.url
+  } catch (err) {
+    console.error('ERROR!', err)
+  }
 }
 
 function download(file: HTMLElement) {

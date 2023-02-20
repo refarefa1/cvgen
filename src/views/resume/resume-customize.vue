@@ -5,7 +5,7 @@
         <resume-heading @update="update" :resume="resume" />
         <resume-c-skills @update="update" :resume="resume" />
         <resume-c-languages @update="update" :resume="resume" />
-</section>
+    </section>
 </template>
 
 <script lang="ts">

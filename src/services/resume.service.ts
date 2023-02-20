@@ -1,25 +1,9 @@
 import { Resume } from "../interfaces/resume-interface"
 import { userService } from "./user.service"
 import { utilService } from "./util.service"
-import axios from 'axios'
 
-const prod = false
-const BASE_URL = prod ? '/api/resume/' : 'http://localhost:3000/api/resume/'
-
-
-
-async function save(resume: Resume) {
-    // For backend - in backend need also to save the resume in the user object after updating / adding resume
-    // try {
-    //     if (!resume._id) {
-    //         await axios.post(BASE_URL, { resume })
-    //     } else {
-    //         await axios.put(BASE_URL, { resume })
-    //     }
-    // } catch (err) {
-    //     console.log(err);
-    // }
-    const user = await userService.query()
+function save(resume: Resume) {
+    const user = userService.query()
     if (!user.resumes) user.resumes = []
     if (!resume._id) {
         resume._id = utilService.makeId()
@@ -30,6 +14,13 @@ async function save(resume: Resume) {
     }
     userService.save(user)
     return resume
+}
+
+function remove(id: string) {
+    const user = userService.query()
+    const resumes = user.resumes?.filter(resume => resume._id !== id)
+    user.resumes = resumes
+    userService.save(user)
 }
 
 function getEmptyResume(): Resume {
@@ -55,5 +46,6 @@ function getEmptyResume(): Resume {
 
 export const resumeService = {
     save,
+    remove,
     getEmptyResume
 }

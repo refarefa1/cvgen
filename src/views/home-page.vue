@@ -3,7 +3,7 @@
 		<home-header :user="user" />
 		<div class="home-content">
 			<hero-text />
-			<resume-list @create="create" :user="user" />
+			<resume-list @remove="remove" @create="create" :user="user" />
 			<hero-img />
 		</div>
 		<router-view />
@@ -32,9 +32,13 @@ export default {
 		},
 	},
 	methods: {
-		async create() {
-			const id = await this.resumeStore.query(null)
+		create() {
+			const id = this.resumeStore.query(null)
 			this.$router.push(`resume/${id}/content`)
+		},
+		remove(id: string) {
+			const payload = { type: 'resume', val: id }
+			this.resumeStore.remove(payload)
 		}
 	},
 	components: {

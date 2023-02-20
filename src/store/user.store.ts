@@ -19,13 +19,9 @@ export const useUserStore = defineStore('userStore', {
     },
 
     actions: {
-        async query() {
-            try {
-                const user: User = await userService.query()
-                this.$state.user = user
-            } catch (err) {
-                console.log(err)
-            }
+        query() {
+            const user: User = userService.query()
+            this.$state.user = user
         },
         async login(credentials: Credentials) {
             try {
@@ -39,9 +35,9 @@ export const useUserStore = defineStore('userStore', {
         },
         async signup(credentials: Credentials) {
             try {
-                const session = await authService.signup(credentials)
-                console.log(session)
-                return session
+                // const session = await authService.signup(credentials)
+                // console.log(session)
+                // return session
             } catch (err: any) {
                 console.log('There was an error when signing up, please try again', err);
                 throw new Error(err);

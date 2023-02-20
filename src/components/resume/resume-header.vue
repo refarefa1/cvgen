@@ -1,6 +1,11 @@
 <template>
 	<header class="resume-header">
 		<nav class="header-nav">
+			<div class="home">
+				<router-link to="/">
+					<p>Home</p>
+				</router-link>
+			</div>
 			<div class="content">
 				<router-link :to="'/resume/' + $route.params.id + '/content/'">
 					<p>Content</p>

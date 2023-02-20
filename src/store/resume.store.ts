@@ -26,31 +26,24 @@ export const useResumeStore = defineStore('resumeStore', {
     },
 
     actions: {
-        async query(resumeId: string | null) {
-            try {
-                if (!resumeId) {
-                    this.$state.resume = resumeService.getEmptyResume()
-                    await this.save()
-                    return this.$state.resume._id
-                }
-                else {
-                    const resume = (this.$state.userStore.loggedinUser.resumes as Resume[]).find(r => r._id === resumeId)
-                    if (resume) this.$state.resume = JSON.parse(JSON.stringify(resume))
-                }
-            } catch (err) {
-                console.log(err)
+        query(resumeId: string | string[] | null) {
+            if (!resumeId) {
+                this.$state.resume = resumeService.getEmptyResume()
+                this.save()
+                return this.$state.resume._id
+            }
+            else {
+                const resume = (this.$state.userStore.loggedinUser.resumes as Resume[]).find(r => r._id === resumeId)
+                if (resume) this.$state.resume = JSON.parse(JSON.stringify(resume))
             }
         },
-        async save() {
-            try {
-                const deepCloneResume: Resume = JSON.parse(JSON.stringify(this.$state.resume))
-                this.$state.resume = deepCloneResume
-                const resume = await resumeService.save(deepCloneResume)
-                this.$state.resume = resume
-                this.$state.userStore.query()
-            } catch (err: any) {
-                console.log(err)
-            }
+        save() {
+            const deepCloneResume: Resume = JSON.parse(JSON.stringify(this.$state.resume))
+            this.$state.resume = deepCloneResume
+            const resume = resumeService.save(deepCloneResume)
+            this.$state.resume = resume
+            this.$state.userStore.query()
+
         },
         update(payload: Payload) {
             const { type, val } = payload
@@ -95,7 +88,8 @@ export const useResumeStore = defineStore('resumeStore', {
             const { type, val } = payload
             const resume = { ...this.$state.resume }
             if (val) {
-                this.removeDeep(payload)
+                if (type === 'resume') this.removeResume(val)
+                else this.removeDeep(payload)
                 return
             }
             switch (type) {
@@ -142,6 +136,10 @@ export const useResumeStore = defineStore('resumeStore', {
                     this.$state.resume.languages = resume.languages?.filter(lang => lang._id !== val)
                     break
             }
+        },
+        removeResume(id: string) {
+            resumeService.remove(id)
+            this.userStore.query()
         },
         format(payload: Payload): void {
             const { type, val } = payload

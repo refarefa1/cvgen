@@ -13,7 +13,7 @@ export const useFileStore = defineStore('fileStore', {
 
     actions: {
 
-        async upload(file: string) {
+        async upload(file: FileList) {
             const url = await fileService.upload(file)
             return url
         },
