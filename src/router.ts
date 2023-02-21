@@ -4,7 +4,7 @@ import resumeContent from './views/resume/resume-content.vue'
 import resumeCustomize from './views/resume/resume-customize.vue'
 import authModal from './views/auth/auth-modal.vue'
 
-import { createRouter, createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
 	{
@@ -49,6 +49,6 @@ const routes = [
 ];
 
 export default createRouter({
-	history: createWebHashHistory(),
+	history: createWebHistory(),
 	routes,
 });
