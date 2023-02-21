@@ -1,5 +1,4 @@
 <template>
-
     <section class="resume-layout">
         <div class="title">
             <h1>Layout</h1>
@@ -15,9 +14,9 @@
                 <SlickItem class="component-preview" v-for="(component, i) in components" :key="component" :index="i">
                     <div @mousedown="setIsDragging(true)" class="component-item">
                         <div class="mobile-drag">
-                            <DragHandle>
-                                <span v-svg-icon="'drag'"></span>
-                            </DragHandle>
+                            <!-- <DragHandle> -->
+                            <span v-svg-icon="'drag'"></span>
+                            <!-- </DragHandle> -->
                         </div>
                         <span class="desktop-drag" v-svg-icon="'drag'"></span>
                         <span v-svg-icon="getIcon(component)" />
@@ -27,13 +26,13 @@
             </SlickList>
         </div>
     </section>
-
 </template>
 
 <script lang="ts">
 import { PropType } from 'vue';
 import { Resume } from '../../../interfaces/resume-interface';
-import { SlickList, SlickItem, DragHandle } from 'vue-slicksort';
+// import { SlickList, SlickItem, DragHandle } from 'vue-slicksort';
+import { SlickList, SlickItem } from 'vue-slicksort';
 
 export default {
     name: 'resume-layout',
@@ -91,7 +90,6 @@ export default {
     components: {
         SlickItem,
         SlickList,
-        DragHandle
     },
     watch: {
         components() {
