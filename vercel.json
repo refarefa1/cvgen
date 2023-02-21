@@ -1,9 +1,9 @@
 {
-    "redirects": [
+    "routes": [
         {
-            "source": "/(.*)",
-            "destination": "/",
-            "permanent": false
+            "src": "/[^.]+",
+            "dest": "/",
+            "status": 200
         }
     ]
 }
