@@ -47,7 +47,6 @@
             </div>
         </div>
     </form>
-
 </template>
 
 <script lang="ts">
@@ -64,7 +63,11 @@ export default {
     },
     emits: ['update', 'open', 'save', 'remove'],
     created() {
-        eventBus.on('closeAccordion', () => { this.isOpen = false })
+        eventBus.on('close-accordion', () => { this.isOpen = false })
+        eventBus.on('add-component', (cmp) => {
+            if (cmp as any !== 'resume-military') return
+            this.openAccordion()
+        })
     },
     data() {
         return {

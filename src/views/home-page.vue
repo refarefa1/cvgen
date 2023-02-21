@@ -30,6 +30,9 @@ export default {
 		user() {
 			return this.userStore.loggedinUser
 		},
+		resume() {
+			return this.resumeStore.resumeToEdit
+		}
 	},
 	methods: {
 		create() {

@@ -28,9 +28,10 @@ export const useResumeStore = defineStore('resumeStore', {
     actions: {
         query(resumeId: string | string[] | null) {
             if (!resumeId) {
-                this.$state.resume = resumeService.getEmptyResume()
-                this.save()
-                return this.$state.resume._id
+                const resume: Resume = resumeService.getEmptyResume()
+                resumeService.save(resume)
+                this.$state.resume = resume
+                return resume._id
             }
             else {
                 const resume = (this.$state.userStore.loggedinUser.resumes as Resume[]).find(r => r._id === resumeId)
@@ -43,11 +44,13 @@ export const useResumeStore = defineStore('resumeStore', {
             const resume = resumeService.save(deepCloneResume)
             this.$state.resume = resume
             this.$state.userStore.query()
-
         },
         update(payload: Payload) {
             const { type, val } = payload
             switch (type) {
+                case 'img':
+                    this.$state.resume = { ...this.$state.resume, personal: { ...this.$state.resume.personal, imgUrl: val } }
+                    break
                 case 'title':
                     this.$state.resume = { ...this.$state.resume, name: val }
                     break

@@ -5,13 +5,9 @@ import { utilService } from "./util.service"
 function save(resume: Resume) {
     const user = userService.query()
     if (!user.resumes) user.resumes = []
-    if (!resume._id) {
-        resume._id = utilService.makeId()
-        user.resumes.push(resume)
-    } else {
-        const idx: number = user.resumes.findIndex(r => r._id === resume._id)
-        user.resumes[idx] = resume
-    }
+    const idx: number = user.resumes.findIndex(r => r._id === resume._id)
+    if (idx === -1) user.resumes.push(resume)
+    else user.resumes[idx] = resume
     userService.save(user)
     return resume
 }
@@ -25,8 +21,17 @@ function remove(id: string) {
 
 function getEmptyResume(): Resume {
     const resume: Resume = {
+        _id: utilService.makeId(),
         name: 'Untitled',
         components: [] as string[],
+        personal: {
+            fullName: '',
+            jobTitle: '',
+            email: '',
+            phone: '',
+            address: '',
+            imgUrl: ''
+        },
         style: {
             heading: {
                 style: 'underline',

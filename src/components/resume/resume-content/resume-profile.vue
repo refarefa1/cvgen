@@ -1,5 +1,4 @@
 <template>
-
     <form class="resume-form" :class="{ 'open': isOpen }">
 
         <div @click="openAccordion" class="resume-title">
@@ -37,7 +36,6 @@
         </div>
 
     </form>
-
 </template>
 
 <script lang="ts">
@@ -53,7 +51,11 @@ export default {
     },
     emits: ['update', 'open', 'remove'],
     created() {
-        eventBus.on('closeAccordion', () => { this.isOpen = false })
+        eventBus.on('close-accordion', () => { this.isOpen = false })
+        eventBus.on('add-component', (cmp) => {
+            if (cmp as any !== 'resume-profile') return
+            this.openAccordion()
+        })
     },
 
     data() {

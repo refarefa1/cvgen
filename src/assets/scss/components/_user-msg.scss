@@ -24,7 +24,11 @@
         opacity: 1;
     }
 
-    @include for-mobile-layout{
+    &.red {
+        background-color: rgb(180, 36, 36);
+    }
+
+    @include for-mobile-layout {
         left: 50%;
         transform: translateX(-50%);
         width: 90%;

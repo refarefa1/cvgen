@@ -34,7 +34,6 @@
                 <span v-if="!isLoading && !resume?.personal?.imgUrl" v-svg-icon="'camera'" />
                 <CFormInput @change="handleChange($event)" type="file" name="imgUrl" />
             </div>
-
         </div>
 
     </form>
@@ -45,7 +44,6 @@ import { CFormInput } from '@coreui/vue';
 import { PropType } from 'vue';
 import { Personal, Resume } from '../../../interfaces/resume-interface';
 import { eventBus } from '../../../services/event.bus.service'
-
 interface FileInputEvent extends Event {
     target: HTMLInputElement & EventTarget;
 }
@@ -56,8 +54,8 @@ export default {
     },
     emits: ['update', 'open', 'save', 'upload'],
     created() {
-        eventBus.on('closeAccordion', () => { this.isOpen = false })
-        eventBus.on('file-uploaded', this.handleFinishUpload)
+        eventBus.on('close-accordion', () => { this.isOpen = false })
+        eventBus.on('img-uploaded', this.handleFinishUpload)
     },
     data() {
         return {
@@ -84,6 +82,11 @@ export default {
             this.isLoading = true
             if (!ev.target.files) return
             const file = ev.target.files[0]
+            if (file.size > 2500000) {
+                eventBus.showErrorMsg()
+                this.isLoading = false
+                return
+            }
             this.$emit('upload', file)
         },
         handleFinishUpload() {
@@ -104,7 +107,7 @@ export default {
         },
     },
     components: {
-        CFormInput
+        CFormInput,
     }
 
 }

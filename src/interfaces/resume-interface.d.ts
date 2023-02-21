@@ -65,7 +65,7 @@ export interface Resume {
 	name: string
 	components: string[]
 	style: Style
-	personal?: Personal
+	personal: Personal
 	education?: Education[]
 	experience?: Experience[]
 	languages?: Language[]

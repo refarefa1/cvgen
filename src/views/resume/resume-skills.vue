@@ -58,7 +58,7 @@ export default {
     },
     emits: ['update', 'open'],
     created() {
-        eventBus.on('closeAccordion', () => { this.isOpen = false })
+        eventBus.on('close-accordion', () => { this.isOpen = false })
     },
     data() {
         return {

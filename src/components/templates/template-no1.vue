@@ -1,5 +1,5 @@
 <template>
-    <section ref="template" class="template-no1" :style="getFont">
+    <section ref="template" class="template-no1">
         <div class="personal-info">
             <div class="contact">
                 <div class="personal-title">
@@ -19,9 +19,8 @@
                     <p class="address">{{ resume.personal?.address }}</p>
                 </div>
             </div>
-
-            <div class="img">
-                <img v-if="resume?.personal?.imgUrl" :src="resume.personal.imgUrl" alt="">
+            <div class="img-container" v-if="resume?.personal?.imgUrl">
+                <img class="img" :src="resume.personal.imgUrl" />
             </div>
         </div>
         <section class="template-sections">
@@ -118,7 +117,7 @@
                 </div>
             </div>
         </section>
-</section>
+    </section>
 </template>
 
 <script lang="ts">
@@ -220,10 +219,5 @@ export default {
             })
         },
     },
-    computed: {
-        getFont() {
-            return ''
-        }
-    }
 }
 </script>

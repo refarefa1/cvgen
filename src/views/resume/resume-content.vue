@@ -60,7 +60,7 @@ export default {
         save() {
             this.resumeStore.save()
             this.isOpen = false
-            eventBus.emit('closeAccordion', null)
+            eventBus.emit('close-accordion', null)
             eventBus.showSuccessMsg()
             this.components = ['resume-personal', ...this.resume.components]
         },
@@ -73,20 +73,21 @@ export default {
         cancel() {
             this.resumeStore.cancel()
             this.isOpen = false
-            eventBus.emit('closeAccordion', null)
+            eventBus.emit('close-accordion', null)
             this.components = ['resume-personal', ...this.resume.components]
         },
-        async upload(file: FileList) {
+        async upload(file: any) {
             const imgUrl = await this.fileStore.upload(file)
             const personal = this.resume.personal
             const payload = { type: 'personal', val: { ...personal, imgUrl } }
             this.update(payload)
+            eventBus.emit('img-uploaded', null)
             this.resumeStore.save()
-            eventBus.emit('file-uploaded', null)
         },
         add(cmp: string) {
-            this.components.push(cmp)
+            this.components = [cmp]
             this.resumeStore.add(cmp)
+            setTimeout(() => eventBus.emit('add-component', cmp), 0)
         },
         getSect(cmp: string): string {
             let str = ''

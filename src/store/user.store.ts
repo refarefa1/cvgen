@@ -10,8 +10,7 @@ type State = {
 export const useUserStore = defineStore('userStore', {
 
     state: () => <State>({
-        user: userService.getEmptyUser(),
-        isLoggedIn: false
+        user: userService.query(),
     }),
 
     getters: {

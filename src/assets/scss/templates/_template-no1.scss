@@ -54,22 +54,25 @@
 
                 a {
                     z-index: 50;
-                    // left: 0;
-                    // opacity: 0;
                 }
             }
         }
 
-        .img {
-            height: 100%;
+        .img-container {
+            position: relative;
+            height: 125px;
+            aspect-ratio: 1 / 1;
+            overflow: hidden;
+            border-radius: 5em;
+            display: flex;
+            justify-content: center;
 
-            img {
-                border-radius: 5em;
-                aspect-ratio: 1 / 1;
-                max-height: 125px;
-                object-fit: cover;
+            .img {
+                height: 125px;
             }
         }
+
+
 
     }
 
@@ -93,7 +96,7 @@
                 .experience-preview {
                     display: flex;
                     flex-direction: column;
-                    gap: 4px;
+                    gap: 2px;
 
                     .education-degree,
                     .experience-job {

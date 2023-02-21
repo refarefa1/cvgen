@@ -7,6 +7,7 @@
             <p v-if="!isOpen">Edit languages
                 <span v-svg-icon="'expand'" />
             </p>
+            <span v-svg-icon="'expand'" v-if="isAdding" @click.stop="close" class="close-btn" />
             <div @click.stop="isModalOpen = true" class="more-options">
                 <span v-svg-icon="'options'"></span>
             </div>
@@ -43,9 +44,6 @@
                 <span v-svg-icon="'plus'" />
                 <p>Language</p>
             </button>
-            <p @click="close" class="close-btn">Close languages
-                <span v-svg-icon="'expand'" />
-            </p>
         </div>
 
         <remove-modal v-if="isRemoving" @cancel="closeModal" @remove="remove" />
@@ -85,7 +83,12 @@ export default {
     },
     emits: ['update', 'open', 'save', 'remove'],
     created() {
-        eventBus.on('closeAccordion', () => { this.isOpen = false })
+        eventBus.on('close-accordion', () => { this.isOpen = false })
+        eventBus.on('add-component', (cmp) => {
+            if (cmp as any !== 'resume-languages') return
+            this.add()
+            this.openAccordion()
+        })
     },
     data() {
         return {

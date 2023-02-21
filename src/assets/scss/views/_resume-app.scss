@@ -19,7 +19,10 @@
             height: 40vw;
             position: relative;
             font-family: 'Roboto', sans-serif;
-            letter-spacing: .01;
+
+            * {
+                letter-spacing: .01px;
+            }
         }
     }
 

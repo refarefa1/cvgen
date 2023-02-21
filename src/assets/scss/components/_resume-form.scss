@@ -197,6 +197,18 @@
                 width: 100%;
                 cursor: pointer;
 
+                .close-btn {
+                    z-index: 50;
+                    position: absolute;
+                    right: 48px;
+
+                    svg {
+                        transform: rotate(180deg);
+                        display: block !important;
+                        scale: 1.4;
+                    }
+                }
+
                 h1 {
                     font-size: rem(24px);
                     font-weight: 800;
@@ -575,7 +587,7 @@
 
             .add-info {
                 padding-inline: 48px;
-                padding-block-start: 24px;
+                padding-block-start: 12px;
 
 
                 .resume-cmp-list {
@@ -649,30 +661,13 @@
                         padding-inline-end: 6px;
                     }
                 }
-
-                .close-btn {
-                    margin-top: 12px;
-                    cursor: pointer;
-                    color: $link-color;
-                    font-size: 1rem;
-                    font-weight: 800;
-
-                    span {
-                        svg {
-                            transform: rotate(180deg);
-                            fill: $link-color;
-                        }
-                    }
-                }
             }
 
             &.open {
                 height: auto;
 
                 .resume-title {
-                    pointer-events: none;
                     background-color: transparent;
-
 
                     span {
                         svg {
@@ -880,6 +875,10 @@
                     }
 
                     .options-modal {
+                        right: 0px;
+                    }
+
+                    .close-btn{
                         right: 0px;
                     }
                 }

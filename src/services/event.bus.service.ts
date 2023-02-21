@@ -14,6 +14,7 @@ function on(eventType: string, callback: EventCallback) {
         listeners[eventType] = [];
     }
     listeners[eventType].push(callback);
+
 }
 
 function off(eventType: string, callback: EventCallback) {
@@ -37,11 +38,15 @@ function showSuccessMsg() {
 function showDeleteMsg(section: string) {
     emit('show-msg', `${section} section removed successfully`)
 }
+function showErrorMsg() {
+    emit('show-msg', `File is too big`)
+}
 
 export const eventBus = {
     on,
     off,
     emit,
     showSuccessMsg,
-    showDeleteMsg
+    showDeleteMsg,
+    showErrorMsg
 }
