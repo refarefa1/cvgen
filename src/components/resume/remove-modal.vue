@@ -5,8 +5,8 @@
             <p>Are you sure you want to remove this entry?</p>
         </div>
         <div class="actions">
-            <button @click="remove" class="remove-btn">Remove</button>
             <button @click="cancel" class="cancel-btn">Cancel</button>
+            <button @click="remove" class="remove-btn">Remove</button>
         </div>
         <span @click="cancel" class="close-modal-btn" v-svg-icon="'close'"></span>
     </section>

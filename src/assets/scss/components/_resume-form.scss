@@ -232,6 +232,12 @@
                     right: 48px;
                     top: 50%;
                     transform: translateY(-50%);
+
+                    span {
+                        svg {
+                            scale: 1.4;
+                        }
+                    }
                 }
 
                 .options-modal {
@@ -843,8 +849,6 @@
                 }
             }
         }
-
-
     }
 
     @include for-narrow-layout {
@@ -878,12 +882,12 @@
                         right: 0px;
                     }
 
-                    .close-btn{
+                    .close-btn {
                         right: 0px;
                     }
                 }
 
-                >* {
+                >*:not(.remove-modal) {
                     padding-inline: 0 !important;
                 }
 
@@ -931,7 +935,6 @@
         .progress-bar-container {
             padding: 0;
         }
-
 
         .resume-footer {
             padding: 0;
@@ -999,8 +1002,6 @@
 
 
                 }
-
-
 
                 .add-info {
                     .resume-cmp-list {

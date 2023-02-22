@@ -35,13 +35,12 @@
             font-weight: 800;
 
             &.cancel-btn {
-                background-color: $link-color;
-                color: $txt-color;
+                color: $primary-color;
+                border: 2px solid $gray-color;
             }
 
             &.remove-btn {
-                color: $primary-color;
-                border: 2px solid $gray-color;
+                background-color: #af1a2c;
             }
         }
     }

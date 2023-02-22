@@ -77,12 +77,7 @@ export default {
             this.components = ['resume-personal', ...this.resume.components]
         },
         async upload(file: any) {
-            const imgUrl = await this.fileStore.upload(file)
-            const personal = this.resume.personal
-            const payload = { type: 'personal', val: { ...personal, imgUrl } }
-            this.update(payload)
-            eventBus.emit('img-uploaded', null)
-            this.resumeStore.save()
+            this.fileStore.upload(file)
         },
         add(cmp: string) {
             this.components = [cmp]

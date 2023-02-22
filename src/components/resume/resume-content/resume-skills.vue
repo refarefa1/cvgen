@@ -47,7 +47,7 @@
         <div v-if="!isAdding && isOpen" class="resume-skills">
             <div v-for="input in inputs" :key="input.label" :class="'resume-input ' + input.class">
                 <span v-svg-icon="'camera'" v-if="input.type === 'file'" />
-                <CFormInput v-model="skill[input.name as keyof Skill]" @keydown.enter="save" @input="update"
+                <CFormInput v-model="skill[input.name as keyof Skill]" @keydown.enter.prevent="save" @input="update"
                     :name="input.name" :label="input.label" :type="input.type" :placeholder="input.placeholder"
                     aria-label="default input" />
             </div>
@@ -56,7 +56,7 @@
                 <p>Level: <span> {{ formatSkillLevel(skill.level) }} </span></p>
                 <div class="level-list">
                     <div @click="handleSkillLevel(i)" v-for="i in 5" :key="i" class="level-preview"
-                        :class="{ 'selected': skill.level === i }" />
+                        :class="{ 'selected': skill.level >= i }" />
                 </div>
             </div>
         </div>

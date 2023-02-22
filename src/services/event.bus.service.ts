@@ -33,13 +33,13 @@ function emit(type: string, payload: any) {
 }
 
 function showSuccessMsg() {
-    emit('show-msg', 'Personal details saved successfully')
+    emit('show-success-msg', 'Personal details saved successfully')
 }
 function showDeleteMsg(section: string) {
-    emit('show-msg', `${section} section removed successfully`)
+    emit('show-success-msg', `${section} section removed successfully`)
 }
-function showErrorMsg() {
-    emit('show-msg', `File is too big`)
+function showErrorMsg(str: string) {
+    emit('show-error-msg', str)
 }
 
 export const eventBus = {

@@ -13,10 +13,18 @@ export default {
         }
     },
     mounted() {
-        eventBus.on('show-msg', (msg: any) => {
+        eventBus.on('show-success-msg', (msg: any) => {
             const el = this.$refs.msg as HTMLElement
             this.msg = msg;
-            if (msg.includes('File')) el.classList.add('red')
+            el.classList.add('show')
+            setTimeout(() => {
+                el.classList.remove('show')
+            }, 2000)
+        })
+        eventBus.on('show-error-msg', (msg: any) => {
+            const el = this.$refs.msg as HTMLElement
+            this.msg = msg;
+            el.classList.add('red')
             el.classList.add('show')
             setTimeout(() => {
                 el.classList.remove('show')

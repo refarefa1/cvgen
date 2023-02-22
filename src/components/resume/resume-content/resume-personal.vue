@@ -55,7 +55,7 @@ export default {
     emits: ['update', 'open', 'save', 'upload'],
     created() {
         eventBus.on('close-accordion', () => { this.isOpen = false })
-        eventBus.on('img-uploaded', this.handleFinishUpload)
+        eventBus.on('img-uploaded', (url) => this.handleFinishUpload(url))
     },
     data() {
         return {
@@ -83,15 +83,17 @@ export default {
             if (!ev.target.files) return
             const file = ev.target.files[0]
             if (file.size > 2500000) {
-                eventBus.showErrorMsg()
+                eventBus.showErrorMsg('File is too big')
                 this.isLoading = false
                 return
             }
             this.$emit('upload', file)
         },
-        handleFinishUpload() {
+        handleFinishUpload(url: any) {
+            this.personal.imgUrl = url
+            this.update()
             this.isLoading = false
-            this.drawImage()
+            setTimeout(() => this.drawImage, 0)
         },
         drawImage() {
             const elFileInput = this.$refs.fileInput as HTMLElement
