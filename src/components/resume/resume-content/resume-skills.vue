@@ -78,6 +78,10 @@ export default {
     },
     emits: ['update', 'open', 'save', 'remove'],
     created() {
+        eventBus.on('save', () => {
+            if (!this.isOpen) return
+            this.save()
+        })
         eventBus.on('close-accordion', () => { this.isOpen = false })
         eventBus.on('add-component', (cmp) => {
             if (cmp as any !== 'resume-skills') return
@@ -115,6 +119,10 @@ export default {
             this.openAccordion()
         },
         save() {
+            if (!this.skill.name) {
+                eventBus.showErrorMsg('Input is required')
+                return
+            }
             this.$emit('save')
         },
         close() {

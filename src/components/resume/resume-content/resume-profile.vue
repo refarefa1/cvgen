@@ -49,8 +49,12 @@ export default {
     props: {
         resume: Object as PropType<Resume>,
     },
-    emits: ['update', 'open', 'remove'],
+    emits: ['update', 'open', 'remove', 'save'],
     created() {
+        eventBus.on('save', () => {
+            if (!this.isOpen) return
+            this.$emit('save')
+        })
         eventBus.on('close-accordion', () => { this.isOpen = false })
         eventBus.on('add-component', (cmp) => {
             if (cmp as any !== 'resume-profile') return

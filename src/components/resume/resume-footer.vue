@@ -10,12 +10,14 @@
     </footer>
 </template>
 <script lang="ts">
+import { eventBus } from '../../services/event.bus.service';
+
 export default {
     name: 'resume-footer',
     emits: ['save', 'cancel'],
     methods: {
         save() {
-            this.$emit('save')
+            eventBus.emit('save', null)
         },
         cancel() {
             this.$emit('cancel')

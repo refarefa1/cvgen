@@ -1,5 +1,4 @@
 <template>
-
     <form class="resume-form" :class="{ 'open': isOpen }">
 
         <div @click="add" class="resume-title">
@@ -36,8 +35,7 @@
                         <h3>{{ language.name }}<span v-if="language.level"></span></h3>
                         <h4>{{ formatLanguageLevel(language.level) }}</h4>
                     </div>
-                    <span class="remove" title="Remove" @click.stop="removeDeep(language._id)"
-                        v-svg-icon="'trash'"></span>
+                    <span class="remove" title="Remove" @click.stop="removeDeep(language._id)" v-svg-icon="'trash'"></span>
                 </li>
             </ul>
             <button class="add-btn" @click="openAccordion">
@@ -65,7 +63,6 @@
             </div>
         </div>
     </form>
-
 </template>
 
 <script lang="ts">
@@ -83,6 +80,10 @@ export default {
     },
     emits: ['update', 'open', 'save', 'remove'],
     created() {
+        eventBus.on('save', () => {
+            if (!this.isOpen) return
+            this.save()
+        })
         eventBus.on('close-accordion', () => { this.isOpen = false })
         eventBus.on('add-component', (cmp) => {
             if (cmp as any !== 'resume-languages') return
@@ -120,6 +121,10 @@ export default {
             this.openAccordion()
         },
         save() {
+            if (!this.language.name) {
+                eventBus.showErrorMsg('Input is required')
+                return
+            }
             this.$emit('save')
         },
         close() {

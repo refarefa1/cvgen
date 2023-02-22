@@ -54,6 +54,10 @@ export default {
     },
     emits: ['update', 'open', 'save', 'upload'],
     created() {
+        eventBus.on('save', () => {
+            if (!this.isOpen) return
+            this.save()
+        })
         eventBus.on('close-accordion', () => { this.isOpen = false })
         eventBus.on('img-uploaded', (url) => this.handleFinishUpload(url))
     },

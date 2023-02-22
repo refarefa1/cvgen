@@ -83,6 +83,10 @@ export default {
     },
     emits: ['update', 'open', 'save', 'remove'],
     created() {
+        eventBus.on('save', () => {
+            if (!this.isOpen) return
+            this.save()
+        })
         eventBus.on('close-accordion', () => { this.isOpen = false })
         eventBus.on('add-component', (cmp) => {
             if (cmp as any !== 'resume-experience') return
