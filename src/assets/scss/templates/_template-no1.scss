@@ -245,11 +245,15 @@
             text-transform: uppercase;
         }
 
+        &.underline {
+            background-color: transparent !important;
+        }
+
         &.center {
             text-align: center;
-            // background-color: $primary-color;
             color: $txt-color;
             border: none;
+
 
             h1 {
                 display: flex;
@@ -260,10 +264,12 @@
         }
 
         &.normal {
+            background-color: transparent !important;
             border-bottom: none;
         }
 
         &.bordered {
+            background-color: transparent !important;
             text-align: center;
             border-top: 2px solid $primary-color;
         }

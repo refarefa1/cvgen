@@ -24,16 +24,16 @@
             </div>
         </div>
         <section class="template-sections">
-            <div ref="resume-profile" v-if="resume?.profile?.about" class="profile-info">
-                <div class="title">
+            <div :style="getOrder('resume-profile')" v-if="resume?.profile?.about" class="profile-info">
+                <div :style="getTitleStyle" :class="getTitleClass" class="title">
                     <h1>About me</h1>
                 </div>
                 <div class="education-about-txt">
                     <p>{{ resume.profile.about }}</p>
                 </div>
             </div>
-            <div ref="resume-education" v-if="resume?.education?.length" class="education-info">
-                <div class="title">
+            <div :style="getOrder('resume-education')" v-if="resume?.education?.length" class="education-info">
+                <div :style="getTitleStyle" :class="getTitleClass" class="title">
                     <h1>Education</h1>
                 </div>
                 <ul class="education-list">
@@ -52,8 +52,8 @@
                     </li>
                 </ul>
             </div>
-            <div ref="resume-experience" v-if="resume?.experience?.length" class="experience-info">
-                <div class="title">
+            <div :style="getOrder('resume-experience')" v-if="resume?.experience?.length" class="experience-info">
+                <div :style="getTitleStyle" :class="getTitleClass" class="title">
                     <h1>Experience</h1>
                 </div>
                 <ul class="experience-list">
@@ -76,8 +76,8 @@
                     </li>
                 </ul>
             </div>
-            <div ref="resume-skills" v-if="resume?.skills?.length" class="skills-info">
-                <div class="title">
+            <div :style="getOrder('resume-skills')" v-if="resume?.skills?.length" class="skills-info">
+                <div :style="getTitleStyle" :class="getTitleClass" class="title">
                     <h1>Skills</h1>
                 </div>
                 <ul class="skill-list" :class="{ 'bubble': resume.style.skills.display === 'bubble' }">
@@ -89,8 +89,8 @@
                     </li>
                 </ul>
             </div>
-            <div ref="resume-languages" v-if="resume?.languages?.length" class="languages-info">
-                <div class="title">
+            <div :style="getOrder('resume-languages')" v-if="resume?.languages?.length" class="languages-info">
+                <div :style="getTitleStyle" :class="getTitleClass" class="title">
                     <h1>Languages</h1>
                 </div>
                 <ul class="language-list" :class="{ 'bubble': resume.style.languages.display === 'bubble' }">
@@ -103,8 +103,8 @@
                     </li>
                 </ul>
             </div>
-            <div ref="resume-military" v-if="resume?.military" class="military-info">
-                <div class="title">
+            <div :style="getOrder('resume-military')" v-if="resume?.military" class="military-info">
+                <div :style="getTitleStyle" :class="getTitleClass" class="title">
                     <h1>Military service</h1>
                 </div>
                 <div class="military-data">
@@ -137,9 +137,6 @@ export default {
     },
     mounted() {
         this.setTransform()
-        eventBus.on('customize', this.customize)
-        this.setHeading(this.resume?.style.heading)
-        if (this.resume?.components) this.arrange(this.resume.components)
     },
     data() {
         return {
@@ -157,67 +154,34 @@ export default {
         format(timestamp: number) {
             return (new Date(timestamp)).toLocaleDateString("en-GB").replaceAll('/', '.')
         },
-        customize(payload: any) {
-            const { type, val } = payload
-            switch (type) {
-                case 'arrange': this.arrange(val)
-                case 'heading': this.setHeading(this.resume?.style.heading)
-            }
-        },
-        arrange(cmpOrder: string[]) {
-            cmpOrder.forEach((cmp, idx) => {
-                if (!this.$refs[cmp]) return
-                (this.$refs[cmp] as HTMLElement).style.order = idx.toString()
-            })
-        },
-        setHeading(val: any) {
-            const nodeTitles = document.querySelectorAll('.template-no1 .title')
-            const titles: Element[] = Array.from(nodeTitles)
-            this.setCapitalization(titles, val)
-            this.setHeadingStyle(titles, val)
-            this.setHeadingColor(titles, val)
-
-        },
-        setHeadingColor(titles: Element[], val: any) {
-            titles.forEach(title => {
-                const elTitle = title as HTMLElement
-                elTitle.style.color = val.headingColor;
-                elTitle.style.borderColor = val.headingColor;
-                const bgColor = utilService.getLighterColor(val.headingColor)
-                elTitle.style.backgroundColor =
-                    elTitle.classList.contains('center')
-                        ? bgColor
-                        : 'transparent';
-            })
-        },
-        setCapitalization(titles: Element[], val: any) {
-            const uppercase = (val.capitalization === 'uppercase')
-            titles.forEach(title => {
-                if (uppercase) title.classList.add('uppercase')
-                else title.classList.remove('uppercase')
-            })
-        },
-        setHeadingStyle(titles: Element[], val: any) {
-            titles.forEach(title => {
-                switch (val.style) {
-                    case 'underline':
-                        title.classList.remove('normal', 'bordered', 'center')
-                        break
-                    case 'center':
-                        title.classList.remove('normal', 'bordered')
-                        title.classList.add('center')
-                        break
-                    case 'normal':
-                        title.classList.remove('center', 'bordered')
-                        title.classList.add('normal')
-                        break
-                    case 'bordered':
-                        title.classList.remove('normal', 'center')
-                        title.classList.add('bordered')
-                        break
-                }
-            })
-        },
+        getOrder(cmp: string) {
+            const cmps = this.resume?.components
+            const idx = cmps?.findIndex(c => c === cmp)
+            return { 'order': idx }
+        }
     },
+    computed: {
+        getTitleClass() {
+            const uppercase = (this.resume?.style.heading.capitalization === 'uppercase')
+            const className = {
+                'uppercase': uppercase,
+                'center': this.resume?.style.heading.style === 'center',
+                'bordered': this.resume?.style.heading.style === 'bordered',
+                'normal': this.resume?.style.heading.style === 'normal',
+                'underline': this.resume?.style.heading.style === 'underline'
+            }
+            return className
+        },
+        getTitleStyle() {
+            const color = this.resume?.style.heading.headingColor || ''
+            const bgColor = utilService.getLighterColor(color)
+            const style = {
+                'background-color': bgColor,
+                'color': color,
+                'border-color': color
+            }
+            return style
+        }
+    }
 }
 </script>

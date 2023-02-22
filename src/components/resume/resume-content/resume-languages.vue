@@ -49,7 +49,7 @@
         <div v-if="!isAdding && isOpen" class="resume-languages">
             <div v-for="input in inputs" :key="input.label" :class="'resume-input ' + input.class">
                 <span v-svg-icon="'camera'" v-if="input.type === 'file'" />
-                <CFormInput v-model="language[input.name as keyof Language]" @keydown.enter="save" @input="update"
+                <CFormInput v-model="language[input.name as keyof Language]" @keydown.enter.prevent="save" @input="update"
                     :name="input.name" :label="input.label" :type="input.type" :placeholder="input.placeholder"
                     aria-label="default input" />
             </div>
