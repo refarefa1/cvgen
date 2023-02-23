@@ -1,7 +1,7 @@
 <div align="center">
-<h2 align="center">Shuka</h2>
+<h2 align="center">CVGen</h2>
   <p align="center">
-  Fruits and Vegetables e-commerce
+  Build your own resume!
 </p>
     <a  href="https://shuka.onrender.com/#/"><strong>See demo »</strong></a>
   <br>  
