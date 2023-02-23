@@ -3,7 +3,7 @@
   <p align="center">
   Build your own resume free and easy!
 </p>
-    <a  href="https://shuka.onrender.com/#/"><strong>See demo »</strong></a>
+    <a  href="https://cvgen-refarefa1.vercel.app/"><strong>See demo »</strong></a>
   <br>  
   <br>
 </div>
